@@ -3,15 +3,18 @@ package Livings;
 /*
  * 生物类，动物和植物的基类
  */
-abstract public class Living {
+public abstract class Living {
     //生物成熟后的价值
-    private double value;
+    private double _value;
 
+    /*
+     * @return 返回生物成熟后的价值
+     */
     public double getValue(){
-        return value;
+        return _value;
     }
 
     public void setValue(double value){
-        this.value = value;
+        this._value = value;
     }
 }
