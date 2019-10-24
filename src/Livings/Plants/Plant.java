@@ -1,7 +1,10 @@
 package Livings.Plants;
 
+import Livings.Living;
+
 /*
  * 植物类
  */
-public class Plant {
+public abstract class Plant extends Living {
+	
 }
