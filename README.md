@@ -1,6 +1,6 @@
 # Crazy Farm
 
-## HLR代码规范
+## 代码规范
 
 - 类内变量请以单下划线开头
 - 修饰词以`public`在`abstract`前面
