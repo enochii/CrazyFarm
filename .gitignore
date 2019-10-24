@@ -2,8 +2,10 @@
 out/
 .idea/
 .class
+
+# Intelligent
+CrazyFarm.iml
+# Eclipse
 .classpath
 .project
 bin/
-dist/
-log
