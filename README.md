@@ -17,7 +17,7 @@ Design Pattern In GoF
 - [ ] Builder
 - [ ] Factory Method
 - [ ] Prototype
-- [ ] Singleton
+- [X] Singleton
 
 **Structural Patterns**
 
@@ -34,7 +34,7 @@ Design Pattern In GoF
 - [ ] Chain of Responsibility
 - [ ] Command
 - [ ] Interpreter
-- [ ] Iterator
+- [X] Iterator
 - [ ] Mediator
 - [ ] Memento
 - [ ] Observer
