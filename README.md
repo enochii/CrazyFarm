@@ -1,6 +1,6 @@
 # Crazy Farm
 
-## HLR代码规范
+## 代码规范
 
 - 类内变量请以单下划线开头
 - 修饰词以`public`在`abstract`前面
@@ -17,7 +17,7 @@ Design Pattern In GoF
 - [ ] Builder
 - [ ] Factory Method
 - [ ] Prototype
-- [ ] Singleton
+- [X] Singleton
 
 **Structural Patterns**
 
@@ -34,7 +34,7 @@ Design Pattern In GoF
 - [ ] Chain of Responsibility
 - [ ] Command
 - [ ] Interpreter
-- [ ] Iterator
+- [X] Iterator
 - [ ] Mediator
 - [ ] Memento
 - [ ] Observer
