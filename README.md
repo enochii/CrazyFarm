@@ -16,7 +16,7 @@ Design Pattern In GoF
 - [ ] Abstract Factory
 - [ ] Builder
 - [ ] Factory Method
-- [ ] Prototype
+- [X] Prototype
 - [X] Singleton
 
 **Structural Patterns**
