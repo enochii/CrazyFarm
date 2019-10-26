@@ -19,6 +19,16 @@ public class ChickenAdapter extends Duck {
         this._chicken = chicken;
     }
 
+    @Override
+    public String getName(){
+        return _chicken.getName();
+    }
+
+    @Override
+    public double getValue(){
+        return _chicken.getValue();
+    }
+
     /*
      * 鸡模仿鸭叫
      */
