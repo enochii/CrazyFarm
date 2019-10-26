@@ -1,5 +1,11 @@
 import Adapter.ChickenAdapter;
 import Farm.Menu;
+import Interpreter.Parser;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import junit.framework.JUnit4TestAdapter;
 
 public class Main {
 
@@ -7,5 +13,6 @@ public class Main {
 	// write your code here
         ChickenAdapter.main();
         Menu.main();
+        Parser.main();
     }
 }
