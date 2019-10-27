@@ -1,7 +1,7 @@
 package Command;
 
 import Farm.Farm;
-import apple.laf.JRSUIState;
+//import apple.laf.JRSUIState;
 
 public class PurchaseCommand implements Command{
     String _animalType;

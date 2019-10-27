@@ -3,7 +3,7 @@ package Livings.Animals;
 import Livings.Living;
 import State.State;
 import State.AnimalHungryState;
-import com.sun.xml.internal.xsom.impl.AnnotationImpl;
+//import com.sun.xml.internal.xsom.impl.AnnotationImpl;
 import mediator.AnimalMediator;
 import mediator.Colleague;
 import mediator.Mediator;
