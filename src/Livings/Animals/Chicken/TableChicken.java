@@ -86,8 +86,5 @@ public class TableChicken extends Chicken{
 
     }
 
-    public void setColleagueUpdated(){
-        _animalMediator.colleagueChanged();
 
-    }
 }

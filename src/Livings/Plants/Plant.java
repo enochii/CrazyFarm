@@ -20,6 +20,10 @@ public abstract class Plant extends Living {
 
     public void changeState(State state){}
 
+    public void doSell(){
+
+    }
+
 
 	
 }
