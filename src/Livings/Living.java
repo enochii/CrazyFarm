@@ -32,6 +32,8 @@ public abstract class Living implements Context {
 
     public int _experience = 0;
 
+    public abstract void doSell();
+
 
 
 }
