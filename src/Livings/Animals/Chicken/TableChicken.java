@@ -1,8 +1,8 @@
 package Livings.Animals.Chicken;
 
 import Constant.Const;
-import Livings.Animals.Animal;
 import State.AnimalFullState;
+import action.ChickenSound;
 import mediator.Mediator;
 
 
@@ -41,7 +41,7 @@ public class TableChicken extends Chicken{
     }
     @Override
     public void gobble(){
-        System.out.println("Table Children!");
+        behave(new ChickenSound());
     }
 
     public void setClock(int currentTime){
