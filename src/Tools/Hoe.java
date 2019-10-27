@@ -1,5 +1,8 @@
 package Tools;
 
+/*
+ * 农具锄头
+ */
 public class Hoe extends FarmTool {
 
 	public Hoe(Size s) {
