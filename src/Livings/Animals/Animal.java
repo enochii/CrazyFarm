@@ -26,8 +26,8 @@ public abstract class Animal extends Living implements Colleague {
     public void changeState(State state){
         this._state = state;
         if(isHungry()){
+            setColleagueUpdated();
 
-            //等待写
 
         }
 
@@ -51,6 +51,19 @@ public abstract class Animal extends Living implements Colleague {
     public void behave(AnimalAction action){
         action.doAction();
     }
+
+    public void setColleagueUpdated(){
+        _animalMediator.colleagueChanged();
+    }
+
+    public void doSell(){
+
+
+
+    }
+
+
+
 
 
 }

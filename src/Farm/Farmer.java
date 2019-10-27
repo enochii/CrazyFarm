@@ -20,6 +20,7 @@ public class Farmer {
     public Farmer() {
         this._type = WorkType.SPARE;
         this._bag = new ToolPackage(2);
+        this.isWorking = false;
     }
 
     /**
@@ -64,10 +65,6 @@ public class Farmer {
      */
     public boolean getWorkStatus(){
         return this.isWorking;
-    }
-
-    public Farmer(){
-        this.isWorking = false;
     }
 
 }
