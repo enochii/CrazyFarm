@@ -28,4 +28,9 @@ public class Const {
     public enum WorkType {
         SPARE, CULTIVATE, FEED
     }
+
+    // 工具的材质类型
+    public enum Material {
+        IRON, STAINLESS_STEEL
+    }
 }
