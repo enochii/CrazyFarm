@@ -2,6 +2,7 @@ package Livings.Animals.Duck;
 
 import Constant.Const;
 import State.AnimalFullState;
+import action.DuckSound;
 import mediator.Mediator;
 
 public class SmallYellowDuck extends Duck{
@@ -24,7 +25,7 @@ public class SmallYellowDuck extends Duck{
     }
     @Override
     public void quack(){
-        System.out.println("Yellow Duck!");
+        behave(new DuckSound());
     }
 
     public SmallYellowDuck(Mediator mediator){
@@ -71,6 +72,16 @@ public class SmallYellowDuck extends Duck{
 
     public void setColleagueEnable(boolean enable)
     {
+
+    }
+
+    @Override
+    public void setColleagueUpdated(){
+        _animalMediator.colleagueChanged();
+
+    }
+
+    public SmallYellowDuck(){
 
     }
 }

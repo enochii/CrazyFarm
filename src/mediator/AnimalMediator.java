@@ -13,17 +13,22 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import java.util.HashSet;
+import java.util.Iterator;
+
 public class AnimalMediator implements Mediator{
 
     private Menu<Animal> _animalMenu;
     private Farm _farm;
 
-    private HashSet<Animal> _starved_animals;
+
+    private HashSet<Animal> _starvedAnimals = new HashSet<>();
     private int _num_starved_animals = 0;
 
     @Override
     public void createColleagues(){
         this._farm = Farm.getInstance();
+        _animalMenu = _farm.getAnimalMenu();
 
 
     }
@@ -37,15 +42,15 @@ public class AnimalMediator implements Mediator{
         while (animal_iter.hasNext()){
             Animal animal = animal_iter.next();
             if(animal.isHungry()){
-                _starved_animals.add(animal);
+                _starvedAnimals.add(animal);
             }
         }
 
         /**
          * 饥饿的动物数量超过既定数目后喂食
          */
-        if(_starved_animals.size()>_num_starved_animals){
-            Iterator<Animal> starved_animal_iter = _starved_animals.iterator();
+        if(_starvedAnimals.size()>_num_starved_animals){
+            Iterator<Animal> starved_animal_iter = _starvedAnimals.iterator();
             int total_appetite_num  = 0;
             while (starved_animal_iter.hasNext()){
                 Animal starved_animal = starved_animal_iter.next();
@@ -66,10 +71,11 @@ public class AnimalMediator implements Mediator{
                 System.out.println("No free farmer available to feed animals !");
             }
         }
+
     }
 
     public AnimalMediator(){
-        _starved_animals = new HashSet<Animal>();
+        _starvedAnimals = new HashSet<>();
         _num_starved_animals = 5;
 
         createColleagues();
@@ -77,7 +83,7 @@ public class AnimalMediator implements Mediator{
     }
 
     public Set<Animal> getStarvedAnimals(){
-        return _starved_animals;
+        return _starvedAnimals;
     }
 
 

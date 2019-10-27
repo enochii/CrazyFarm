@@ -3,6 +3,8 @@ package Livings.Animals;
 import Livings.Living;
 import State.State;
 import State.AnimalHungryState;
+//import com.sun.xml.internal.xsom.impl.AnnotationImpl;
+import action.AnimalAction;
 import mediator.AnimalMediator;
 import mediator.Colleague;
 import mediator.Mediator;
@@ -25,8 +27,8 @@ public abstract class Animal extends Living implements Colleague {
     public void changeState(State state){
         this._state = state;
         if(isHungry()){
+            setColleagueUpdated();
 
-            //等待写
 
         }
 
@@ -41,6 +43,28 @@ public abstract class Animal extends Living implements Colleague {
     public void setMediator(Mediator mediator){
         _animalMediator = (AnimalMediator) mediator;
     }
+
+
+    //获取动物的食量
+    public int getAppetite(){
+        return _appetite;
+    }
+
+    public void behave(AnimalAction action){
+        action.doAction();
+    }
+
+    @Override
+    public void setColleagueUpdated(){
+        _animalMediator.colleagueChanged();
+    }
+
+    public void doSell(){
+
+
+
+    }
+
 
 
 

@@ -18,7 +18,7 @@ public class Farm {
      */
     private Menu<Animal> _animalMenu;
     private Menu<Plant> _plantMenu;
-    public List<Farmer> farmers = new ArrayList<Farmer>();
+    //public List<Farmer> farmers = new ArrayList<Farmer>();
 
     private AnimalMediator _animalMediator;
 
@@ -28,20 +28,24 @@ public class Farm {
     public int wareHouse = 200;
     public int foodCourt = 100;
 
+    //农民的菜单
+    private Menu<Farmer> _farmerMenu;
+
+
     /**
      * 构造函数
      */
     private Farm(){
         this._animalMenu = new Menu<Animal>();
         this._plantMenu = new Menu<Plant>();
+        this._farmerMenu = new Menu<Farmer>();
     }
 
     static Farm _instance;
 
     /**
-     * @ return 农场实例
+     * @return : 农场实例
      * 获取 [农场] 的全局唯一实例，这里用到了单例模式
-     * TODO : 是否可以认为用到了 Lazy Loading
      */
     public static Farm getInstance(){
         if(_instance == null){
@@ -65,15 +69,16 @@ public class Farm {
         return _plantMenu;
     }
 
+
     /**
      * @return 空闲的农民
      */
     public Farmer getFreeFarmer(){
-        Iterator<Farmer> farmer_iter = farmers.iterator();
+        Iterator<Farmer> farmer_iter = _farmerMenu.iterator();
         Farmer free_farmer = null;
         while (farmer_iter.hasNext()){
             Farmer farmer = farmer_iter.next();
-            if(!farmer.getWorkStatus()){
+            if(!farmer.getWorkStatus() && farmer.getWorkTypeString()=="FEED"){
                 free_farmer = farmer;
                 break;
             }
@@ -90,4 +95,17 @@ public class Farm {
         }
         return _animalMediator;
     }
+
+    public Menu<Farmer> getFarmerMenu(){
+        return _farmerMenu;
+    }
+
+//    //测试中介者模式
+//    public void addAnimal(Animal animal){
+//        this._animalMenu.add(animal);
+//    }
+//
+//    public void addFarmer(Farmer farmer){
+//        this._farmerMenu.add(farmer);
+//    }
 }
