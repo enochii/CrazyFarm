@@ -12,12 +12,16 @@ public class Farm {
     private Menu<Animal> _animalMenu;
     private Menu<Plant> _plantMenu;
 
+    //农民的菜单
+    private Menu<Farmer> _farmerMenu;
+
     /**
      * 构造函数
      */
     private Farm(){
         this._animalMenu = new Menu<Animal>();
         this._plantMenu = new Menu<Plant>();
+        this._farmerMenu = new Menu<Farmer>();
     }
 
     static Farm _instance;
@@ -48,4 +52,17 @@ public class Farm {
     public Menu<Plant> getPlantMenu(){
         return _plantMenu;
     }
+
+    public Menu<Farmer> getFarmerMenu(){
+        return _farmerMenu;
+    }
+
+//    //测试中介者模式
+//    public void addAnimal(Animal animal){
+//        this._animalMenu.add(animal);
+//    }
+//
+//    public void addFarmer(Farmer farmer){
+//        this._farmerMenu.add(farmer);
+//    }
 }

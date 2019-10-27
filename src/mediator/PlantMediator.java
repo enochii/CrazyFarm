@@ -12,6 +12,7 @@ public class PlantMediator implements Mediator{
 
     public void createColleagues(){
         this._farm = Farm.getInstance();
+        _plantMenu = _farm.getPlantMenu();
 
 
     }
