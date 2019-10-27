@@ -1,6 +1,6 @@
 package Tools;
 
-public abstract class FarmTool {
+public abstract class FarmTool extends Tool{
 	
 	private Size size;
 	
