@@ -1,8 +1,9 @@
 package Livings.Plants;
 
 import Constant.Const;
+import Livings.LivingCloneable;
 
-public class Crop extends Plant {
+public class Crop extends Plant implements LivingCloneable {
 	private static double _value = Const.VALUE_CROP;
 	private static String _name = Const.NAME_CROP;
 
@@ -20,9 +21,18 @@ public class Crop extends Plant {
 	public String getName(){
 		return _name;
 	}
+	
 	/*
 	 * Crop 构造函数
 	 */
 	public Crop() {}
+	
+	/*
+	 * Prototype Pattern
+	 * @return Crop的克隆
+	 */
+	public Crop clone() {
+		return new Crop();
+	}
 	
 }
