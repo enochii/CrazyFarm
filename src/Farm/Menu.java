@@ -49,7 +49,7 @@ public class Menu<T>{
      * 向外提供的迭代器接口
      * 用户可以通过这个函数遍历菜单项
      */
-    Iterator<T> iterator(){
+    public Iterator<T> iterator(){
         return new MenuIterator(this);
     }
 

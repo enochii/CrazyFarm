@@ -2,7 +2,7 @@ package Farm;
 
 import Livings.Animals.Animal;
 import Livings.Plants.Plant;
-import javafx.scene.control.Menu;
+//import javafx.scene.control.Menu;
 
 /*
  * 农场类，在这里进行初始化工作
@@ -12,7 +12,7 @@ public class Farm {
     private Menu<Animal> _animalMenu;
     private Menu<Plant> _plantMenu;
 
-    /*
+    /**
      * 构造函数
      */
     private Farm(){
@@ -22,10 +22,9 @@ public class Farm {
 
     static Farm _instance;
 
-    /*
-     * @ return 农场实例
+    /**
+     * @return : 农场实例
      * 获取 [农场] 的全局唯一实例，这里用到了单例模式
-     * TODO : 是否可以认为用到了 Lazy Loading
      */
     public static Farm getInstance(){
         if(_instance == null){
@@ -35,7 +34,7 @@ public class Farm {
         return _instance;
     }
 
-    /*
+    /**
      * @return : 动物菜单
      * 获取动物菜单
      */

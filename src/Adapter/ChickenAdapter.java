@@ -3,6 +3,7 @@ package Adapter;
 import Livings.Animals.Chicken.Chicken;
 import Livings.Animals.Chicken.TableChicken;
 import Livings.Animals.Duck.Duck;
+import State.State;
 
 /*
  * 鸡的适配器，把鸡叫gobble适配成quack
@@ -27,6 +28,21 @@ public class ChickenAdapter extends Duck {
     @Override
     public double getValue(){
         return _chicken.getValue();
+    }
+
+    @Override
+    public void setClock(int currentTime){
+        _chicken.setClock(currentTime);
+    }
+    public void changeState(State state){
+        _chicken.changeState(state);
+    }
+    public void getFed(int hour){
+        _chicken.getFed(hour);
+    }
+    @Override
+    public void setColleagueEnable(boolean enable) {
+        _chicken.setColleagueEnable(enable);
     }
 
     /*
