@@ -2,6 +2,7 @@ package Livings.Plants;
 
 import Constant.Const;
 import Livings.LivingCloneable;
+import mediator.PlantMediator;
 
 public class Crop extends Plant implements LivingCloneable {
 	private static double _value = Const.VALUE_CROP;
@@ -26,6 +27,10 @@ public class Crop extends Plant implements LivingCloneable {
 	 * Crop 构造函数
 	 */
 	public Crop() {}
+
+	public Crop(PlantMediator _plantMediator){
+
+	}
 	
 	/**
 	 * Prototype Pattern
@@ -33,6 +38,24 @@ public class Crop extends Plant implements LivingCloneable {
 	 */
 	public Crop clone() {
 		return new Crop();
+	}
+
+	public void setClock(int currentTime){
+		_state.gainExperience(this);
+
+	}
+
+	@Override
+	public boolean equals(Object o){
+		Crop crop = null;
+		try{
+			crop = (Crop)o;
+		}catch (ClassCastException e){
+			System.out.println("Class Cast Error");
+		}
+		return this._isMature == crop._isMature &&
+				this._experience == crop._experience &&
+				this._state == crop._state;
 	}
 	
 }

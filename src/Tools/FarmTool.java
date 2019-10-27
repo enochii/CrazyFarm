@@ -1,5 +1,7 @@
 package Tools;
 
+import Constant.Const;
+
 /**
  * 桥接(Bridge)模式
  * 农具类
@@ -9,7 +11,8 @@ public abstract class FarmTool extends Tool {
 	/**
 	 * 农具的Size
 	 */
-	private Size size;
+	protected Size size;
+	protected Const.Material _material;
 	
 	public FarmTool(Size s) {
 		this.size = s;
@@ -18,7 +21,7 @@ public abstract class FarmTool extends Tool {
 	/**
 	 * 农具的类型
 	 */
-	static enum TYPE {
+	public static enum TYPE {
 		Hoe, Shovel
 	}
 	
@@ -26,5 +29,7 @@ public abstract class FarmTool extends Tool {
 	 * @return 农具的类型
 	 */
 	public abstract TYPE getType();
+
+	public abstract void testAbstractFactory();
 	
 }

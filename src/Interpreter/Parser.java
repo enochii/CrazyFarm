@@ -2,8 +2,6 @@ package Interpreter;
 
 import Constant.Const;
 
-import java.rmi.UnexpectedException;
-
 public class Parser {
     public static Expression parse(String exp) throws ParseException {
         String[] nodes = exp.split(" ");
@@ -41,9 +39,9 @@ public class Parser {
         throw new ParseException("Invalid Expression");
     }
 
-    /*
-     * @param : str 用户输入字符串的分割单元
-     * @return ： 是否是操作符
+    /**
+     * @param str 用户输入字符串的分割单元
+     * @return 是否是操作符
      */
     static int isOp(String str){
         switch (str.charAt(0)){
