@@ -45,6 +45,11 @@ public class ChickenAdapter extends Duck {
         _chicken.setColleagueEnable(enable);
     }
 
+    @Override
+    public void setColleagueUpdated(){
+
+    }
+
     /*
      * 鸡模仿鸭叫
      */
