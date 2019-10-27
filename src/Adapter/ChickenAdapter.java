@@ -34,9 +34,11 @@ public class ChickenAdapter extends Duck {
     public void setClock(int currentTime){
         _chicken.setClock(currentTime);
     }
+    @Override
     public void changeState(State state){
         _chicken.changeState(state);
     }
+    @Override
     public void getFed(int hour){
         _chicken.getFed(hour);
     }

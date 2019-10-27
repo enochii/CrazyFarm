@@ -51,4 +51,9 @@ public abstract class Animal extends Living implements Colleague {
     public void behave(AnimalAction action){
         action.doAction();
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
 }
