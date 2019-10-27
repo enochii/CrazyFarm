@@ -1,6 +1,6 @@
 package Tools;
 
-/*
+/**
  * 大型
  */
 public class BigSize implements Size {
