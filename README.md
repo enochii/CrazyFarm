@@ -33,10 +33,10 @@ Design Pattern In GoF
 
 - [ ] Chain of Responsibility
 - [ ] Command
-- [ ] Interpreter
+- [X] Interpreter
 - [X] Iterator
 - [ ] Mediator
-- [ ] Memento
+- [X] Memento
 - [ ] Observer
 - [ ] State
 - [ ] Strategy

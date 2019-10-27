@@ -2,8 +2,6 @@ package Interpreter;
 
 import Constant.Const;
 
-import java.rmi.UnexpectedException;
-
 public class Parser {
     public static Expression parse(String exp) throws ParseException {
         String[] nodes = exp.split(" ");
