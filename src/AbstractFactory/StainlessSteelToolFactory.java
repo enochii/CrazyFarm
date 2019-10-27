@@ -14,16 +14,40 @@ import Tools.StainlessFarmTool.StainlessShovel;
  * @date: 7:23 下午 2019/10/27
  */
 public class StainlessSteelToolFactory extends AbstractToolFactory {
+    private StainlessHoe _smallHoe;
+    private StainlessHoe _bigHoe;
+    private StainlessShovel _smallShovel;
+    private StainlessShovel _bigShovel;
+
+    public StainlessSteelToolFactory() {
+        this._smallHoe = null;
+        this._bigHoe = null;
+        this._smallShovel = null;
+        this._bigHoe = null;
+    }
+
     public FarmTool createSmallHoe() {
-        return new StainlessHoe(new SmallSize());
+        if (this._smallHoe == null) {
+            this._smallHoe = new StainlessHoe(new SmallSize());
+        }
+        return this._smallHoe;
     }
     public FarmTool createBigHoe() {
-        return new StainlessHoe(new BigSize());
+        if (this._bigHoe == null) {
+            this._bigHoe = new StainlessHoe(new BigSize());
+        }
+        return this._bigHoe;
     }
     public FarmTool createSmallShovel() {
-        return new StainlessShovel(new SmallSize());
+        if (this._smallShovel == null) {
+            this._smallShovel = new StainlessShovel(new SmallSize());
+        }
+        return _smallShovel;
     }
     public FarmTool createBigShovel() {
-        return new StainlessShovel(new BigSize());
+        if ( this._bigShovel == null ) {
+            this._bigShovel = new StainlessShovel(new BigSize());
+        }
+        return this._bigShovel;
     }
 }
