@@ -14,14 +14,14 @@ public class TableChicken extends Chicken{
     private static String _name = Const.NAME_TABLE_CHICKEN;
 
 
-    /*
+    /**
      * @return 返回生物成熟后的价值
      */
     public double getValue(){
         return _value;
     }
 
-    /*
+    /**
      * @return 生物的名字
      */
     @Override
