@@ -2,7 +2,7 @@ package Farm;
 
 import Livings.Animals.Animal;
 import Livings.Plants.Plant;
-import javafx.scene.control.Menu;
+
 
 /*
  * 农场类，在这里进行初始化工作
