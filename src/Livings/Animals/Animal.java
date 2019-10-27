@@ -3,7 +3,6 @@ package Livings.Animals;
 import Livings.Living;
 import State.State;
 import State.AnimalHungryState;
-import com.sun.xml.internal.xsom.impl.AnnotationImpl;
 import mediator.AnimalMediator;
 import mediator.Colleague;
 import mediator.Mediator;
@@ -22,6 +21,7 @@ public abstract class Animal extends Living implements Colleague {
     public int _appetite = 0;
 
     //改变是否饥饿的状态
+    @Override
     public void changeState(State state){
         this._state = state;
         if(isHungry()){
@@ -37,6 +37,7 @@ public abstract class Animal extends Living implements Colleague {
         return this._state == AnimalHungryState.getInstance();
     }
 
+    @Override
     public void setMediator(Mediator mediator){
         _animalMediator = (AnimalMediator) mediator;
     }
