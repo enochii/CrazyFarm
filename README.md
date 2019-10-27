@@ -22,7 +22,7 @@ Design Pattern In GoF
 **Structural Patterns**
 
 - [x] Adapter
-- [ ] Bridge
+- [x] Bridge
 - [ ] Composite
 - [ ] Decorator
 - [ ] Facade
