@@ -23,4 +23,9 @@ public class Const {
     // Factory的类型
     public final static String TYPE_TOOL = "Tool";
     public final static String TYPE_LAND = "Land";
+
+    // Farmer的工种：空闲的、耕种、喂食
+    public enum WorkType {
+        SPARE, CULTIVATE, FEED
+    }
 }
