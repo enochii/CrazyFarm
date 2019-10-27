@@ -10,15 +10,24 @@ import State.State;
 //TODO : 把生物类写成接口
 public abstract class Living implements Context {
     //生物成熟后的价值
-//    private double _value;
+    private double _value;
 //    // 生物名字
-//    private String _name;
+    private String _name;
+
 
     /*
      * @return 返回生物成熟后的价值
      */
     public abstract double getValue();
-    
+
+
+    /**
+     * 设置living的价值
+     */
+    public void setValue(double value){
+        this._value = value;
+    }
+
     /*
      * @return 生物的名字
      */

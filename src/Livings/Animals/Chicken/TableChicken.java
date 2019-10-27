@@ -9,7 +9,8 @@ import mediator.Mediator;
 /**
  * The type Table chicken.
  */
-/*
+
+/**
  * 肉鸡类
  */
 public class TableChicken extends Chicken{

@@ -48,5 +48,7 @@ public abstract class Animal extends Living implements Colleague {
         return _appetite;
     }
 
-
+    public void behave(AnimalAction action){
+        action.doAction();
+    }
 }
