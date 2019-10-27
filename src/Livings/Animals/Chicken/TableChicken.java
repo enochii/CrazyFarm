@@ -6,6 +6,9 @@ import State.AnimalFullState;
 import mediator.Mediator;
 
 
+/**
+ * The type Table chicken.
+ */
 /*
  * 肉鸡类
  */
