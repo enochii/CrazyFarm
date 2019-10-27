@@ -74,4 +74,9 @@ public class SmallYellowDuck extends Duck{
     {
 
     }
+
+    public void setColleagueUpdated(){
+        _animalMediator.colleagueChanged();
+
+    }
 }

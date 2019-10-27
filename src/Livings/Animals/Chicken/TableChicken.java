@@ -6,6 +6,9 @@ import action.ChickenSound;
 import mediator.Mediator;
 
 
+/**
+ * The type Table chicken.
+ */
 /*
  * 肉鸡类
  */
@@ -74,12 +77,17 @@ public class TableChicken extends Chicken{
     public void getFed(int currentTime){
         this._state = AnimalFullState.getInstance();
         _lastFedTime = currentTime;
-        //等待写喂食过后的反应
+        System.out.println("tableChicken 进行了一次喂食\n");
 
     }
 
     public void setColleagueEnable(boolean enable)
     {
+
+    }
+
+    public void setColleagueUpdated(){
+        _animalMediator.colleagueChanged();
 
     }
 }
