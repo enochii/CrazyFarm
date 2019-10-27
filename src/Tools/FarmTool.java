@@ -2,8 +2,9 @@ package Tools;
 
 /**
  * 桥接(Bridge)模式
+ * 农具类
  */
-public abstract class FarmTool {
+public abstract class FarmTool extends Tool {
 	
 	/**
 	 * 农具的Size
