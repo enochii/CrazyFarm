@@ -5,7 +5,7 @@ import State.State;
 import mediator.Mediator;
 import mediator.PlantMediator;
 
-/*
+/**
  * 植物类
  */
 public abstract class Plant extends Living {

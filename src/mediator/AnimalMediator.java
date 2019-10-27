@@ -5,6 +5,7 @@ import Farm.Farmer;
 import Farm.Menu;
 import Livings.Animals.Animal;
 import SolveStarvation.SolveStarvation;
+import SolveStarvation.SolveStarvationFacade;
 import SolveStarvation.Starvation;
 import SolveStarvation.FarmerSolveStarvation;
 import SolveStarvation.OwnerSolveStarvation;
@@ -60,13 +61,9 @@ public class AnimalMediator implements Mediator{
             Farmer free_farmer =_farm.getFreeFarmer();
 
             if (free_farmer != null){
-                SolveStarvation farmer_solve = new FarmerSolveStarvation(this._farm, free_farmer);
-                SolveStarvation owner_solve = new OwnerSolveStarvation(this._farm);
-
-                Starvation starvation = new Starvation();
-                starvation._required_food_amount = total_appetite_num;
-                farmer_solve.setNext(owner_solve);
-                farmer_solve.solve(starvation);
+                SolveStarvationFacade solveStarvationFacade = 
+                	new SolveStarvationFacade(this._farm, free_farmer);
+                solveStarvationFacade.solve(total_appetite_num);
             } else {
                 System.out.println("No free farmer available to feed animals !");
             }
