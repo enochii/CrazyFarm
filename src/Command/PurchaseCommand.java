@@ -2,6 +2,9 @@ package Command;
 
 import Farm.Farm;
 
+/**
+ * The type Purchase command.
+ */
 public class PurchaseCommand implements Command{
     String _animalType;
     int _number;
