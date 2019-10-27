@@ -45,6 +45,17 @@ public class Crop extends Plant implements LivingCloneable {
 
 	}
 
-
+	@Override
+	public boolean equals(Object o){
+		Crop crop = null;
+		try{
+			crop = (Crop)o;
+		}catch (ClassCastException e){
+			System.out.println("Class Cast Error");
+		}
+		return this._isMature == crop._isMature &&
+				this._experience == crop._experience &&
+				this._state == crop._state;
+	}
 	
 }

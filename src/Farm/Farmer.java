@@ -12,6 +12,9 @@ import Tools.ToolPackage;
 public class Farmer {
     private WorkType _type;           // 指定工作类型和背包，用于实现 Builder 模式
     private ToolPackage _bag;
+    
+    //农民的工作状态
+    private boolean isWorking;
 
 
     public Farmer() {
@@ -53,4 +56,18 @@ public class Farmer {
     public void doWork(){
         System.out.println("Implement  me!");
     }
+
+    /**
+     * Get work status boolean.
+     *
+     * @return the boolean
+     */
+    public boolean getWorkStatus(){
+        return this.isWorking;
+    }
+
+    public Farmer(){
+        this.isWorking = false;
+    }
+
 }

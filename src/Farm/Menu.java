@@ -27,7 +27,7 @@ public class Menu<T>{
      * @param : item 加入的项目
      * 向菜单中加入一个项目
      */
-    void add(T item){
+    public void add(T item){
         for (T item_ : _menu){
             if(item_.equals(item)){
                 return;
@@ -40,7 +40,7 @@ public class Menu<T>{
      * @param : item 移除的项目
      * 从菜单中移除一个项目
      */
-    void erase(T item){
+    public void erase(T item){
         _menu.remove(item);
     }
 

@@ -4,6 +4,7 @@ import Livings.Living;
 import State.State;
 import State.AnimalHungryState;
 //import com.sun.xml.internal.xsom.impl.AnnotationImpl;
+import action.AnimalAction;
 import mediator.AnimalMediator;
 import mediator.Colleague;
 import mediator.Mediator;
@@ -19,7 +20,7 @@ public abstract class Animal extends Living implements Colleague {
     public int _lastFedTime = 0;
 
     //动物每次喂食需要的食物
-    public int _appetite = 0;
+    protected int _appetite = 0;
 
     //改变是否饥饿的状态
     public void changeState(State state){
@@ -42,6 +43,14 @@ public abstract class Animal extends Living implements Colleague {
     }
 
 
+    //获取动物的食量
+    public int getAppetite(){
+        return _appetite;
+    }
+
+    public void behave(AnimalAction action){
+        action.doAction();
+    }
 
 
 }
