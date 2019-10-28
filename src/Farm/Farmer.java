@@ -1,7 +1,11 @@
 package Farm;
 
+import Command.Command;
+import Command.SellCommand;
+import Command.PurchaseCommand;
 import Constant.Const;
 import Constant.Const.WorkType;
+import Livings.Animals.Animal;
 import Tools.Tool;
 import Tools.ToolPackage;
 
@@ -65,6 +69,25 @@ public class Farmer {
      */
     public boolean getWorkStatus(){
         return this.isWorking;
+    }
+
+    /**
+     * Sell.
+     *
+     * @param animal the animal
+     */
+    public void sell(Animal animal){
+        this.isWorking = true;
+        Command cmd = new SellCommand(animal);
+        cmd.execute();
+        this.isWorking = false;
+    }
+
+    public void purchase(String kind, int number){
+        this.isWorking = true;
+        Command cmd = new PurchaseCommand(kind, number);
+        cmd.execute();
+        this.isWorking = false;
     }
 
 }
