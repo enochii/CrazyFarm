@@ -38,10 +38,7 @@ public class ChickenAdapter extends Duck {
     public void changeState(State state){
         _chicken.changeState(state);
     }
-    @Override
-    public void getFed(int hour){
-        _chicken.getFed(hour);
-    }
+
     @Override
     public void setColleagueEnable(boolean enable) {
         _chicken.setColleagueEnable(enable);
@@ -49,8 +46,14 @@ public class ChickenAdapter extends Duck {
 
     @Override
     public void setColleagueUpdated(){
-
     }
+
+    @Override
+    public void makeSound() {
+    }
+
+    @Override
+    public void makeEat() {}
 
     /*
      * 鸡模仿鸭叫
