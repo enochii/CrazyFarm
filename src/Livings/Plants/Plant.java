@@ -5,7 +5,7 @@ import State.State;
 import mediator.Mediator;
 import mediator.PlantMediator;
 
-/*
+/**
  * 植物类
  */
 public abstract class Plant extends Living {
@@ -19,6 +19,10 @@ public abstract class Plant extends Living {
     }
 
     public void changeState(State state){}
+
+    public void doSell(){
+
+    }
 
 
 	

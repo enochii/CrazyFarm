@@ -20,14 +20,15 @@ public abstract class Animal extends Living implements Colleague {
     public int _lastFedTime = 0;
 
     //动物每次喂食需要的食物
-    protected int _appetite = 0;
+    public int _appetite = 0;
 
     //改变是否饥饿的状态
+    @Override
     public void changeState(State state){
         this._state = state;
         if(isHungry()){
+            setColleagueUpdated();
 
-            //等待写
 
         }
 
@@ -38,6 +39,7 @@ public abstract class Animal extends Living implements Colleague {
         return this._state == AnimalHungryState.getInstance();
     }
 
+    @Override
     public void setMediator(Mediator mediator){
         _animalMediator = (AnimalMediator) mediator;
     }
@@ -61,5 +63,20 @@ public abstract class Animal extends Living implements Colleague {
         makeEat();
         makeSound();
     }
+
+    @Override
+    public void setColleagueUpdated(){
+        _animalMediator.colleagueChanged();
+    }
+
+    public void doSell(){
+
+
+
+    }
+
+
+
+
 
 }

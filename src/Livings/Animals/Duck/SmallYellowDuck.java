@@ -78,8 +78,13 @@ public class SmallYellowDuck extends Duck{
 
     }
 
+    @Override
     public void setColleagueUpdated(){
         _animalMediator.colleagueChanged();
+
+    }
+
+    public SmallYellowDuck(){
 
     }
 }

@@ -18,9 +18,16 @@ public class ToolPackage extends Tool{
 
     /**
      * Instantiates a new Tool package.
+     */
+    public ToolPackage() {
+        this(0);
+    }
+
+    /**
+     * Instantiates a new Tool package.
      * @param size the max size of package
      */
-    ToolPackage(int size){
+    public ToolPackage(int size){
         this.size=size;
         toolList=new ArrayList<>(Arrays.asList(new Tool[size]));
     }
@@ -29,7 +36,7 @@ public class ToolPackage extends Tool{
      * Add tool.
      * @param tool the tool to be added
      */
-    void addTool(Tool tool){
+    public void addTool(Tool tool){
         if (isFull()){
             //throw exception
             return;
@@ -57,7 +64,7 @@ public class ToolPackage extends Tool{
      * Is full boolean.
      * @return true if the tool package is full
      */
-    boolean isFull(){
+    public boolean isFull(){
         return toolList.size()<getSize();
     }
 

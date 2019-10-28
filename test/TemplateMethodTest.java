@@ -6,6 +6,9 @@ import mediator.AnimalMediator;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 public class TemplateMethodTest {
 
     private Duck duck;
@@ -23,7 +26,11 @@ public class TemplateMethodTest {
     @Test
     public void templateMethodTest() {
         duck.getFed(6);
+        assertFalse(duck.isHungry());
+        assertEquals(duck._lastFedTime, 6);
         chicken.getFed(6);
+        assertFalse(chicken.isHungry());
+        assertEquals(chicken._lastFedTime, 6 );
     }
 
 }
