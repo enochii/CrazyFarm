@@ -2,9 +2,9 @@ package Livings.Animals;
 
 import Livings.Living;
 import State.State;
+import State.AnimalFullState;
 import State.AnimalHungryState;
 //import com.sun.xml.internal.xsom.impl.AnnotationImpl;
-import action.AnimalAction;
 import mediator.AnimalMediator;
 import mediator.Colleague;
 import mediator.Mediator;
@@ -48,9 +48,18 @@ public abstract class Animal extends Living implements Colleague {
         return _appetite;
     }
 
-    public void behave(AnimalAction action){
-        action.doAction();
-    }
+    //动物进行发声动作
+    public abstract void makeSound();
 
+    //动物进行进食动作
+    public abstract void makeEat();
+
+    public final void getFed(int currentTime) {
+        this._state = AnimalFullState.getInstance();
+        _lastFedTime = currentTime;
+
+        makeEat();
+        makeSound();
+    }
 
 }

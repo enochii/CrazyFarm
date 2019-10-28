@@ -2,6 +2,7 @@ package Livings.Animals.Chicken;
 
 import Constant.Const;
 import State.AnimalFullState;
+import action.ChickenEat;
 import action.ChickenSound;
 import mediator.Mediator;
 
@@ -15,7 +16,6 @@ import mediator.Mediator;
 public class TableChicken extends Chicken{
     private static double _value = Const.VALUE_TABLE_CHICKEN;
     private static String _name = Const.NAME_TABLE_CHICKEN;
-
 
     /**
      * @return 返回生物成熟后的价值
@@ -39,9 +39,10 @@ public class TableChicken extends Chicken{
         this.setMediator(mediator);
         this._appetite = 3;
     }
+
     @Override
     public void gobble(){
-        behave(new ChickenSound());
+        makeSound();
     }
 
     public void setClock(int currentTime){
@@ -74,11 +75,14 @@ public class TableChicken extends Chicken{
 
     }
 
-    public void getFed(int currentTime){
-        this._state = AnimalFullState.getInstance();
-        _lastFedTime = currentTime;
-        System.out.println("tableChicken 进行了一次喂食\n");
+    @Override
+    public void makeEat() {
+        new ChickenEat().doAction();
+    }
 
+    @Override
+    public void makeSound() {
+        new ChickenSound().doAction();
     }
 
     public void setColleagueEnable(boolean enable)
