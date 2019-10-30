@@ -44,4 +44,16 @@ public class Owner implements MoneyGetter {
         System.out.println("There is not enough money.");
         return false;
     }
+
+    /**
+     * @param m the money to reduce
+     * @return whether the reduction is successful
+     */
+    public boolean reduceMoney(double m) {
+        if (money < m) {
+            return false;
+        }
+        money -= m;
+        return true;
+    }
 }

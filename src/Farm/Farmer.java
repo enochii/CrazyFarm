@@ -1,5 +1,6 @@
 package Farm;
 
+import CallBack.ReduceMoneyCallback;
 import Command.Command;
 import Command.SellCommand;
 import Command.PurchaseCommand;
@@ -117,7 +118,8 @@ public class Farmer {
 
     public void purchase(String kind, int number){
         this.isWorking = true;
-        Command cmd = new PurchaseCommand(kind, number);
+        ReduceMoneyCallback reduceMoneyCallback = new ReduceMoneyCallback(0);
+        Command cmd = new PurchaseCommand(kind, number, reduceMoneyCallback);
         cmd.execute();
         this.isWorking = false;
     }
