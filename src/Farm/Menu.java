@@ -53,6 +53,8 @@ public class Menu<T>{
         return new MenuIterator(this);
     }
 
+    public int getSize() { return _menu.size(); }
+
     public static void main(){
         Menu<Animal> animalMenu = new Menu<Animal>();
         for(int i=0;i<5;i++){
