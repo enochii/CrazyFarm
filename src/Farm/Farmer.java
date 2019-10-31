@@ -24,6 +24,12 @@ public class Farmer {
     //农民的工作状态
     private boolean isWorking;
 
+    //农民的年龄
+    private int _age;
+
+    //农民的名字
+    private String _name;
+
 
     public Farmer() {
         this._type = WorkType.SPARE;
@@ -120,6 +126,43 @@ public class Farmer {
         Command cmd = new PurchaseCommand(kind, number);
         cmd.execute();
         this.isWorking = false;
+    }
+
+    /**
+     * Gets age.
+     *
+     * @return the age
+     */
+    public int getAge()
+    {
+        return _age;
+    }
+
+    /**
+     * Set age.
+     *
+     * @param age the age
+     */
+    public void setAge(int age){
+        this._age = age;
+    }
+
+    /**
+     * Get name string.
+     *
+     * @return the string
+     */
+    public String getName(){
+        return _name;
+    }
+
+    /**
+     * Set name.
+     *
+     * @param name the name
+     */
+    public void setName(String name){
+        this._name = name;
     }
 
 }
