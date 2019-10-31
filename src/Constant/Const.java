@@ -33,4 +33,8 @@ public class Const {
     public enum Material {
         IRON, STAINLESS_STEEL
     }
+
+    // 业务代表模式提供的业务服务
+    public final static String SERVICE_CNT_FARMER = "CountFarmer";
+    public final static String SERVICE_DISPLAY_PLANT = "DisplayPlant";
 }
