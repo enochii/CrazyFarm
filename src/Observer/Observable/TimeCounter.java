@@ -11,15 +11,19 @@ package Observer.Observable;
  * @date: 18:34 2019/10/25
  */
 public class TimeCounter extends BaseObservable {
-    private int currentTime;
+    private int currentTime=0;
 
     /**
      * Increase the current time firstly and then notify all the observers who care about time update.
      * @return the current time
      */
-    int updateTime() {
+    public int updateTime() {
         currentTime++;
         notifyAllObservers();
+        return currentTime;
+    }
+
+    public int getCurrentTime(){
         return currentTime;
     }
 }
