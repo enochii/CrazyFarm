@@ -2,6 +2,7 @@ package Livings.Plants;
 
 import Livings.Living;
 import State.State;
+import Visitor.LivingVisitor;
 import mediator.Mediator;
 import mediator.PlantMediator;
 
@@ -23,7 +24,9 @@ public abstract class Plant extends Living {
     public void doSell(){
 
     }
-
+    public void accept(LivingVisitor livingVisitor){
+        livingVisitor.visit(this);
+    }
 
 	
 }
