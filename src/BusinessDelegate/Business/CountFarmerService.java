@@ -1,5 +1,6 @@
 package BusinessDelegate.Business;
 
+import Builder.FarmerMultipleton;
 import Farm.Farm;
 import Farm.Farmer;
 import Farm.Menu;
@@ -19,7 +20,7 @@ public class CountFarmerService implements BusinessService {
         System.out.println("Processing task by invoking Count Farmer Service");
 
         Farm farm = Farm.getInstance();
-        Menu<Farmer> m_farmer =  farm.getFarmerMenu();
+        Menu<FarmerMultipleton> m_farmer =  farm.getFarmerMenu();
 
         int cnt_farmer = m_farmer.getSize();
 

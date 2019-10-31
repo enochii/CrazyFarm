@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class Menu<T>{
     private List<T> _menu;
-
     /*
      * 构造函数
      */
