@@ -5,6 +5,7 @@ import State.State;
 import State.AnimalFullState;
 import State.AnimalHungryState;
 //import com.sun.xml.internal.xsom.impl.AnnotationImpl;
+import Visitor.LivingVisitor;
 import mediator.AnimalMediator;
 import mediator.Colleague;
 import mediator.Mediator;
@@ -75,7 +76,9 @@ public abstract class Animal extends Living implements Colleague {
 
     }
 
-
+    public void accept(LivingVisitor livingVisitor){
+        livingVisitor.visit(this);
+    }
 
 
 

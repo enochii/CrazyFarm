@@ -1,5 +1,7 @@
 package Farm;
 
+import Dao.FarmDao;
+import Dao.FarmDaoImpl;
 import Constant.Const;
 import Livings.Animals.Animal;
 import Livings.Plants.Plant;
@@ -50,7 +52,14 @@ public class Farm {
      */
     public static Farm getInstance(){
         if(_instance == null){
-            _instance = new Farm();
+            FarmDao farmDao=new FarmDaoImpl();
+            _instance=farmDao.getFarm();
+//            if( (_instance=farmDao.getFarm())==null){
+//                //初始化一个空农场,并存储到本地中
+//                _instance=new Farm();
+//                System.out.println("初始化农场数据");
+//                farmDao.updateFarm(_instance);
+//            }
         }
         return _instance;
     }

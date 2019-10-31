@@ -30,22 +30,23 @@ public class FarmDaoImpl implements  FarmDao {
             String str = new String(buffer, "UTF-8");
             JSONObject obj = new JSONObject().fromObject(str);
             Farm farm = (Farm)JSONObject.toBean(obj, Farm.class);
-            System.out.printf("Farm data is Loaded");
+            System.out.println("Farm data is Loaded");
             return farm;
         } catch(Exception i) {
-            i.printStackTrace();
+            //i.printStackTrace();
+            System.out.println("缺少文件 Farm.json");
             return null;
         }
     }
 
-    public void updateFarm(Farm Farm) {
+    public void updateFarm(Farm farm) {
         try {
             FileOutputStream fileOut = new FileOutputStream(filePath);
-            JSONObject json = JSONObject.fromObject(Farm);
+            JSONObject json = JSONObject.fromObject(farm);
             String str = json.toString();
             fileOut.write(str.getBytes());
             fileOut.close();
-            System.out.printf("Farm data is saved");
+            System.out.println("Farm data is saved");
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -59,6 +60,6 @@ public class FarmDaoImpl implements  FarmDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.printf("Farm data is deleted");
+        System.out.println("Farm data is deleted");
     }
 }

@@ -18,7 +18,7 @@ public class BaseObservable {
     /**
      * The Observers contins all the observers.
      */
-    Collection<BaseObserver> observers;
+    protected Collection<BaseObserver> observers;
 
     /**
      * Instantiates a new Base observable.
@@ -32,7 +32,7 @@ public class BaseObservable {
      * @param o an observer to be added.
      * @return {@code true} if an observer was added as a result of this call
      */
-    boolean addObserver(BaseObserver o){
+    public boolean addObserver(BaseObserver o){
         return observers.add(o);
     }
 
@@ -41,14 +41,14 @@ public class BaseObservable {
      * @param o an observer to be deleted.
      * @return {@code true} if an observer was removed as a result of this call
      */
-    boolean deleteObserver(BaseObserver o){
+    public boolean deleteObserver(BaseObserver o){
         return observers.remove(o);
     }
 
     /**
      * If this object has changed, notify all of its observers
      */
-    void notifyAllObservers(){
+    public void notifyAllObservers(){
         for (BaseObserver o:observers) {
             o.update(this);
         }
