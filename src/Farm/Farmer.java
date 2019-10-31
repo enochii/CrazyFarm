@@ -54,6 +54,15 @@ public class Farmer {
         }
     }
 
+    public WorkType getWorkType() {
+        return this._type;
+    }
+
+    /**
+     * For TEST. Gets work type string.
+     *
+     * @return the work type string
+     */
     public String getWorkTypeString() {
         if ( _type== WorkType.SPARE ) return "Spare";
         else if ( _type== WorkType.CULTIVATE ) return "Cultivate";

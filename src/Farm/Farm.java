@@ -1,5 +1,6 @@
 package Farm;
 
+import Constant.Const;
 import Livings.Animals.Animal;
 import Livings.Plants.Plant;
 import mediator.AnimalMediator;
@@ -78,7 +79,7 @@ public class Farm {
         Farmer free_farmer = null;
         while (farmer_iter.hasNext()){
             Farmer farmer = farmer_iter.next();
-            if(!farmer.getWorkStatus() && farmer.getWorkTypeString()=="FEED"){
+            if(!farmer.getWorkStatus() && farmer.getWorkType()== Const.WorkType.FEED){
                 free_farmer = farmer;
                 break;
             }
