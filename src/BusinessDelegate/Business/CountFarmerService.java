@@ -3,6 +3,7 @@ package BusinessDelegate.Business;
 import Farm.Farm;
 import Farm.Farmer;
 import Farm.Menu;
+import java.util.Iterator;
 
 /**
  * @className: CountFarmerService
@@ -23,5 +24,8 @@ public class CountFarmerService implements BusinessService {
         int cnt_farmer = m_farmer.getSize();
 
         System.out.println("Now the number of farmers on the farm is： " + cnt_farmer);
+
+        // 考虑输出每个元素的详细信息
+//        Iterator<Farmer> i_farmer = m_farmer.iterator();
     }
 }

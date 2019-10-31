@@ -3,6 +3,7 @@ package BusinessDelegate.Business;
 import Farm.Farm;
 import Farm.Menu;
 import Livings.Plants.Plant;
+import java.util.Iterator;
 
 /**
  * @className: DisplayPlantService
@@ -23,5 +24,10 @@ public class DisplayPlantService implements BusinessService {
         int cnt_plant = m_plant.getSize();
 
         System.out.println("Now the number of plants on the farm is： " + cnt_plant);
+
+        // 考虑输出每个元素的详细信息
+//        Iterator<Plant> i_plant = m_plant.iterator();
+
+
     }
 }
