@@ -4,7 +4,7 @@ import State.Context;
 import State.AnimalHungryState;
 import State.State;
 
-/*
+/**
  * 生物类，动物和植物的基类
  */
 //TODO : 把生物类写成接口
@@ -15,7 +15,7 @@ public abstract class Living implements Context {
     private String _name;
 
 
-    /*
+    /**
      * @return 返回生物成熟后的价值
      */
     public abstract double getValue();
@@ -29,6 +29,8 @@ public abstract class Living implements Context {
     }
 
     /*
+    
+    /**
      * @return 生物的名字
      */
     public abstract String getName();
@@ -40,6 +42,8 @@ public abstract class Living implements Context {
     public boolean _isMature;
 
     public int _experience = 0;
+
+    public abstract void doSell();
 
 
 

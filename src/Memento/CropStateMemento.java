@@ -42,4 +42,16 @@ public class CropStateMemento {
         crop._isMature = state._isMature;
     }
 
+    @Override
+    public boolean equals(Object o){
+        CropStateMemento memento = null;
+        try{
+            memento = (CropStateMemento) o;
+        }catch (ClassCastException e){
+            System.out.println("Class Cast Error");
+        }
+        return this._isMature == memento._isMature &&
+                this._experience == memento._experience &&
+                this._state == memento._state;
+    }
 }

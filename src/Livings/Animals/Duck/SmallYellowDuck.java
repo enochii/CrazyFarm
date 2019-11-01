@@ -1,7 +1,7 @@
 package Livings.Animals.Duck;
 
 import Constant.Const;
-import State.AnimalFullState;
+import action.DuckEat;
 import action.DuckSound;
 import mediator.Mediator;
 
@@ -25,7 +25,7 @@ public class SmallYellowDuck extends Duck{
     }
     @Override
     public void quack(){
-        behave(new DuckSound());
+        makeSound();
     }
 
     public SmallYellowDuck(Mediator mediator){
@@ -63,11 +63,21 @@ public class SmallYellowDuck extends Duck{
 
     }
 
-    public void getFed(int currentTime){
-        this._state = AnimalFullState.getInstance();
-        _lastFedTime = currentTime;
-        //等待写喂食过后的反应
+    @Override
+    public void makeEat() {
+        new DuckEat().doAction();
+    }
 
+    @Override
+    public void makeSound() {
+        new DuckSound().doAction();
+    }
+
+    @Override
+    public String isMature() {
+        if(_maturityRate > 4)
+            _mature = Const.MATURE;
+        return _mature;
     }
 
     public void setColleagueEnable(boolean enable)
@@ -75,8 +85,13 @@ public class SmallYellowDuck extends Duck{
 
     }
 
+    @Override
     public void setColleagueUpdated(){
         _animalMediator.colleagueChanged();
+
+    }
+
+    public SmallYellowDuck(){
 
     }
 }
