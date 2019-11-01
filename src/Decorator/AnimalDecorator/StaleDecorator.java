@@ -9,6 +9,8 @@ public class StaleDecorator extends AnimalDecorator {
 		super(animal);
 	}
 
+
+
 	@Override
 	public double getValue() {
 		return obj.getValue()+Const.VALUE_ADDED_STALE;

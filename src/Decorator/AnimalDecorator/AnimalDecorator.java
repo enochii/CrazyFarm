@@ -22,8 +22,13 @@ public abstract class AnimalDecorator extends Animal {
 	}
 
 	@Override
-	public void getFed(int currentTime) {
-	}
+	public void makeEat() {	}
+
+	@Override
+	public void makeSound() { }
+
+	@Override
+	public String isMature() { return null; }
 
 	@Override
 	public void setColleagueEnable(boolean enable) {}
