@@ -2,6 +2,7 @@ package criteria;
 
 import Livings.Animals.Animal;
 import Livings.Animals.Duck.Duck;
+import Livings.Animals.NullAnimal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,9 @@ public class CriteriaDuck implements Criteria {
             if(animal instanceof Duck) {
                 ducks.add(animal);
             }
+        }
+        if(ducks.isEmpty()) {
+            ducks.add(new NullAnimal());
         }
         return ducks;
     }

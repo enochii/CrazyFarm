@@ -2,6 +2,7 @@ package criteria;
 
 import Constant.Const;
 import Livings.Animals.Animal;
+import Livings.Animals.NullAnimal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,9 @@ public class CriteriaMature implements Criteria {
             if(animal.isMature().equals(Const.MATURE)) {
                 matureAnimals.add(animal);
             }
+        }
+        if(matureAnimals.isEmpty()) {
+            matureAnimals.add(new NullAnimal());
         }
         return matureAnimals;
     }

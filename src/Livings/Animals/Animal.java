@@ -27,7 +27,7 @@ public abstract class Animal extends Living implements Colleague {
     //是否成熟
     public String _mature = Const.NOT_MATURE;
 
-    //出生天数
+    //成熟率
     public int _maturityRate = 0;
 
     //改变是否饥饿的状态
@@ -42,10 +42,6 @@ public abstract class Animal extends Living implements Colleague {
     }
 
     public abstract String isMature();
-
-    public int getMaturityRate() {
-        return _maturityRate;
-    }
 
     //判断是否饥饿
     public boolean isHungry(){
