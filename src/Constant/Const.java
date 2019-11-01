@@ -1,5 +1,8 @@
 package Constant;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Const {
     //生物的价值
     public final static double VALUE_TABLE_CHICKEN = 20.0;
@@ -41,4 +44,11 @@ public class Const {
     // 业务代表模式提供的业务服务
     public final static String SERVICE_CNT_FARMER = "CountFarmer";
     public final static String SERVICE_DISPLAY_PLANT = "DisplayPlant";
+
+    // 农民的名字
+    public final static ArrayList<String> FARMER_NAMES = new ArrayList<>(Arrays.asList(
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"));
+
+    // 每种农民的数量
+    public static final int EACH_TYPE_NUM = 4;
 }

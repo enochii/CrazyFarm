@@ -13,14 +13,14 @@ import Constant.Const;
  */
 public class Client {
 
-    BusinessDelegate businessDelegate;
+    BusinessDelegate _businessDelegate;
 
     public Client(BusinessDelegate businessDelegate) {
-        this.businessDelegate = businessDelegate;
+        this._businessDelegate = businessDelegate;
     }
 
     public void doTask() {
-        businessDelegate.doTask();
+        _businessDelegate.doTask();
     }
 }
 

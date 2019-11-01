@@ -1,5 +1,6 @@
 package Farm;
 
+import Builder.FarmerMultipleton;
 import Dao.FarmDao;
 import Dao.FarmDaoImpl;
 import Constant.Const;
@@ -32,7 +33,7 @@ public class Farm {
     public int foodCourt = 100;
 
     //农民的菜单
-    private Menu<Farmer> _farmerMenu;
+    private Menu<FarmerMultipleton> _farmerMultipletonMenu;
 
 
     /**
@@ -41,7 +42,7 @@ public class Farm {
     private Farm(){
         this._animalMenu = new Menu<Animal>();
         this._plantMenu = new Menu<Plant>();
-        this._farmerMenu = new Menu<Farmer>();
+        this._farmerMultipletonMenu = new Menu<FarmerMultipleton>();
     }
 
     static Farm _instance;
@@ -83,10 +84,10 @@ public class Farm {
      * @return 空闲的农民
      */
     public Farmer getFreeFarmer(){
-        Iterator<Farmer> farmer_iter = _farmerMenu.iterator();
+        Iterator<FarmerMultipleton> farmer_iter = _farmerMultipletonMenu.iterator();
         Farmer free_farmer = null;
         while (farmer_iter.hasNext()){
-            Farmer farmer = farmer_iter.next();
+            Farmer farmer = farmer_iter.next().farmer;
             if(!farmer.getWorkStatus() && farmer.getWorkType()== Const.WorkType.FEED){
                 free_farmer = farmer;
                 break;
@@ -105,8 +106,8 @@ public class Farm {
         return _animalMediator;
     }
 
-    public Menu<Farmer> getFarmerMenu(){
-        return _farmerMenu;
+    public Menu<FarmerMultipleton> getFarmerMenu(){
+        return _farmerMultipletonMenu;
     }
 
 //    //测试中介者模式
