@@ -21,7 +21,12 @@ public class FieldFactory extends Factory{
         return new Field(usage);
     }
 
+    @Override
     protected void registerLand(Land land) {
         _usages.add( ((Field)land).getUsage() );
+    }
+
+    public List getUsages() {
+        return _usages;
     }
 }
