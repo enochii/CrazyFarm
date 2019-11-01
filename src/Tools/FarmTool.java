@@ -30,6 +30,11 @@ public abstract class FarmTool extends Tool {
 	 */
 	public abstract TYPE getType();
 
+	/**
+	 * do what the farm tool should do
+	 */
+	public abstract void doWork();
+
 	public abstract void testAbstractFactory();
 	
 }
