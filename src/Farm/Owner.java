@@ -3,7 +3,7 @@ package Farm;
 import SolveStarvation.OwnerSolveStarvation;
 import SolveStarvation.Starvation;
 
-public class Owner implements MoneyGetter {
+public class Owner implements MoneyManager {
     private double money;
     private static Owner instance = new Owner();
 
@@ -49,6 +49,7 @@ public class Owner implements MoneyGetter {
      * @param m the money to reduce
      * @return whether the reduction is successful
      */
+    @Override
     public boolean reduceMoney(double m) {
         if (money < m) {
             return false;

@@ -10,10 +10,18 @@ public class Const {
 
     public final static double VALUE_CROP = 10.0;
 
+    //生物的附加价值（装饰器）
+    public final static double VALUE_ADDED_ORGANIC = 5.0;
+    public final static double VALUE_ADDED_TRANSGENOSIS = -5.0;
+    public final static double VALUE_ADDED_FRESH = 10.0;
+    public final static double VALUE_ADDED_STALE = -10.0;
+
+
     //生物的名字
     public final static String NAME_TABLE_CHICKEN = "TableChicken";
     public final static String NAME_YELLOW_DUCK = "SmallYellowDuck";
     public final static String NAME_CROP = "CROP";
+
 
     //生物的成熟状态
     public final static String MATURE = "Mature";
@@ -51,4 +59,5 @@ public class Const {
 
     // 每种农民的数量
     public static final int EACH_TYPE_NUM = 4;
+
 }
