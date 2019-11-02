@@ -39,6 +39,14 @@ public class Farm {
         this._animalMenu = new Menu<Animal>();
         this._plantMenu = new Menu<Plant>();
         this._farmerMenu = new Menu<Farmer>();
+
+        //初始化4个农民
+        for(int i = 0; i < 4; i++){
+            int tempAge = 30;
+            String tempName = "Farmer" + i;
+            Farmer tempFarmer = new Farmer(tempAge, tempName);
+            _farmerMenu.add(tempFarmer);
+        }
     }
 
     static Farm _instance;
@@ -70,6 +78,7 @@ public class Farm {
     }
 
 
+
     /**
      * @return 空闲的农民
      */
@@ -96,6 +105,11 @@ public class Farm {
         return _animalMediator;
     }
 
+    /**
+     * 获取农民的列表.
+     *
+     * @return the menu
+     */
     public Menu<Farmer> getFarmerMenu(){
         return _farmerMenu;
     }

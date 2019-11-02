@@ -60,5 +60,14 @@ public class FarmerController {
 
     }
 
+    /**
+     * Get farmer age int.
+     *
+     * @return the int
+     */
+    public int getFarmerAge(){
+        return _model.getAge();
+    }
+
 
 }

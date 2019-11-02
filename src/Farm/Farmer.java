@@ -30,11 +30,18 @@ public class Farmer {
     //农民的名字
     private String _name;
 
-
+    //无参构造函数
     public Farmer() {
         this._type = WorkType.SPARE;
         this._bag = new ToolPackage(2);
         this.isWorking = false;
+    }
+
+    //通过年龄和名字来初始化农民
+    public Farmer(int age, String name){
+        this();
+        this._age = age;
+        this._name = name;
     }
 
     /**

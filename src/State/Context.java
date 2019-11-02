@@ -9,7 +9,7 @@ public interface Context {
     /**
      * Sets clock.
      *
-     * @param currentTime the current time
+     * @param currentTime the current timeset
      */
     public abstract void setClock(int currentTime);
 
