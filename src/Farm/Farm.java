@@ -42,19 +42,7 @@ public class Farm {
     private Farm(){
         this._animalMenu = new Menu<Animal>();
         this._plantMenu = new Menu<Plant>();
-<<<<<<< HEAD
-        this._farmerMenu = new Menu<Farmer>();
-
-        //初始化4个农民
-        for(int i = 0; i < 4; i++){
-            int tempAge = 30;
-            String tempName = "Farmer" + i;
-            Farmer tempFarmer = new Farmer(tempAge, tempName);
-            _farmerMenu.add(tempFarmer);
-        }
-=======
         this._farmerMultipletonMenu = new Menu<FarmerMultipleton>();
->>>>>>> master
     }
 
     static Farm _instance;
@@ -119,18 +107,8 @@ public class Farm {
         return _animalMediator;
     }
 
-<<<<<<< HEAD
-    /**
-     * 获取农民的列表.
-     *
-     * @return the menu
-     */
-    public Menu<Farmer> getFarmerMenu(){
-        return _farmerMenu;
-=======
     public Menu<FarmerMultipleton> getFarmerMenu(){
         return _farmerMultipletonMenu;
->>>>>>> master
     }
 
 //    //测试中介者模式
