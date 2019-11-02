@@ -21,13 +21,13 @@ public class MvcTest {
     @Test
     public void test()throws Exception{
         Farm farm = Farm.getInstance();
-        Menu<Farmer> farmerMenu = farm.getFarmerMenu();
-        Iterator<Farmer> farmerIter = farmerMenu.iterator();
-        while(farmerIter.hasNext()){
-            Farmer farmer = farmerIter.next();
-            FarmerView view = new FarmerView();
-            FarmerController controller = new FarmerController(farmer, view);
-            controller.updateView();
+//        Menu<Farmer> farmerMenu = farm.getFarmerMenu();
+//        Iterator<Farmer> farmerIter = farmerMenu.iterator();
+//        while(farmerIter.hasNext()){
+//            Farmer farmer = farmerIter.next();
+//            FarmerView view = new FarmerView();
+//            FarmerController controller = new FarmerController(farmer, view);
+//            controller.updateView();
         }
     }
 }
