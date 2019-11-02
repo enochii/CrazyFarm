@@ -15,6 +15,10 @@ public class Const {
     public final static String NAME_YELLOW_DUCK = "SmallYellowDuck";
     public final static String NAME_CROP = "CROP";
 
+    //生物的成熟状态
+    public final static String MATURE = "Mature";
+    public final static String NOT_MATURE = "Not Mature";
+
     // 土地的类型
     public final static String TYPE_FIELD = "Field";
     public final static String TYPE_LARGE_FIELD = "LargeField";

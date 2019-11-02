@@ -1,5 +1,6 @@
 package Adapter;
 
+import Constant.Const;
 import Livings.Animals.Chicken.Chicken;
 import Livings.Animals.Chicken.TableChicken;
 import Livings.Animals.Duck.Duck;
@@ -54,6 +55,11 @@ public class ChickenAdapter extends Duck {
 
     @Override
     public void makeEat() {}
+
+    @Override
+    public String isMature() {
+        return Const.MATURE;
+    }
 
     /*
      * 鸡模仿鸭叫

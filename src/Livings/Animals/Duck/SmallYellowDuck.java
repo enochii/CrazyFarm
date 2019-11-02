@@ -73,6 +73,13 @@ public class SmallYellowDuck extends Duck{
         new DuckSound().doAction();
     }
 
+    @Override
+    public String isMature() {
+        if(_maturityRate > 4)
+            _mature = Const.MATURE;
+        return _mature;
+    }
+
     public void setColleagueEnable(boolean enable)
     {
 

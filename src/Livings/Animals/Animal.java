@@ -1,5 +1,6 @@
 package Livings.Animals;
 
+import Constant.Const;
 import Livings.Living;
 import State.State;
 import State.AnimalFullState;
@@ -23,6 +24,12 @@ public abstract class Animal extends Living implements Colleague {
     //动物每次喂食需要的食物
     public int _appetite = 0;
 
+    //是否成熟
+    public String _mature = Const.NOT_MATURE;
+
+    //成熟率
+    public int _maturityRate = 0;
+
     //改变是否饥饿的状态
     @Override
     public void changeState(State state){
@@ -30,10 +37,11 @@ public abstract class Animal extends Living implements Colleague {
         if(isHungry()){
             setColleagueUpdated();
 
-
         }
 
     }
+
+    public abstract String isMature();
 
     //判断是否饥饿
     public boolean isHungry(){
@@ -60,6 +68,7 @@ public abstract class Animal extends Living implements Colleague {
     public final void getFed(int currentTime) {
         this._state = AnimalFullState.getInstance();
         _lastFedTime = currentTime;
+        _maturityRate++;
 
         makeEat();
         makeSound();
@@ -71,8 +80,6 @@ public abstract class Animal extends Living implements Colleague {
     }
 
     public void doSell(){
-
-
 
     }
 

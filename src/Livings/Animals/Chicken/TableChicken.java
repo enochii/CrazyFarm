@@ -85,6 +85,13 @@ public class TableChicken extends Chicken{
         new ChickenSound().doAction();
     }
 
+    @Override
+    public String isMature() {
+        if(_maturityRate > 3)
+            _mature = Const.MATURE;
+        return _mature;
+    }
+
     public void setColleagueEnable(boolean enable)
     {
 
