@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class Menu<T>{
     private List<T> _menu;
-
     /*
      * 构造函数
      */
@@ -52,6 +51,8 @@ public class Menu<T>{
     public Iterator<T> iterator(){
         return new MenuIterator(this);
     }
+
+    public int getSize() { return _menu.size(); }
 
     public static void main(){
         Menu<Animal> animalMenu = new Menu<Animal>();

@@ -3,6 +3,9 @@ import Farm.Farm;
 import Farm.Menu;
 import Livings.Animals.Animal;
 import Observer.Observable.BaseObservable;
+import Observer.Observable.TimeCounter;
+import mediator.AnimalMediator;
+import mediator.Mediator;
 
 import java.util.Iterator;
 
@@ -17,11 +20,15 @@ import java.util.Iterator;
 public class AnimalsObserver implements BaseObserver {
     @Override
     public void update(BaseObservable o) {
+        TimeCounter timeCounter=(TimeCounter)o;
         Farm farm=Farm.getInstance();
         Menu<Animal> animalMenu =farm.getAnimalMenu();
         for (Iterator<Animal> it=animalMenu.iterator();it.hasNext();){
             Animal animal=it.next();
-            //do something
+            animal.setClock(timeCounter.getCurrentTime());
         }
+        Mediator mediator=new AnimalMediator();
+        mediator.colleagueChanged();
+        System.out.println("Animals updated");
     }
 }

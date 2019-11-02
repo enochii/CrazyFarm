@@ -2,6 +2,7 @@ package Livings.Animals.Chicken;
 
 import Constant.Const;
 import State.AnimalFullState;
+import State.AnimalHungryState;
 import action.ChickenEat;
 import action.ChickenSound;
 import mediator.Mediator;
@@ -10,7 +11,8 @@ import mediator.Mediator;
 /**
  * The type Table chicken.
  */
-/*
+
+/**
  * 肉鸡类
  */
 public class TableChicken extends Chicken{
@@ -38,6 +40,14 @@ public class TableChicken extends Chicken{
     public TableChicken(Mediator mediator){
         this.setMediator(mediator);
         this._appetite = 3;
+    }
+
+    public TableChicken(boolean hungry_state, boolean mature_state){
+        if(hungry_state==true) _state = AnimalHungryState.getInstance();
+        else _state = AnimalFullState.getInstance();
+
+        if(mature_state==true) _maturityRate = 4;
+        else _maturityRate = 0;
     }
 
     @Override
@@ -83,6 +93,13 @@ public class TableChicken extends Chicken{
     @Override
     public void makeSound() {
         new ChickenSound().doAction();
+    }
+
+    @Override
+    public String isMature() {
+        if(_maturityRate > 3)
+            _mature = Const.MATURE;
+        return _mature;
     }
 
     public void setColleagueEnable(boolean enable)

@@ -24,6 +24,11 @@ public class StainlessShovel extends FarmTool {
         return FarmTool.TYPE.Shovel;
     }
 
+    @Override
+    public void doWork() {
+
+    }
+
     public void testAbstractFactory() {
         String s_size = this.size.isBig()? "big" : "small";
         System.out.println("Create " + s_size + " stainless steel shovel successfully.");

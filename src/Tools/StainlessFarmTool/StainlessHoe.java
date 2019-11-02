@@ -23,6 +23,11 @@ public class StainlessHoe extends FarmTool {
         return TYPE.Hoe;
     }
 
+    @Override
+    public void doWork() {
+
+    }
+
     public void testAbstractFactory() {
         String s_size = this.size.isBig()? "big" : "small";
         System.out.println("Create " + s_size + " stainless steel hoe successfully.");

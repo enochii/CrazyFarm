@@ -1,5 +1,6 @@
 package Farm;
 
+import CallBack.ReduceMoneyCallback;
 import Command.Command;
 import Command.SellCommand;
 import Command.PurchaseCommand;
@@ -67,6 +68,15 @@ public class Farmer {
         }
     }
 
+    public WorkType getWorkType() {
+        return this._type;
+    }
+
+    /**
+     * For TEST. Gets work type string.
+     *
+     * @return the work type string
+     */
     public String getWorkTypeString() {
         if ( _type== WorkType.SPARE ) return "Spare";
         else if ( _type== WorkType.CULTIVATE ) return "Cultivate";
@@ -130,7 +140,8 @@ public class Farmer {
 
     public void purchase(String kind, int number){
         this.isWorking = true;
-        Command cmd = new PurchaseCommand(kind, number);
+        ReduceMoneyCallback reduceMoneyCallback = new ReduceMoneyCallback(0);
+        Command cmd = new PurchaseCommand(kind, number, reduceMoneyCallback);
         cmd.execute();
         this.isWorking = false;
     }

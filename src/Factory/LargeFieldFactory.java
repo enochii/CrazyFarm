@@ -21,7 +21,12 @@ public class LargeFieldFactory extends Factory{
         return new LargeField(usage);
     }
 
+    @Override
     protected void registerLand(Land land) {
         _usages.add( ((LargeField)land).getUsage() );
+    }
+
+    public List getUsages() {
+        return _usages;
     }
 }
