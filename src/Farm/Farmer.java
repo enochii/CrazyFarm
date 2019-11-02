@@ -25,11 +25,24 @@ public class Farmer {
     //农民的工作状态
     private boolean isWorking;
 
+    //农民的年龄
+    private int _age;
 
+    //农民的名字
+    private String _name;
+
+    //无参构造函数
     public Farmer() {
         this._type = WorkType.SPARE;
         this._bag = new ToolPackage(2);
         this.isWorking = false;
+    }
+
+    //通过年龄和名字来初始化农民
+    public Farmer(int age, String name){
+        this();
+        this._age = age;
+        this._name = name;
     }
 
     /**
@@ -131,6 +144,43 @@ public class Farmer {
         Command cmd = new PurchaseCommand(kind, number, reduceMoneyCallback);
         cmd.execute();
         this.isWorking = false;
+    }
+
+    /**
+     * Gets age.
+     *
+     * @return the age
+     */
+    public int getAge()
+    {
+        return _age;
+    }
+
+    /**
+     * Set age.
+     *
+     * @param age the age
+     */
+    public void setAge(int age){
+        this._age = age;
+    }
+
+    /**
+     * Get name string.
+     *
+     * @return the string
+     */
+    public String getName(){
+        return _name;
+    }
+
+    /**
+     * Set name.
+     *
+     * @param name the name
+     */
+    public void setName(String name){
+        this._name = name;
     }
 
 }
