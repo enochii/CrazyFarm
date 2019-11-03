@@ -30,7 +30,7 @@ class TestAbstractFactory {
         ironSmallShovel.testAbstractFactory();
 
         System.out.println("测试不锈钢制农具抽象工厂");
-        AbstractToolFactory stainlessToolFactory = new IronToolFactory();
+        AbstractToolFactory stainlessToolFactory = new StainlessSteelToolFactory();
         FarmTool stainlessBigHoe = stainlessToolFactory.createBigHoe();
         stainlessBigHoe.testAbstractFactory();
         FarmTool stainlessSmallHoe = stainlessToolFactory.createSmallHoe();
