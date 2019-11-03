@@ -3,9 +3,11 @@ package Farm;
 import Livings.Animals.Animal;
 import SolveStarvation.OwnerSolveStarvation;
 import SolveStarvation.Starvation;
-import sun.security.util.AuthResources_fr;
 
-public class Owner implements MoneyManager {
+import java.io.Serializable;
+
+
+public class Owner implements MoneyManager, Serializable {
     private double money;
     private static Owner instance = new Owner();
     private Farm _farm;

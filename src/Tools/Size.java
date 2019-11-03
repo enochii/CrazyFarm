@@ -1,9 +1,11 @@
 package Tools;
 
+import java.io.Serializable;
+
 /**
  * Size接口
  */
-public interface Size {
+public interface Size extends Serializable {
 	
 	/**
 	 * @return Size的大小

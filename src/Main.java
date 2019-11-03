@@ -1,5 +1,7 @@
 import Adapter.ChickenAdapter;
 import Constant.Const;
+import Dao.FarmDao;
+import Dao.FarmDaoImpl;
 import Farm.Farm;
 import Farm.Menu;
 import Interpreter.Parser;
@@ -57,5 +59,8 @@ public class Main {
             timeCounter.updateTime();
         }
 
+        //系统结束时保存Farm
+        FarmDao farmDao=new FarmDaoImpl();
+        farmDao.updateFarm(farm);
     }
 }

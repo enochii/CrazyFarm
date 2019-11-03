@@ -7,7 +7,8 @@ public class DaoTest {
     @Test
     public void test(){
         FarmDao farmDao=new FarmDaoImpl();
-        Farm farm=farmDao.getFarm();
+        Farm farm=Farm.getInstance();
+        System.out.println(farm.getAnimalMenu().iterator().next().getName());
         farmDao.deleteFarm();
         farmDao.updateFarm(farm);
     }

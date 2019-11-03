@@ -4,6 +4,7 @@ import Livings.Animals.Animal;
 import Livings.Animals.Chicken.Chicken;
 import Livings.Animals.Chicken.TableChicken;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * 菜单类，该类是一个[模板类]，可供动物/植物/工具使用
  * 在这里实现Iterator模式
  */
-public class Menu<T> implements Iterable<T>{
+public class Menu<T> implements Iterable<T>, Serializable {
     private List<T> _menu;
     /*
      * 构造函数

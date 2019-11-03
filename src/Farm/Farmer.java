@@ -12,11 +12,13 @@ import Constant.Const.WorkType;
 import Livings.Animals.Animal;
 import Tools.Tool;
 
+import java.io.Serializable;
+
 /**
  * 农民完成各种农场的工作
  */
 
-public class Farmer {
+public class Farmer implements Serializable {
 
     private FarmerData _farmerData;
 
