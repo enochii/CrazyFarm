@@ -67,7 +67,7 @@ public class Owner implements MoneyManager {
             System.out.println("Sorry, Owner doesn't have enough money");
             return;
         }
-        Farmer spareFarmer = _farm.getFreeFarmer();
+        Farmer spareFarmer = _farm.getFreeSpareFarmer();
         if(spareFarmer != null){
             spareFarmer.purchase(purchaseType, number);
         }
