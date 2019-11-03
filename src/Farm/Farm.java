@@ -98,7 +98,7 @@ public class Farm {
 
 
     /**
-     * @return 空闲的农民
+     * @return 空闲的喂食农民
      */
     public Farmer getFreeFarmer(){
         Iterator<FarmerMultipleton> farmer_iter = _farmerMultipletonMenu.iterator();
@@ -106,6 +106,22 @@ public class Farm {
         while (farmer_iter.hasNext()){
             Farmer farmer = farmer_iter.next().farmer;
             if(!farmer.getWorkStatus() && farmer.getWorkType()== Const.WorkType.FEED){
+                free_farmer = farmer;
+                break;
+            }
+        }
+        return free_farmer;
+    }
+
+    /**
+     * @return 空闲的无工具农民
+     */
+    public Farmer getFreeSpareFarmer(){
+        Iterator<FarmerMultipleton> farmer_iter = _farmerMultipletonMenu.iterator();
+        Farmer free_farmer = null;
+        while (farmer_iter.hasNext()){
+            Farmer farmer = farmer_iter.next().farmer;
+            if(!farmer.getWorkStatus() && farmer.getWorkType()== Const.WorkType.SPARE){
                 free_farmer = farmer;
                 break;
             }
