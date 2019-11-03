@@ -27,10 +27,12 @@ public class PurchaseCommand implements Command {
     public void execute() {
         Farm farm = Farm.getInstance();
         if(_purchaseType.equals(Const.NAME_TABLE_CHICKEN)){
-            Animal animal = new TableChicken();
-            farm.getAnimalMenu().add(animal);
-            _reduceMoneyCallBack.setMoney(animal.getValue());
-            _reduceMoneyCallBack.call();
+            for(int i = 0; i < _number; i++) {
+                Animal animal = new TableChicken();
+                farm.getAnimalMenu().add(animal);
+                _reduceMoneyCallBack.setMoney(animal.getValue());
+                _reduceMoneyCallBack.call();
+            }
         }
         else if(_purchaseType.equals(Const.NAME_YELLOW_DUCK)){
             for(int i = 0; i < _number; i++){

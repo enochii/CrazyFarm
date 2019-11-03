@@ -1,8 +1,9 @@
 import Adapter.ChickenAdapter;
+import Constant.Const;
 import Farm.Farm;
 import Farm.Menu;
 import Interpreter.Parser;
-
+import Farm.Owner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -25,6 +26,7 @@ public class Main {
 
         Farm farm = Farm.getInstance();
 
+
         AnimalMediator animalMediator = new AnimalMediator();
         PlantMediator plantMediator = new PlantMediator();
 
@@ -34,8 +36,14 @@ public class Main {
         animalMediator.setFarm(farm);
         plantMediator.setFarm(farm);
 
-        System.out.println(farm.getOwner().getMoney());
+        Owner owner = Owner.getInstance();
+        farm.setOwnerForFarm(owner);
+        owner.setFarmForOwner(farm);
 
+//        System.out.println(farm.getOwner().getMoney());
+
+        owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
+        System.out.println(owner.getMoney());
 
         TimeCounter timeCounter = new TimeCounter();
         AnimalsObserver animalsObserver = new AnimalsObserver();

@@ -1,12 +1,14 @@
 package Farm;
 
+import Livings.Animals.Animal;
 import SolveStarvation.OwnerSolveStarvation;
 import SolveStarvation.Starvation;
+import sun.security.util.AuthResources_fr;
 
 public class Owner implements MoneyManager {
     private double money;
     private static Owner instance = new Owner();
-
+    private Farm _farm;
     private Owner(){
         money = 1000;
     }
@@ -57,4 +59,30 @@ public class Owner implements MoneyManager {
         money -= m;
         return true;
     }
+
+    //农场主要派农民去买东西
+    public void purchase(String purchaseType, int number){
+        if(this.getMoney() <= 0)
+        {
+            System.out.println("Sorry, Owner doesn't have enough money");
+            return;
+        }
+        Farmer spareFarmer = _farm.getFreeFarmer();
+        if(spareFarmer != null){
+            spareFarmer.purchase(purchaseType, number);
+        }
+    }
+
+    public void sell(Animal animal){
+        Farmer spareFarmer = _farm.getFreeFarmer();
+        if(spareFarmer != null){
+            spareFarmer.sell(animal);
+        }
+    }
+
+    public void setFarmForOwner(Farm farm)
+    {
+        this._farm = farm;
+    }
+
 }

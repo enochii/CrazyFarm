@@ -39,7 +39,7 @@ public class Farm {
 
     //农民的菜单
     private Menu<FarmerMultipleton> _farmerMultipletonMenu;
-    private Owner owner = Owner.getInstance();  //农场主
+    private Owner _owner;  //农场主
 
     /**
      * 构造函数
@@ -178,8 +178,12 @@ public class Farm {
         this._plantMediator = plantMediator;
     }
 
-    public Owner getOwner(){
-        return owner;
+//    public Owner getOwner(){
+//        return owner;
+//    }
+
+    public void setOwnerForFarm(Owner owner){
+        this._owner = owner;
     }
 
 }
