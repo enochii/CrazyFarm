@@ -8,7 +8,8 @@ public class OwnerSolveStarvation extends SolveStarvation {
         super("Owner", farm);
     }
 
-    protected boolean resolve(Starvation starvation){
+    @Override
+    public boolean resolve(Starvation starvation){
         return Owner.getInstance().solveStarvation(this, starvation);
     }
 }

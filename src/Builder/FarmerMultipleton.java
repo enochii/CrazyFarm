@@ -45,6 +45,53 @@ public class FarmerMultipleton {
         return list.get(num);
     }
 
+    public static FarmerMultipleton getFeedInstance(){
+        FarmerMultipleton result = null;
+        for(int i = 0;i < Const.EACH_TYPE_NUM * TYPE_NUM;i++){
+            if ((!list.get(i).if_hired) && list.get(i).farmer.getWorkType().equals(Const.WorkType.FEED)) {
+                result = list.get(i);
+                result.if_hired = true;
+                break;
+            }
+        }
+        if (result == null){
+            System.out.println("喂食种类的农民数量已达上限");
+        }
+        return result;
+    }
+
+    public static FarmerMultipleton getSpareInstance(){
+        FarmerMultipleton result = null;
+        for(int i = 0;i < Const.EACH_TYPE_NUM * TYPE_NUM;i++){
+            if ((!list.get(i).if_hired) && list.get(i).farmer.getWorkType().equals(Const.WorkType.SPARE)) {
+                result = list.get(i);
+                result.if_hired = true;
+                break;
+            }
+        }
+        if (result == null){
+            System.out.println("空闲种类的农民数量已达上限");
+        }
+
+        return result;
+    }
+
+    public static FarmerMultipleton getCultivateInstance(){
+        FarmerMultipleton result = null;
+        for(int i = 0;i < Const.EACH_TYPE_NUM * TYPE_NUM;i++){
+            if ((!list.get(i).if_hired) && list.get(i).farmer.getWorkType().equals(Const.WorkType.CULTIVATE)) {
+                result = list.get(i);
+                result.if_hired = true;
+                break;
+            }
+        }
+        if (result == null){
+            System.out.println("耕种种类的农民数量已达上限");
+        }
+
+        return result;
+    }
+
     public String getName(){
         return name;
     }
