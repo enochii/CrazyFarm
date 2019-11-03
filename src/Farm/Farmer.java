@@ -8,41 +8,26 @@ import Command.PurchaseCommand;
 import SolveStarvation.FarmerSolveStarvation;
 import SolveStarvation.Starvation;
 
-import Constant.Const;
 import Constant.Const.WorkType;
 import Livings.Animals.Animal;
 import Tools.Tool;
-import Tools.ToolPackage;
 
 /**
  * 农民完成各种农场的工作
  */
 
 public class Farmer {
-    private WorkType _type;           // 指定工作类型和背包，用于实现 Builder 模式
-    private ToolPackage _bag;
-    
-    //农民的工作状态
-    private boolean isWorking;
 
-    //农民的年龄
-    private int _age;
-
-    //农民的名字
-    private String _name;
+    private FarmerData _farmerData;
 
     //无参构造函数
     public Farmer() {
-        this._type = WorkType.SPARE;
-        this._bag = new ToolPackage(2);
-        this.isWorking = false;
+        this._farmerData = new FarmerData();
     }
 
     //通过年龄和名字来初始化农民
     public Farmer(int age, String name){
-        this();
-        this._age = age;
-        this._name = name;
+        this._farmerData = new FarmerData(age, name);
     }
 
     /**
@@ -50,7 +35,9 @@ public class Farmer {
      *
      * @param type the type
      */
-    public void setType(WorkType type) {this._type = type;}
+    public void setType(WorkType type) {
+        _farmerData.setType(type);
+    }
 
     /**
      * Assign tool boolean.
@@ -59,17 +46,11 @@ public class Farmer {
      * @return boolean isSuccessful
      */
     public boolean assignTool(Tool tool) {
-        if (this._bag.isFull()) {
-            return false;
-        }
-        else {
-            this._bag.addTool(tool);
-            return true;
-        }
+        return _farmerData.assignTool(tool);
     }
 
     public WorkType getWorkType() {
-        return this._type;
+        return _farmerData.getWorkType();
     }
 
     /**
@@ -78,10 +59,7 @@ public class Farmer {
      * @return the work type string
      */
     public String getWorkTypeString() {
-        if ( _type== WorkType.SPARE ) return "Spare";
-        else if ( _type== WorkType.CULTIVATE ) return "Cultivate";
-        else if ( _type== WorkType.FEED ) return "Feed";
-        else return "Invalid";
+        return _farmerData.getWorkTypeString();
     }
 
     //TODO: 加上具体的Task
@@ -117,13 +95,14 @@ public class Farmer {
             System.out.println("添加食物：5，食槽中食物总量：" + farm.foodCourt);
         }
     }
+
     /**
      * Get work status boolean.
      *
      * @return the boolean
      */
     public boolean getWorkStatus(){
-        return this.isWorking;
+        return _farmerData.getWorkStatus();
     }
 
     /**
@@ -132,18 +111,18 @@ public class Farmer {
      * @param animal the animal
      */
     public void sell(Animal animal){
-        this.isWorking = true;
+        _farmerData.setWorkStatus(true);
         Command cmd = new SellCommand(animal);
         cmd.execute();
-        this.isWorking = false;
+        _farmerData.setWorkStatus(false);
     }
 
     public void purchase(String kind, int number){
-        this.isWorking = true;
+        _farmerData.setWorkStatus(true);
         ReduceMoneyCallback reduceMoneyCallback = new ReduceMoneyCallback(0);
         Command cmd = new PurchaseCommand(kind, number, reduceMoneyCallback);
         cmd.execute();
-        this.isWorking = false;
+        _farmerData.setWorkStatus(false);
     }
 
     /**
@@ -151,9 +130,8 @@ public class Farmer {
      *
      * @return the age
      */
-    public int getAge()
-    {
-        return _age;
+    public int getAge() {
+        return _farmerData.getAge();
     }
 
     /**
@@ -162,7 +140,7 @@ public class Farmer {
      * @param age the age
      */
     public void setAge(int age){
-        this._age = age;
+        _farmerData.setAge(age);
     }
 
     /**
@@ -171,7 +149,7 @@ public class Farmer {
      * @return the string
      */
     public String getName(){
-        return _name;
+        return _farmerData.getName();
     }
 
     /**
@@ -180,7 +158,7 @@ public class Farmer {
      * @param name the name
      */
     public void setName(String name){
-        this._name = name;
+        _farmerData.setName(name);
     }
 
 }
