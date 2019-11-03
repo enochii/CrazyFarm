@@ -42,6 +42,12 @@ public class Crop extends Plant implements LivingCloneable {
 
 	public void setClock(int currentTime){
 		_state.gainExperience(this);
+		_maturityRate++;
+
+		if(this._maturityRate >= 10)
+		{
+			this._isMature = true;
+		}
 
 	}
 
@@ -57,5 +63,4 @@ public class Crop extends Plant implements LivingCloneable {
 				this._experience == crop._experience &&
 				this._state == crop._state;
 	}
-	
 }

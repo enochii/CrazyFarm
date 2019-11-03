@@ -4,6 +4,7 @@ import Farm.*;
 import Livings.Animals.Animal;
 import Livings.Plants.Plant;
 import Observer.Observable.BaseObservable;
+import Observer.Observable.TimeCounter;
 
 import java.util.Iterator;
 
@@ -18,9 +19,11 @@ public class PlantsObserver implements BaseObserver {
     @Override
     public void update(BaseObservable o) {Farm farm=Farm.getInstance();
         Menu<Plant> plantMenu =farm.getPlantMenu();
+        TimeCounter timeCounter=(TimeCounter)o;
         for (Iterator<Plant> it = plantMenu.iterator(); it.hasNext();){
             Plant plant=it.next();
             //do something
+            plant.setClock(timeCounter.getCurrentTime());
         }
     }
 }

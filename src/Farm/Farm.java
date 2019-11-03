@@ -9,6 +9,7 @@ import Livings.Animals.Chicken.TableChicken;
 import Livings.Plants.Crop;
 import Livings.Plants.Plant;
 import mediator.AnimalMediator;
+import mediator.PlantMediator;
 import sun.tools.jconsole.Tab;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class Farm {
     //public List<Farmer> farmers = new ArrayList<Farmer>();
 
     private AnimalMediator _animalMediator;
+    private PlantMediator _plantMediator;
 
     /**
      * 初始库房和食槽的粮食数量
@@ -46,7 +48,8 @@ public class Farm {
         this._animalMenu = new Menu<Animal>();
         this._plantMenu = new Menu<Plant>();
         this._farmerMultipletonMenu = new Menu<FarmerMultipleton>();
-        this._animalMediator = new AnimalMediator();
+//        this._animalMediator = new AnimalMediator();
+//        this._plantMediator = new PlantMediator();
     }
 
     static Farm _instance;
@@ -60,12 +63,19 @@ public class Farm {
             FarmDao farmDao=new FarmDaoImpl();
             if( (_instance = farmDao.getFarm()) == null) {
 
+                //debug
                 _instance = Farm.init();
+                //_instance = new Farm();
+               // System.out.println(_instance.getAnimalMenu());
+//                _instance._animalMediator.setFarm(_instance);
                 //初始化一个空农场,并存储到本地中
 //                _instance = new Farm();
 //                System.out.println("初始化农场数据");
                 farmDao.updateFarm(_instance);
             }
+        }
+        if(_instance._animalMenu == null){
+            System.out.println("_animalMenu is null in json");
         }
         return _instance;
     }
@@ -126,13 +136,15 @@ public class Farm {
 //        this._farmerMenu.add(farmer);
 //    }
 
+    //获取农场动物中介者
+
     //初始化农场
     public static Farm init(){
         Farm farm = new Farm();
 
 
         for(int i = 0; i < 2; i++){
-            TableChicken tempChicken = new TableChicken(farm._animalMediator);
+            TableChicken tempChicken = new TableChicken();
             farm.getAnimalMenu().add(tempChicken);
         }
 
@@ -141,11 +153,33 @@ public class Farm {
             farm.getPlantMenu().add(tempCorp);
         }
 
-        for(int i = 0; i < 3; i++){
-
-        }
+        farm.getFarmerMenu().add(FarmerMultipleton.getCultivateInstance());
+        farm.getFarmerMenu().add(FarmerMultipleton.getFeedInstance());
+        farm.getFarmerMenu().add(FarmerMultipleton.getSpareInstance());
         return farm;
 
+    }
+
+    public void addMediatorForAll(){
+        Iterator<Animal> animal_it = getAnimalMenu().iterator();
+        while(animal_it.hasNext()){
+            animal_it.next().setMediator(_animalMediator);
+        }
+
+        Iterator<Plant> plant_it = getPlantMenu().iterator();
+        while(plant_it.hasNext()){
+            plant_it.next().setMediator(_plantMediator);
+        }
+
+    }
+
+    public void setMediatorForFarm(AnimalMediator animalMediator, PlantMediator plantMediator){
+        this._animalMediator = animalMediator;
+        this._plantMediator = plantMediator;
+    }
+
+    public Owner getOwner(){
+        return owner;
     }
 
 }

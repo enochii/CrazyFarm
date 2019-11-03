@@ -1,1 +1,1 @@
-{"animalMediator":{"starvedAnimals":[]},"farmerMenu":{"size":0},"animalMenu":{"size":0},"plantMenu":{"size":0},"freeFarmer":null}
+{"animalMediator":{"starvedAnimals":[]},"animalMenu":{"size":2},"farmerMenu":{"size":3},"foodCourt":100,"freeFarmer":{"age":0,"workStatus":false,"workType":"FEED","workTypeString":"Feed"},"owner":{"money":1000.0},"plantMenu":{"size":1},"wareHouse":200}

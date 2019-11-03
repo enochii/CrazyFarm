@@ -28,5 +28,8 @@ public abstract class Plant extends Living {
         livingVisitor.visit(this);
     }
 
+    //成熟率
+    public int _maturityRate = 0;
+
 	
 }

@@ -28,7 +28,7 @@ public class AnimalMediator implements Mediator{
 
     @Override
     public void createColleagues(){
-        this._farm = Farm.getInstance();
+       // this._farm = Farm.getInstance();
         _animalMenu = _farm.getAnimalMenu();
 
 
@@ -39,6 +39,13 @@ public class AnimalMediator implements Mediator{
      */
     @Override
     public void colleagueChanged(){
+
+        //每检查一次需要清空上一次的饥饿动物列表
+        _starvedAnimals.clear();
+        if(_animalMenu == null){
+            System.out.println("_animalmenu is null");
+
+        }
         Iterator<Animal> animal_iter = _animalMenu.iterator();
         while (animal_iter.hasNext()){
             Animal animal = animal_iter.next();
@@ -75,12 +82,20 @@ public class AnimalMediator implements Mediator{
         _starvedAnimals = new HashSet<>();
         _num_starved_animals = 5;
 
-        createColleagues();
+        //createColleagues();
         System.out.println("AnimalMediator has been initialized");
     }
 
     public Set<Animal> getStarvedAnimals(){
         return _starvedAnimals;
+    }
+
+    public void setFarm(Farm farm){
+        this._farm = farm;
+        createColleagues();
+        if(_animalMenu == null){
+            System.out.println("animalmenu is null in createcolleagues");
+        }
     }
 
 

@@ -27,7 +27,7 @@ public class AnimalsObserver implements BaseObserver {
             Animal animal=it.next();
             animal.setClock(timeCounter.getCurrentTime());
         }
-        Mediator mediator=new AnimalMediator();
+        Mediator mediator=farm.getAnimalMediator();
         mediator.colleagueChanged();
         System.out.println("Animals updated");
     }
