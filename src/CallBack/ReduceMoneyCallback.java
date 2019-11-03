@@ -1,13 +1,15 @@
 package CallBack;
 
-import Farm.Owner;
+import Proxy.OwnerProxy;
 
 public class ReduceMoneyCallback implements MoneyCallback {
 
     private double _reduceMoney;
+    private OwnerProxy _ownerProxy;
 
     public ReduceMoneyCallback(double reduceMoney) {
         this._reduceMoney = reduceMoney;
+        this._ownerProxy = new OwnerProxy();
     }
 
     /**
@@ -21,8 +23,7 @@ public class ReduceMoneyCallback implements MoneyCallback {
 
     @Override
     public void call() {
-        Owner owner = Owner.getInstance();
-        if (!owner.reduceMoney(_reduceMoney)) {
+        if (!_ownerProxy.reduceMoney(_reduceMoney)) {
             throw new RuntimeException("the owner doesn't have enough money");
         }
     }
