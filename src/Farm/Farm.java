@@ -5,8 +5,11 @@ import Dao.FarmDao;
 import Dao.FarmDaoImpl;
 import Constant.Const;
 import Livings.Animals.Animal;
+import Livings.Animals.Chicken.TableChicken;
+import Livings.Plants.Crop;
 import Livings.Plants.Plant;
 import mediator.AnimalMediator;
+import sun.tools.jconsole.Tab;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,7 +37,7 @@ public class Farm {
 
     //农民的菜单
     private Menu<FarmerMultipleton> _farmerMultipletonMenu;
-
+    private Owner owner = Owner.getInstance();  //农场主
 
     /**
      * 构造函数
@@ -43,6 +46,7 @@ public class Farm {
         this._animalMenu = new Menu<Animal>();
         this._plantMenu = new Menu<Plant>();
         this._farmerMultipletonMenu = new Menu<FarmerMultipleton>();
+        this._animalMediator = new AnimalMediator();
     }
 
     static Farm _instance;
@@ -55,9 +59,11 @@ public class Farm {
         if(_instance == null) {
             FarmDao farmDao=new FarmDaoImpl();
             if( (_instance = farmDao.getFarm()) == null) {
+
+                _instance = Farm.init();
                 //初始化一个空农场,并存储到本地中
-                _instance = new Farm();
-                System.out.println("初始化农场数据");
+//                _instance = new Farm();
+//                System.out.println("初始化农场数据");
                 farmDao.updateFarm(_instance);
             }
         }
@@ -119,4 +125,27 @@ public class Farm {
 //    public void addFarmer(Farmer farmer){
 //        this._farmerMenu.add(farmer);
 //    }
+
+    //初始化农场
+    public static Farm init(){
+        Farm farm = new Farm();
+
+
+        for(int i = 0; i < 2; i++){
+            TableChicken tempChicken = new TableChicken(farm._animalMediator);
+            farm.getAnimalMenu().add(tempChicken);
+        }
+
+        for(int i = 0; i < 8; i++){
+            Crop tempCorp = new Crop();
+            farm.getPlantMenu().add(tempCorp);
+        }
+
+        for(int i = 0; i < 3; i++){
+
+        }
+        return farm;
+
+    }
+
 }
