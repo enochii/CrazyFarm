@@ -23,6 +23,7 @@ public class ReduceMoneyCallback implements MoneyCallback {
 
     @Override
     public void call() {
+        //System.out.println(_ownerProxy.getMoney());
         if (!_ownerProxy.reduceMoney(_reduceMoney)) {
             throw new RuntimeException("the owner doesn't have enough money");
         }

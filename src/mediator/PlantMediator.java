@@ -22,9 +22,16 @@ public class PlantMediator implements Mediator{
     }
 
     public PlantMediator(){
-        createColleagues();
+        //createColleagues();
         System.out.println("PlantMediator has been initialized");
     }
+
+    public void setFarm(Farm farm)
+    {
+        this._farm = farm;
+    }
+
+
 
 
 

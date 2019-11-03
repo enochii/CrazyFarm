@@ -122,6 +122,7 @@ public class Farmer {
         ReduceMoneyCallback reduceMoneyCallback = new ReduceMoneyCallback(0);
         Command cmd = new PurchaseCommand(kind, number, reduceMoneyCallback);
         cmd.execute();
+        System.out.println("a farmer is purchase " + kind);
         _farmerData.setWorkStatus(false);
     }
 

@@ -1,6 +1,7 @@
 package Livings.Animals.Chicken;
 
 import Constant.Const;
+import Farm.Farm;
 import State.AnimalFullState;
 import State.AnimalHungryState;
 import action.ChickenEat;
@@ -56,29 +57,27 @@ public class TableChicken extends Chicken{
     }
 
     public void setClock(int currentTime){
+        System.out.println(currentTime);
 
-        if(_lastFedTime > currentTime){
-            if(currentTime + 24 - _lastFedTime > 6){
-                _state.getHungryState(this);
-
-            }
-            else{
-                _state.gainExperience(this);
-            }
-        }
-
-        else{
             if(currentTime - _lastFedTime > 6){
-                _state.getHungryState(this);
+                if(Farm.getInstance().foodCourt >= this._appetite)
+                {
+                    System.out.println(Const.NAME_TABLE_CHICKEN + "is eating");
+                    this.getFed(currentTime);
+
+                }
+
+               else {
+                    _state.getHungryState(this);
+                }
+
             }
 
             else{
                 _state.gainExperience(this);
             }
 
-        }
-
-        if(this._experience >= 100){
+        if(this._maturityRate >= 20){
             this._isMature = true;
         }
 
@@ -88,6 +87,7 @@ public class TableChicken extends Chicken{
     @Override
     public void makeEat() {
         new ChickenEat().doAction();
+
     }
 
     @Override

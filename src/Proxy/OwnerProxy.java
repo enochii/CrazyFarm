@@ -7,7 +7,7 @@ public class OwnerProxy implements MoneyManager {
 	private Owner owner;
 	private double money;
 
-	public OwnerProxy(){};
+	public OwnerProxy(){getMoney();};
 
 	@Override
 	public double getMoney() {

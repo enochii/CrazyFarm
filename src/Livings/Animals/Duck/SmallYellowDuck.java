@@ -1,6 +1,7 @@
 package Livings.Animals.Duck;
 
 import Constant.Const;
+import Farm.Farm;
 import action.DuckEat;
 import action.DuckSound;
 import mediator.Mediator;
@@ -35,28 +36,28 @@ public class SmallYellowDuck extends Duck{
 
     public void setClock(int currentTime){
 
-        if(_lastFedTime > currentTime){
-            if(currentTime + 24 - _lastFedTime > 7){
+
+
+
+        if(currentTime - _lastFedTime > 7){
+            if(Farm.getInstance().foodCourt >= this._appetite)
+            {
+                System.out.println(Const.NAME_YELLOW_DUCK+ "is eating");
+                this.getFed(currentTime);
+
+            }
+
+            else {
                 _state.getHungryState(this);
-
-            }
-            else{
-                _state.gainExperience(this);
-            }
-        }
-
-        else{
-            if(currentTime - _lastFedTime > 7){
-                _state.getHungryState(this);
-            }
-
-            else{
-                _state.gainExperience(this);
             }
 
         }
 
-        if(this._experience >= 100){
+        else{
+            _state.gainExperience(this);
+        }
+
+        if(this._maturityRate >= 20){
             this._isMature = true;
         }
 

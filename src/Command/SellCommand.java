@@ -20,7 +20,6 @@ public class SellCommand implements Command {
     public void execute(){
         _animal.doSell();
 
-
     }
 
 }

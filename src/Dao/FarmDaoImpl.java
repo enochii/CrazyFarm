@@ -3,9 +3,10 @@ package Dao;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import net.sf.json.*;
+
 
 import Farm.Farm;
+import com.alibaba.fastjson.JSON;
 
 /**
  * FarmDaoImpl implements FarmDao{@link FarmDao}
@@ -27,9 +28,8 @@ public class FarmDaoImpl implements  FarmDao {
             byte[] buffer = new byte[size];
             in.read(buffer);
             in.close();
-            String str = new String(buffer, "UTF-8");
-            JSONObject obj = new JSONObject().fromObject(str);
-            Farm farm = (Farm)JSONObject.toBean(obj, Farm.class);
+            String jsonString = new String(buffer, "UTF-8");
+            Farm farm = (Farm) JSON.parseObject(jsonString, Farm.class);
             System.out.println("Farm data is Loaded");
             return farm;
         } catch(Exception i) {
@@ -42,9 +42,8 @@ public class FarmDaoImpl implements  FarmDao {
     public void updateFarm(Farm farm) {
         try {
             FileOutputStream fileOut = new FileOutputStream(filePath);
-            JSONObject json = JSONObject.fromObject(farm);
-            String str = json.toString();
-            fileOut.write(str.getBytes());
+            String jsonString = JSON.toJSONString(farm);
+            fileOut.write(jsonString.getBytes());
             fileOut.close();
             System.out.println("Farm data is saved");
         } catch (IOException i) {

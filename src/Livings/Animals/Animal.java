@@ -1,6 +1,7 @@
 package Livings.Animals;
 
 import Constant.Const;
+import Farm.Farm;
 import Livings.Living;
 import State.State;
 import State.AnimalFullState;
@@ -29,6 +30,9 @@ public abstract class Animal extends Living implements Colleague {
 
     //成熟率
     public int _maturityRate = 0;
+
+
+
 
     //改变是否饥饿的状态
     @Override
@@ -68,10 +72,14 @@ public abstract class Animal extends Living implements Colleague {
     public final void getFed(int currentTime) {
         this._state = AnimalFullState.getInstance();
         _lastFedTime = currentTime;
-        _maturityRate++;
+
+        Farm farm = Farm.getInstance();
 
         makeEat();
         makeSound();
+        _maturityRate++;
+        farm.foodCourt -= this._appetite;
+
     }
 
     @Override
