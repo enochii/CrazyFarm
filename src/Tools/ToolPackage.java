@@ -18,16 +18,12 @@ public class ToolPackage extends Tool{
 
     /**
      * Instantiates a new Tool package.
-     */
-    public ToolPackage() {
-        this(0);
-    }
-
-    /**
-     * Instantiates a new Tool package.
      * @param size the max size of package
      */
     public ToolPackage(int size){
+        if(size<=0){
+            size=1;
+        }
         this.size=size;
         toolList=new ArrayList<>(Arrays.asList(new Tool[size]));
     }
@@ -37,7 +33,8 @@ public class ToolPackage extends Tool{
      * @param tool the tool to be added
      */
     public void addTool(Tool tool){
-        if (isFull()){
+
+        if (isFull() || tool==this){
             //throw exception
             return;
         }
@@ -48,7 +45,7 @@ public class ToolPackage extends Tool{
      * Iterator iterator.
      * @return the iterator of ToolPackage
      */
-    Iterator<Tool> iterator(){
+    public Iterator<Tool> iterator(){
         return toolList.iterator();
     }
 
@@ -56,7 +53,7 @@ public class ToolPackage extends Tool{
      * Gets max size of tool package
      * @return the max size of tool package
      */
-    int getSize() {
+    public int getSize() {
         return size;
     }
 

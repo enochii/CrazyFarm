@@ -1,5 +1,8 @@
 package Constant;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Const {
     //生物的价值
     public final static double VALUE_TABLE_CHICKEN = 20.0;
@@ -7,10 +10,22 @@ public class Const {
 
     public final static double VALUE_CROP = 10.0;
 
+    //生物的附加价值（装饰器）
+    public final static double VALUE_ADDED_ORGANIC = 5.0;
+    public final static double VALUE_ADDED_TRANSGENOSIS = -5.0;
+    public final static double VALUE_ADDED_FRESH = 10.0;
+    public final static double VALUE_ADDED_STALE = -10.0;
+
+
     //生物的名字
     public final static String NAME_TABLE_CHICKEN = "TableChicken";
     public final static String NAME_YELLOW_DUCK = "SmallYellowDuck";
     public final static String NAME_CROP = "CROP";
+
+
+    //生物的成熟状态
+    public final static String MATURE = "Mature";
+    public final static String NOT_MATURE = "Not Mature";
 
     // 土地的类型
     public final static String TYPE_FIELD = "Field";
@@ -37,4 +52,12 @@ public class Const {
     // 业务代表模式提供的业务服务
     public final static String SERVICE_CNT_FARMER = "CountFarmer";
     public final static String SERVICE_DISPLAY_PLANT = "DisplayPlant";
+
+    // 农民的名字
+    public final static ArrayList<String> FARMER_NAMES = new ArrayList<>(Arrays.asList(
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"));
+
+    // 每种农民的数量
+    public static final int EACH_TYPE_NUM = 4;
+
 }
