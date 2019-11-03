@@ -1,20 +1,19 @@
 package Farm;
 
 import Builder.FarmerMultipleton;
+import Constant.Const;
 import Dao.FarmDao;
 import Dao.FarmDaoImpl;
-import Constant.Const;
 import Livings.Animals.Animal;
 import Livings.Animals.Chicken.TableChicken;
 import Livings.Plants.Crop;
 import Livings.Plants.Plant;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
-import sun.tools.jconsole.Tab;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+
+//import sun.tools.jconsole.Tab;
 //import javafx.scene.control.Menu;
 
 /**
@@ -54,24 +53,35 @@ public class Farm {
 
     static Farm _instance;
 
+    //Mutexes for double checked locking
+    private final static Object _mutex = new Object();
+
     /**
      * @return : 农场实例
-     * 获取 [农场] 的全局唯一实例，这里用到了单例模式
+     * 获取 [农场] 的全局唯一实例，这里用到了双重检查锁模式
      */
     public static Farm getInstance() {
         if(_instance == null) {
-            FarmDao farmDao=new FarmDaoImpl();
-            if( (_instance = farmDao.getFarm()) == null) {
+            //当多个线程同时发现instance为null时，除了第一个线程/进程，所有线程/进程只能到达这里
+            synchronized (_mutex){
+                //当第一个进程结束初始化后，所有进程来到这里发现已经初始化，直接返回
+                //这样就避免了多个进程进行多次初始化
+                if(_instance == null){
+                    //=================具体的初始化逻辑=================//
+                    FarmDao farmDao=new FarmDaoImpl();
+                    if( (_instance = farmDao.getFarm()) == null) {
 
-                //debug
-                _instance = Farm.init();
-                //_instance = new Farm();
-               // System.out.println(_instance.getAnimalMenu());
+                        //debug
+                        _instance = Farm.init();
+                        //_instance = new Farm();
+                        // System.out.println(_instance.getAnimalMenu());
 //                _instance._animalMediator.setFarm(_instance);
-                //初始化一个空农场,并存储到本地中
+                        //初始化一个空农场,并存储到本地中
 //                _instance = new Farm();
 //                System.out.println("初始化农场数据");
-                farmDao.updateFarm(_instance);
+                        farmDao.updateFarm(_instance);
+                    }
+                }
             }
         }
         if(_instance._animalMenu == null){
