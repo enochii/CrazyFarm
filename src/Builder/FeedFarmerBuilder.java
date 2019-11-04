@@ -1,7 +1,10 @@
 package Builder;
 
+import AbstractFactory.AbstractToolFactory;
+import AbstractFactory.IronToolFactory;
 import Constant.Const;
 import Tools.BigSize;
+import Tools.FarmTool;
 import Tools.Shovel;
 import Tools.SmallSize;
 
@@ -17,8 +20,12 @@ public class FeedFarmerBuilder extends FarmerBuilder {
         this._farmer.setType(Const.WorkType.FEED);
     }
     public void assignTools() {
-        // 暂时没按照享元模式，后面更改
-        this._farmer.assignTool( new Shovel(new BigSize()));
-        this._farmer.assignTool( new Shovel(new SmallSize()));
+        // 利用 抽象工厂模式 和 享元模式 获取农具
+        AbstractToolFactory ironToolFactory = new IronToolFactory();
+        FarmTool ironBigShovel = ironToolFactory.createBigShovel();
+        FarmTool ironSmallShovel = ironToolFactory.createSmallShovel();
+
+        this._farmer.assignTool( ironBigShovel );
+        this._farmer.assignTool( ironSmallShovel );
     }
 }

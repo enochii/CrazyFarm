@@ -1,7 +1,10 @@
 package Builder;
 
+import AbstractFactory.AbstractToolFactory;
+import AbstractFactory.IronToolFactory;
 import Constant.Const;
 import Tools.BigSize;
+import Tools.FarmTool;
 import Tools.Hoe;
 import Tools.SmallSize;
 
@@ -17,7 +20,12 @@ public class CultivateFarmerBuilder extends FarmerBuilder {
         this._farmer.setType(Const.WorkType.CULTIVATE);
     }
     public void assignTools() {
-        this._farmer.assignTool(new Hoe(new BigSize()));
-        this._farmer.assignTool(new Hoe(new SmallSize()));
+        // 利用 抽象工厂模式 和 享元模式 获取农具
+        AbstractToolFactory ironToolFactory = new IronToolFactory();
+        FarmTool ironBigHoe = ironToolFactory.createBigHoe();
+        FarmTool ironSmallHoe = ironToolFactory.createSmallHoe();
+
+        this._farmer.assignTool(ironBigHoe);
+        this._farmer.assignTool(ironSmallHoe);
     }
 }

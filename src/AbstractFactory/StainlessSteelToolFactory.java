@@ -7,11 +7,13 @@ import Tools.StainlessFarmTool.StainlessHoe;
 import Tools.StainlessFarmTool.StainlessShovel;
 
 /**
+ * 不锈钢制农具工厂
+ *
  * @className: StainlessSteelToolFactory
  * @author: Leon
  * @description:
  * @designPattern:
- * @date: 7:23 下午 2019/10/27
+ * @date: 7 :23 下午 2019/10/27
  */
 public class StainlessSteelToolFactory extends AbstractToolFactory {
     private StainlessHoe _smallHoe;
@@ -19,6 +21,9 @@ public class StainlessSteelToolFactory extends AbstractToolFactory {
     private StainlessShovel _smallShovel;
     private StainlessShovel _bigShovel;
 
+    /**
+     * Instantiates a new Stainless steel tool factory.
+     */
     public StainlessSteelToolFactory() {
         this._smallHoe = null;
         this._bigHoe = null;
