@@ -13,9 +13,9 @@ public class SolveStarvationFacade {
     private SolveStarvation owner_solve;
 	
 	public SolveStarvationFacade(Farm farm, Farmer farmer) {
-        Starvation starvation = new Starvation();
-		FarmerSolveStarvation farmer_solve = new FarmerSolveStarvation(farm, farmer);
-        OwnerSolveStarvation owner_solve = new OwnerSolveStarvation(farm);
+        starvation = new Starvation();
+		farmer_solve = new FarmerSolveStarvation(farm, farmer);
+        owner_solve = new OwnerSolveStarvation(farm);
 	}
 	
 	public void solve(int total_appetite_num) {
