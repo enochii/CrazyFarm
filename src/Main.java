@@ -33,7 +33,6 @@ public class Main {
 
         Farm farm = Farm.getInstance();
 
-
         AnimalMediator animalMediator = new AnimalMediator();
         PlantMediator plantMediator = new PlantMediator();
 
@@ -50,6 +49,7 @@ public class Main {
 //        System.out.println(farm.getOwner().getMoney());
 
         owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
+        farm.addMediatorForAll();
         System.out.println(owner.getMoney());
 
         TimeCounter timeCounter = new TimeCounter();

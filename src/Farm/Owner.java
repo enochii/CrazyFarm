@@ -34,6 +34,12 @@ public class Owner implements MoneyManager, Serializable {
         return money;
     }
 
+    /**
+     *
+     * @param ownerSolveStarvation 农场主负责类
+     * @param starvation 需要解决的问题
+     * @return 是否成功解决问题
+     */
     public boolean solveStarvation(OwnerSolveStarvation ownerSolveStarvation, Starvation starvation ){
         int food_required = starvation._required_food_amount;
         if(this.getMoney() > starvation._required_money_amount){
