@@ -96,7 +96,8 @@ public class Main {
         CropConverter.main();
 
 
-        //系统结束时保存Farm
+        //使用 数据访问对象（DAO） 模式
+        System.out.println("======== 使用 DAO 模式 ========");
         FarmDao farmDao=new FarmDaoImpl();
         farmDao.updateFarm(farm);
     }
