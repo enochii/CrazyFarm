@@ -1,5 +1,8 @@
 package Converter;
 
+import Livings.Plants.Crop;
+import Memento.CropStateMemento;
+
 import java.util.function.Function;
 
 /**
@@ -25,6 +28,7 @@ public class Converter<T, U> {
      * @return 转换后的实体对象
      */
     public final U convertFromDto(final T dto) {
+        System.out.println("你正在从对应dto恢复实体（转换器 Converter模式）");
         return _fromDto.apply(dto);
     }
 
@@ -33,7 +37,21 @@ public class Converter<T, U> {
      * @return 转换后的dto
      */
     public final T convertFromEntity(final U entity) {
+        System.out.println("你正在从对应的实体生成相应的dto（转换器 Converter模式）");
         return _fromEntity.apply(entity);
     }
 
+    public static void main(){
+        System.out.println("=======使用 转换器 Converter模式");
+        Crop crop = new Crop();
+        System.out.println("待转换的crop状态如下");
+        crop.printCrop();
+        System.out.println("你使用了转换器模式获得了一个dto");
+        CropConverter converter = new CropConverter();
+        CropStateMemento stateMemento = converter.convertFromEntity(crop);
+        System.out.println("你使用转换器将dto转成了一个新的crop");
+        System.out.println("它的状态如下");
+        Crop converted = converter.convertFromDto(stateMemento);
+        converted.printCrop();
+    }
 }
