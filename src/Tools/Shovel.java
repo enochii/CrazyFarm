@@ -10,9 +10,9 @@ import Constant.Const;
 public class Shovel extends FarmTool {
 
 	public Shovel(Size s) {
-
 		super(s);
 		this._material = Const.Material.IRON;
+		System.out.println("铲子");
 	}
 
 	@Override

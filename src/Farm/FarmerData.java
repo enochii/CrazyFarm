@@ -25,9 +25,11 @@ public class FarmerData implements Serializable {
      * 无参构造函数
      */
     public FarmerData() {
+        System.out.println("======== 使用私有类数据 Private Class Data 模式 ========");
         this._type = Const.WorkType.SPARE;
         this._bag = new ToolPackage(2);
         this._isWorking = false;
+        System.out.println("成功创建农民数据");
     }
 
     /**

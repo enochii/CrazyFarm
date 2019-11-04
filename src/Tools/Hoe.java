@@ -12,6 +12,7 @@ public class Hoe extends FarmTool {
 	public Hoe(Size s) {
 		super(s);
 		this._material = Const.Material.IRON;
+		System.out.println("锄头");
 	}
 
 	@Override

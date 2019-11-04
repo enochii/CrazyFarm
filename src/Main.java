@@ -17,6 +17,7 @@ import Memento.CropStateMemento;
 import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
 import Observer.PlantsObserver;
+import Tools.Extension.AugmentedHoe;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 
@@ -95,6 +96,8 @@ public class Main {
         //转换器
         CropConverter.main();
 
+        // 扩展对象 Extension objects 模式
+        AugmentedHoe augmentedHoe = new AugmentedHoe();
 
         //系统结束时保存Farm
         FarmDao farmDao=new FarmDaoImpl();

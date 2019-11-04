@@ -31,9 +31,11 @@ public class ReduceMoneyCallback implements MoneyCallback {
      */
     @Override
     public void call() {
+        System.out.println("======== 使用回调 Callback 模式 ========");
         if (!_ownerProxy.reduceMoney(_reduceMoney)) {
             throw new RuntimeException("the owner doesn't have enough money");
         }
+        System.out.println("回调扣除资金 " + _reduceMoney + " 元");
     }
 
 }
