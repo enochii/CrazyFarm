@@ -6,11 +6,14 @@ import Livings.Plants.Plant;
 import java.util.Iterator;
 
 /**
+ * The Display plant service.
+ * 展示农场内所有农作物的业务服务，实现了业务服务接口。
+ *
  * @className: DisplayPlantService
  * @author: Leon
  * @description:
  * @designPattern:
- * @date: 12:40 下午 2019/10/31
+ * @date: 12 :40 下午 2019/10/31
  */
 public class DisplayPlantService implements BusinessService {
 

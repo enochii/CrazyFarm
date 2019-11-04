@@ -9,6 +9,8 @@ import Tools.Shovel;
 import Tools.SmallSize;
 
 /**
+ * 喂食型农民的 Builder
+ *
  * @className: FeedFarmerBuilder
  * @author: Leon
  * @description:

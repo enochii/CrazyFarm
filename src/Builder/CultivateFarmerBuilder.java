@@ -9,6 +9,8 @@ import Tools.Hoe;
 import Tools.SmallSize;
 
 /**
+ * 耕种型农民的 Builder
+ *
  * @className: CultivateFarmerBuilder
  * @author: Leon
  * @description:

@@ -12,9 +12,7 @@ import Farm.Farmer;
  * @date: 4 :17 下午 2019/10/27
  */
 public abstract class FarmerBuilder {
-    /**
-     * The Farmer.
-     */
+
     protected Farmer _farmer;
 
     /**
