@@ -70,7 +70,7 @@ public class Crop extends Plant implements LivingCloneable {
 	 * 打印作物的状态
 	 */
 	public void printCrop(){
-		System.out.println("=======作物的状态=======");
+		System.out.println("-------作物的状态-------");
 		System.out.println("experience ： " + _experience);
 		System.out.println("maturityRate: " + _maturityRate);
 		System.out.println("isMature: " + _isMature);

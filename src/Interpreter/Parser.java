@@ -71,7 +71,7 @@ public class Parser {
      * 内部测试函数
      */
     public static void main() throws ParseException {
-        System.out.println("======== 解释器 Interpreter模式 =======");
+        System.out.println("======== 使用 解释器 Interpreter模式 =======");
         System.out.println("欢迎来到批发市场，你将在这里出售一些已经成熟的动物");
         System.out.print("这是你的出售清单 ：");
         String exp = "2 * " + Const.VALUE_TABLE_CHICKEN +" + "+ Const.VALUE_YELLOW_DUCK + " + "+ Const.VALUE_CROP;

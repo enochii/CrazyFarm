@@ -1,30 +1,26 @@
 import Adapter.ChickenAdapter;
+import Adapter.MakeDuckQuack;
 import Builder.FarmerMultipleton;
 import Constant.Const;
+import Converter.CropConverter;
 import Dao.FarmDao;
 import Dao.FarmDaoImpl;
 import Farm.Farm;
 import Farm.Menu;
-import Interpreter.Parser;
 import Farm.Owner;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
+import Interpreter.ParseException;
+import Interpreter.Parser;
 import Livings.Animals.Chicken.TableChicken;
 import MVC.FarmerController;
 import MVC.FarmerView;
+import Memento.CropStateMemento;
+import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
-import junit.framework.JUnit4TestAdapter;
+import Observer.PlantsObserver;
 import mediator.AnimalMediator;
+import mediator.PlantMediator;
 
 import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
-import Observer.AnimalsObserver;
-import Observer.PlantsObserver;
-import mediator.PlantMediator;
-import Farm.Farmer;
 
 public class Main {
 
@@ -86,7 +82,18 @@ public class Main {
            }
 
 
-
+        //适配器
+        MakeDuckQuack.makeDuckQuack(new ChickenAdapter(new TableChicken()));
+        //解释器
+        try {
+            Parser.main();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //备忘录
+        CropStateMemento.main();
+        //转换器
+        CropConverter.main();
 
 
         //系统结束时保存Farm
