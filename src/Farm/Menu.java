@@ -1,9 +1,5 @@
 package Farm;
 
-import Livings.Animals.Animal;
-import Livings.Animals.Chicken.Chicken;
-import Livings.Animals.Chicken.TableChicken;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,19 +49,6 @@ public class Menu<T> implements Iterable<T>, Serializable {
     }
 
     public int getSize() { return _menu.size(); }
-
-    public static void main(){
-        Menu<Animal> animalMenu = new Menu<Animal>();
-        for(int i=0;i<5;i++){
-            Chicken chicken = new TableChicken();
-            animalMenu.add(chicken);
-//            animalMenu.erase(chicken);
-        }
-        Iterator <Animal> iterator = animalMenu.iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next().getName());
-        }
-    }
 
     /*
      * 迭代器类，实现迭代器模式，供对应的Menu类调用
