@@ -2,10 +2,12 @@ package State;
 
 import Livings.Living;
 
+import java.io.Serializable;
+
 /**
  * The interface State.
  */
-public interface State {
+public interface State extends Serializable {
 
     /**
      * Gets full state.

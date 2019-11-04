@@ -4,7 +4,9 @@ import Constant.Const;
 import Tools.Tool;
 import Tools.ToolPackage;
 
-public class FarmerData {
+import java.io.Serializable;
+
+public class FarmerData implements Serializable {
     // 指定工作类型和背包，用于实现 Builder 模式
     private Const.WorkType _type;
     private ToolPackage _bag;

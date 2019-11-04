@@ -3,9 +3,10 @@ package Builder;
 import Constant.Const;
 import Farm.Farmer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class FarmerMultipleton {
+public class FarmerMultipleton implements Serializable {
     private static final int TYPE_NUM = Const.WorkType.values().length;
     private String name;
     private boolean if_hired = false;

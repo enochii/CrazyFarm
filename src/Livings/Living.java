@@ -4,11 +4,13 @@ import State.Context;
 import State.AnimalHungryState;
 import State.State;
 
+import java.io.Serializable;
+
 /**
  * 生物类，动物和植物的基类
  */
 //TODO : 把生物类写成接口
-public abstract class Living implements Context {
+public abstract class Living implements Context, Serializable {
     //生物成熟后的价值
     private double _value;
 //    // 生物名字

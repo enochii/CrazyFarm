@@ -11,6 +11,11 @@ import Livings.Plants.Plant;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 
+
+import java.awt.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 import java.util.Iterator;
 
 //import sun.tools.jconsole.Tab;
@@ -19,7 +24,7 @@ import java.util.Iterator;
 /**
  * 农场类，在这里进行初始化工作
  */
-public class Farm {
+public class Farm implements Serializable {
     /**
      * 动植物的菜单
      */

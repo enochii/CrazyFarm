@@ -1,8 +1,7 @@
 package Dao;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.Base64;
 
 
 import Farm.Farm;
@@ -19,46 +18,58 @@ import com.alibaba.fastjson.JSON;
  */
 public class FarmDaoImpl implements  FarmDao {
 
-    private String filePath = new String("./Farm.json");
-
-    public Farm getFarm() {
+    private String filePath = new String("./Farm.dat");
+    @Override
+    public Farm getFarm(){
         try {
             FileInputStream in = new FileInputStream(filePath);
             int size = in.available();
             byte[] buffer = new byte[size];
             in.read(buffer);
             in.close();
-            String jsonString = new String(buffer, "UTF-8");
-            Farm farm = (Farm) JSON.parseObject(jsonString, Farm.class);
-            System.out.println("Farm data is Loaded");
-            return farm;
-        } catch(Exception i) {
-            //i.printStackTrace();
-            System.out.println("缺少文件 Farm.json");
+            String str = new String(buffer, "UTF-8");
+            Farm state_farm = (Farm) fromString(str);
+            return state_farm;
+        } catch (ClassNotFoundException | IOException e) {
             return null;
         }
     }
 
-    public void updateFarm(Farm farm) {
-        try {
-            FileOutputStream fileOut = new FileOutputStream(filePath);
-            String jsonString = JSON.toJSONString(farm);
-            fileOut.write(jsonString.getBytes());
-            fileOut.close();
-            System.out.println("Farm data is saved");
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
+    @Override
+    public void deleteFarm() {
+
     }
 
-    public void deleteFarm() {
-        FileOutputStream fileOut = null;
+    @Override
+    public void updateFarm(Farm farm) {
+
         try {
-            fileOut = new FileOutputStream(filePath);
+            String str=toString(farm);
+            FileOutputStream fileOut = new FileOutputStream(filePath);
+            fileOut.write(str.getBytes());
             fileOut.close();
-        } catch (Exception e) {
+            System.out.println("Farm data is saved");
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Farm data is deleted");
+    }
+    /** Read the object from Base64 string. */
+    private  Object fromString( String s ) throws IOException,
+            ClassNotFoundException {
+        byte [] data = Base64.getDecoder().decode( s );
+        ObjectInputStream ois = new ObjectInputStream(
+                new ByteArrayInputStream(  data ) );
+        Object o  = ois.readObject();
+        ois.close();
+        return o;
+    }
+
+    /** Write the object to a Base64 string. */
+    private String toString( Serializable o ) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream( baos );
+        oos.writeObject( o );
+        oos.close();
+        return Base64.getEncoder().encodeToString(baos.toByteArray());
     }
 }
