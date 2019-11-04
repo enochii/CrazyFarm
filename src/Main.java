@@ -79,7 +79,7 @@ public class Main {
             System.out.println("classname: (controller) : updateView: update and show the farmer's information");
             controller.updateView();
             i++;
-           }
+        }
 
 
         //适配器
