@@ -4,6 +4,7 @@ import Constant.Const;
 
 /**
  * 桥接(Bridge)模式
+ * 实现不同规模的不同农具
  * 农具类
  */
 public abstract class FarmTool extends Tool {
@@ -34,6 +35,18 @@ public abstract class FarmTool extends Tool {
 	 * do what the farm tool should do
 	 */
 	public abstract void doWork();
+
+	/**
+	 * for the test
+	 * @return 返回农具做的工作量
+	 */
+	public int doWorkTest() {
+		if (size.isBig()) {
+			return 2;
+		} else {
+			return 1;
+		}
+	}
 
 	public abstract void testAbstractFactory();
 	

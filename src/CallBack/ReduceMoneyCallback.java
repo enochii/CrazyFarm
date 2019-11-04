@@ -2,6 +2,10 @@ package CallBack;
 
 import Proxy.OwnerProxy;
 
+/**
+ * 回调(Callback)模式
+ * 通过回调来扣除场主的资金
+ */
 public class ReduceMoneyCallback implements MoneyCallback {
 
     private double _reduceMoney;
@@ -21,9 +25,12 @@ public class ReduceMoneyCallback implements MoneyCallback {
         _reduceMoney = money;
     }
 
+    /**
+     * 回调模式的调用函数
+     * 调用此函数完成扣除资金回调
+     */
     @Override
     public void call() {
-        //System.out.println(_ownerProxy.getMoney());
         if (!_ownerProxy.reduceMoney(_reduceMoney)) {
             throw new RuntimeException("the owner doesn't have enough money");
         }
