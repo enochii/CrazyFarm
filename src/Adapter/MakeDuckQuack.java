@@ -12,6 +12,7 @@ public class MakeDuckQuack {
      * @param duck
      */
     public static void makeDuckQuack(Duck duck){
+        System.out.println("======== 使用 适配器 Adapter模式 =======");
         System.out.println("非鸭勿扰！");
         duck.quack();
     }

@@ -58,10 +58,15 @@ public class Menu<T> implements Iterable<T>, Serializable {
         private List<T> _items;
 
         MenuIterator(Menu<T> menu){
+            System.out.println("======== 使用迭代器 Iterator 模式=========");
+            System.out.println("你初始化了一个菜单迭代器（迭代器 Iterator模式）");
             _index = 0;
             _items = menu._menu;
         }
 
+        /*
+         * 以下hasNext() next() remove()均为重载Iterator<T>实现的方法
+         */
         @Override
         public boolean hasNext(){
             return _index < _menu.size();

@@ -6,8 +6,9 @@ import Livings.Animals.Chicken.TableChicken;
 import Livings.Animals.Duck.Duck;
 import State.State;
 
-/*
+/**
  * 鸡的适配器，把鸡叫gobble适配成quack
+ * 持有对真正的鸡实例的引用，真实的功能函数则转发到鸡处理
  */
 public class ChickenAdapter extends Duck {
 
@@ -31,6 +32,10 @@ public class ChickenAdapter extends Duck {
         return _chicken.getValue();
     }
 
+    /**
+     * @description 适配器会转发逻辑给真正的动物TableChicken
+     *
+     */
     @Override
     public void setClock(int currentTime){
         _chicken.setClock(currentTime);
@@ -71,7 +76,7 @@ public class ChickenAdapter extends Duck {
     }
 
     /*
-     * 测试函数
+     * 内部测试函数
      */
     public static void main(){
         Duck fakeDuck = new ChickenAdapter(new TableChicken());

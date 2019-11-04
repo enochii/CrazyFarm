@@ -11,11 +11,7 @@ import Livings.Plants.Plant;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 
-
-import java.awt.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-
 import java.util.Iterator;
 
 //import sun.tools.jconsole.Tab;
@@ -72,6 +68,8 @@ public class Farm implements Serializable {
                 //当第一个进程结束初始化后，所有进程来到这里发现已经初始化，直接返回
                 //这样就避免了多个进程进行多次初始化
                 if(_instance == null){
+                    System.out.println("======== 使用双重检查锁 Double Checked Locking 模式=======");
+                    System.out.println("农场初始化中");
                     //=================具体的初始化逻辑=================//
                     FarmDao farmDao=new FarmDaoImpl();
                     if( (_instance = farmDao.getFarm()) == null) {
@@ -86,6 +84,7 @@ public class Farm implements Serializable {
 //                System.out.println("初始化农场数据");
                         farmDao.updateFarm(_instance);
                     }
+                    System.out.println("农场初始化成功！");
                 }
             }
         }
