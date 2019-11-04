@@ -65,6 +65,7 @@ public class Main {
         }
 
         //使用 MVC 模式
+        System.out.println("======== 使用 MVC 模式 ========");
         Menu<FarmerMultipleton> farmerMenu = farm.getFarmerMenu();
         Iterator<FarmerMultipleton> farmerIter = farmerMenu.iterator();
         int baseAge = 30;
