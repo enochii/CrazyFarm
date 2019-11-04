@@ -16,7 +16,14 @@ public abstract class FarmTool extends Tool {
 	protected Const.Material _material;
 	
 	public FarmTool(Size s) {
+		System.out.println("======== 使用桥接 Bridge 模式 ========");
 		this.size = s;
+		System.out.print("成功创建");
+		if (s.isBig()) {
+			System.out.print("大");
+		} else {
+			System.out.print("小");
+		}
 	}
 	
 	/**

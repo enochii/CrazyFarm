@@ -15,6 +15,8 @@ public class AugmentedHoe implements HoeExtension {
      * 构造函数
      */
     public AugmentedHoe() {
+        System.out.println("======== 使用扩展对象 Extension objects 模式 ========");
+        System.out.println("成功创建增强锄头");
         this._hoe = new Hoe(new BigSize());
     }
 
