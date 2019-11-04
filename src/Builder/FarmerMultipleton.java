@@ -12,7 +12,7 @@ public class FarmerMultipleton implements Serializable {
     private boolean if_hired = false;
     public Farmer farmer;
     private static ArrayList<FarmerMultipleton> list = new ArrayList<>(Const.EACH_TYPE_NUM * TYPE_NUM);
-
+    private int _age;
     private FarmerMultipleton(String name,Director director){
         this.name = name;
         farmer = director.getFarmer();
@@ -95,5 +95,14 @@ public class FarmerMultipleton implements Serializable {
 
     public String getName(){
         return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public int getAge(){return _age;}
+    public void setAge(int age){
+        this._age = age;
     }
 }

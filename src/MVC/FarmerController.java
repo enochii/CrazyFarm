@@ -1,5 +1,6 @@
 package MVC;
 
+import Builder.FarmerMultipleton;
 import Farm.Farmer;
 
 /**
@@ -10,7 +11,7 @@ import Farm.Farmer;
  **/
 
 public class FarmerController {
-    private Farmer _model;
+    private FarmerMultipleton _model;
     private FarmerView _view;
 
     /**
@@ -19,7 +20,7 @@ public class FarmerController {
      * @param model the model
      * @param view  the view
      */
-    public FarmerController(Farmer model, FarmerView view){
+    public FarmerController(FarmerMultipleton model, FarmerView view){
         this._model = model;
         this._view = view;
     }
