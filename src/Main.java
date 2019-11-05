@@ -65,6 +65,7 @@ public class Main {
         // 桥接模式
         // 多例模式
         // 私有类数据模式
+        // 组合模式
         Farm farm = Farm.getInstance();
 
         // 工厂模式
