@@ -9,6 +9,10 @@ import Constant.Const;
 import Converter.CropConverter;
 import Dao.FarmDao;
 import Dao.FarmDaoImpl;
+import Decorator.AnimalDecorator.FreshDecorator;
+import Decorator.AnimalDecorator.StaleDecorator;
+import Decorator.PlantDecorator.OrganicDecorator;
+import Decorator.PlantDecorator.TransgenosisDecorator;
 import Factory.Factory;
 import Farm.Farm;
 import Farm.Menu;
@@ -23,6 +27,7 @@ import Land.*;
 import Factory.*;
 import Livings.Animals.Animal;
 import Livings.Animals.Chicken.TableChicken;
+import Livings.Plants.Crop;
 import Livings.Plants.Plant;
 import MVC.FarmerController;
 import MVC.FarmerView;
@@ -30,6 +35,8 @@ import Memento.CropStateMemento;
 import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
 import Observer.PlantsObserver;
+import Proxy.OwnerProxy;
+import Specification.specification_test;
 import Visitor.ExpLivingVisitor;
 import Tools.Extension.AugmentedHoe;
 import criteria.Criteria;
@@ -183,6 +190,45 @@ public class Main {
         // 扩展对象 Extension objects 模式
         AugmentedHoe augmentedHoe = new AugmentedHoe();
 
+
+        //使用 代理（Proxy）模式
+        System.out.println("======== 使用 代理Proxy 模式 ========");
+        OwnerProxy ownerProxy = new OwnerProxy();
+        System.out.println("成功创建农产主代理@"+ownerProxy.hashCode());
+        System.out.println("通过代理@"+ownerProxy.hashCode()+"读取owner的财产总额。");
+        ownerProxy.getMoney();
+        System.out.println("尝试通过代理@"+ownerProxy.hashCode()+"帮助owner消费1300元。");
+        ownerProxy.reduceMoney(1300);
+        System.out.println("尝试通过代理@"+ownerProxy.hashCode()+"帮助owner消费300元。");
+        ownerProxy.reduceMoney(300);
+
+        //使用 装饰器（Decorator）模式
+        System.out.println("======== 使用 装饰器Decorator 模式 ========");
+
+        //animal decorator test
+        System.out.println("动物装饰器：");
+        TableChicken tc = new TableChicken();
+        System.out.println("生成一只普通的tableChicken@"+tc.hashCode()+"，价值"+tc.getValue()+"元。");
+        FreshDecorator d_tc = new FreshDecorator(tc);
+        System.out.println("对tableChicken@"+tc.hashCode()+"进行新鲜装饰器@"+d_tc.hashCode()+"处理后，价值"+d_tc.getValue()+"元。");
+        StaleDecorator d_sc = new StaleDecorator(tc);
+        System.out.println("对tableChicken@"+tc.hashCode()+"进行陈腐装饰器@"+d_sc.hashCode()+"处理后，价值"+d_sc.getValue()+"元。");
+
+        //plant decorator test
+        System.out.println("植物装饰器：");
+        Crop c = new Crop();
+        System.out.println("生成一棵普通的crop@"+c.hashCode()+"，价值"+c.getValue()+"元。");
+        OrganicDecorator d_oc = new OrganicDecorator(c);
+        System.out.println("对crop@"+c.hashCode()+"进行有机蔬菜装饰器@"+d_oc.hashCode()+"处理后，价值"+d_oc.getValue()+"元。");
+        TransgenosisDecorator d_tgc = new TransgenosisDecorator(c);
+        System.out.println("对crop@"+c.hashCode()+"进行有机蔬菜装饰器@"+d_tgc.hashCode()+"处理后，价值"+d_tgc.getValue()+"元。");
+
+
+        //使用 规约（Specification） 模式
+        System.out.println("======== 使用 规约Specification 模式 ========");
+        specification_test t = new specification_test();
+
+        //系统结束时保存Farm
         //使用 Filter 模式
         System.out.println("======== 使用 Filter 模式 ========");
         List<Animal> animals = new ArrayList<>();
