@@ -1,13 +1,19 @@
 package CallBack;
 
-import Farm.Owner;
+import Proxy.OwnerProxy;
 
+/**
+ * 回调(Callback)模式
+ * 通过回调来扣除场主的资金
+ */
 public class ReduceMoneyCallback implements MoneyCallback {
 
     private double _reduceMoney;
+    private OwnerProxy _ownerProxy;
 
     public ReduceMoneyCallback(double reduceMoney) {
         this._reduceMoney = reduceMoney;
+        this._ownerProxy = new OwnerProxy();
     }
 
     /**
@@ -19,12 +25,17 @@ public class ReduceMoneyCallback implements MoneyCallback {
         _reduceMoney = money;
     }
 
+    /**
+     * 回调模式的调用函数
+     * 调用此函数完成扣除资金回调
+     */
     @Override
     public void call() {
-        Owner owner = Owner.getInstance();
-        if (!owner.reduceMoney(_reduceMoney)) {
+        System.out.println("======== 使用回调 Callback 模式 ========");
+        if (!_ownerProxy.reduceMoney(_reduceMoney)) {
             throw new RuntimeException("the owner doesn't have enough money");
         }
+        System.out.println("回调扣除资金 " + _reduceMoney + " 元");
     }
 
 }

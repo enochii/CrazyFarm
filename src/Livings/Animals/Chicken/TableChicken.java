@@ -1,6 +1,7 @@
 package Livings.Animals.Chicken;
 
 import Constant.Const;
+import Farm.Farm;
 import State.AnimalFullState;
 import State.AnimalHungryState;
 import action.ChickenEat;
@@ -34,9 +35,16 @@ public class TableChicken extends Chicken{
         return _name;
     }
 
+    /**
+     * 构造函数，初始化食量
+     */
     public TableChicken(){
+        this._appetite = 3;
     }
 
+    /**
+     * 构造函数，初始化中介者和食量
+     */
     public TableChicken(Mediator mediator){
         this.setMediator(mediator);
         this._appetite = 3;
@@ -50,46 +58,56 @@ public class TableChicken extends Chicken{
         else _maturityRate = 0;
     }
 
+    /**
+     * 发出叫声
+     */
     @Override
     public void gobble(){
         makeSound();
     }
 
+    /**
+     * 随着时间改变动物的饥饿与否状态和成熟度
+     */
     public void setClock(int currentTime){
 
-        if(_lastFedTime > currentTime){
-            if(currentTime + 24 - _lastFedTime > 6){
-                _state.getHungryState(this);
-
-            }
-            else{
-                _state.gainExperience(this);
-            }
-        }
-
-        else{
             if(currentTime - _lastFedTime > 6){
-                _state.getHungryState(this);
+                if(Farm.getInstance().foodCourt >= this._appetite)
+                {
+                    System.out.println(Const.NAME_TABLE_CHICKEN + "is eating");
+                    this.getFed(currentTime);
+
+                }
+
+               else {
+                    _state.getHungryState(this);
+                }
+
             }
 
             else{
                 _state.gainExperience(this);
             }
 
-        }
-
-        if(this._experience >= 100){
+        if(this._maturityRate >= 20){
             this._isMature = true;
         }
 
 
     }
 
+    /**
+     * 动物进食的动作
+     */
     @Override
     public void makeEat() {
         new ChickenEat().doAction();
+
     }
 
+    /**
+     * 动物发声
+     */
     @Override
     public void makeSound() {
         new ChickenSound().doAction();
@@ -102,10 +120,12 @@ public class TableChicken extends Chicken{
         return _mature;
     }
 
+
+    /**
+     * 接收中介者发出的命令
+     */
     public void setColleagueEnable(boolean enable)
     {
 
     }
-
-
 }

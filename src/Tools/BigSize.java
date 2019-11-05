@@ -1,7 +1,9 @@
 package Tools;
 
 /**
- * 大型
+ * 桥接(Bridge)模式
+ * 实现不同规模的不同农具
+ * 大型规模类
  */
 public class BigSize implements Size {
 

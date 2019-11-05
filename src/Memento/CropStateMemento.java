@@ -28,6 +28,7 @@ public class CropStateMemento {
      * @return 备份的作物当前的状态
      */
     public static CropStateMemento getMemento(Crop crop){
+        System.out.println("你正在获取Crop的状态（备忘录 Memento模式）");
         return new CropStateMemento(crop);
     }
 
@@ -40,6 +41,7 @@ public class CropStateMemento {
         crop._state = state._state;
         crop._experience = state._experience;
         crop._isMature = state._isMature;
+        System.out.println("你已经成功将Crop回退到对应的状态（备忘录 Memento模式）");
     }
 
     @Override
@@ -53,5 +55,20 @@ public class CropStateMemento {
         return this._isMature == memento._isMature &&
                 this._experience == memento._experience &&
                 this._state == memento._state;
+    }
+
+    public static void main(){
+        System.out.println("======== 使用 备忘录 Memento模式 =======");
+        Crop crop = new Crop();
+        Crop cropCopy = crop.clone();
+
+        CropStateMemento state = CropStateMemento.getMemento(crop);
+        //改变作物的状态
+        crop.changeCropState();
+        System.out.println("改变状态后crop的状态如下");
+        crop.printCrop();
+        CropStateMemento.setMemento(crop, state);
+        System.out.println("回退状态后crop的状态如下");
+        crop.printCrop();
     }
 }

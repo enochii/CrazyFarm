@@ -1,9 +1,13 @@
 package Tools;
 
+import java.io.Serializable;
+
 /**
- * Size接口
+ * 桥接(Bridge)模式
+ * 实现不同规模的不同农具
+ * 规模接口
  */
-public interface Size {
+public interface Size extends Serializable {
 	
 	/**
 	 * @return Size的大小

@@ -1,7 +1,9 @@
 package Tools;
 
 /**
- * 小型
+ * 桥接(Bridge)模式
+ * 实现不同规模的不同农具
+ * 小型规模类
  */
 public class SmallSize implements Size {
 

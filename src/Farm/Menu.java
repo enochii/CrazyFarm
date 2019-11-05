@@ -1,11 +1,7 @@
 package Farm;
 
-import Livings.Animals.Animal;
-import Livings.Animals.Chicken.Chicken;
-import Livings.Animals.Chicken.TableChicken;
-
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,7 +9,7 @@ import java.util.List;
  * 菜单类，该类是一个[模板类]，可供动物/植物/工具使用
  * 在这里实现Iterator模式
  */
-public class Menu<T>{
+public class Menu<T> implements Iterable<T>, Serializable {
     private List<T> _menu;
     /*
      * 构造函数
@@ -54,40 +50,32 @@ public class Menu<T>{
 
     public int getSize() { return _menu.size(); }
 
-    public static void main(){
-        Menu<Animal> animalMenu = new Menu<Animal>();
-        for(int i=0;i<5;i++){
-            Chicken chicken = new TableChicken();
-            animalMenu.add(chicken);
-//            animalMenu.erase(chicken);
-        }
-        Iterator <Animal> iterator = animalMenu.iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next().getName());
-        }
-    }
-
     /*
      * 迭代器类，实现迭代器模式，供对应的Menu类调用
      */
     class MenuIterator implements Iterator<T>{
-        private int index = 0;
-        private List<T> items;
+        private int _index = 0;
+        private List<T> _items;
 
         MenuIterator(Menu<T> menu){
-            index = 0;
-            items = menu._menu;
+            System.out.println("======== 使用迭代器 Iterator 模式=========");
+            System.out.println("你初始化了一个菜单迭代器（迭代器 Iterator模式）");
+            _index = 0;
+            _items = menu._menu;
         }
 
+        /*
+         * 以下hasNext() next() remove()均为重载Iterator<T>实现的方法
+         */
         @Override
         public boolean hasNext(){
-            return index < _menu.size();
+            return _index < _menu.size();
         }
 
         @Override
         public T next(){
-            assert index < _menu.size();
-            return _menu.get(index++);
+            assert _index < _menu.size();
+            return _items.get(_index++);
         }
 
         @Override
