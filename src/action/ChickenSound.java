@@ -1,5 +1,8 @@
 package action;
 
+/**
+ * 鸡发声动作
+ */
 public class ChickenSound implements MakeSoundAction{
     @Override
     public void doAction() {

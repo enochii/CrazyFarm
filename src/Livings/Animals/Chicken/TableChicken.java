@@ -77,7 +77,7 @@ public class TableChicken extends Chicken{
                 _state.gainExperience(this);
             }
 
-        if(this._maturityRate >= 20){
+        if(this._maturityRate >= 10){
             this._isMature = true;
         }
 
@@ -87,19 +87,11 @@ public class TableChicken extends Chicken{
     @Override
     public void makeEat() {
         new ChickenEat().doAction();
-
     }
 
     @Override
     public void makeSound() {
         new ChickenSound().doAction();
-    }
-
-    @Override
-    public String isMature() {
-        if(_maturityRate > 3)
-            _mature = Const.MATURE;
-        return _mature;
     }
 
     public void setColleagueEnable(boolean enable)

@@ -57,7 +57,7 @@ public class SmallYellowDuck extends Duck{
             _state.gainExperience(this);
         }
 
-        if(this._maturityRate >= 20){
+        if(this._maturityRate >= 10){
             this._isMature = true;
         }
 
@@ -72,13 +72,6 @@ public class SmallYellowDuck extends Duck{
     @Override
     public void makeSound() {
         new DuckSound().doAction();
-    }
-
-    @Override
-    public String isMature() {
-        if(_maturityRate > 4)
-            _mature = Const.MATURE;
-        return _mature;
     }
 
     public void setColleagueEnable(boolean enable)

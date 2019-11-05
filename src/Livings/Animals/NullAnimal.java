@@ -15,11 +15,6 @@ public class NullAnimal extends Animal {
     }
 
     @Override
-    public String isMature() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public void makeSound() {
         throw new UnsupportedOperationException();
     }

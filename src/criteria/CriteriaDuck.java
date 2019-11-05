@@ -7,6 +7,9 @@ import Livings.Animals.NullAnimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 过滤得到类型为鸭的所有动物
+ */
 public class CriteriaDuck implements Criteria {
 
     @Override
