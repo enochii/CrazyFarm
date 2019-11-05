@@ -5,6 +5,7 @@
  * @create: 2019-10-31 16:17
  **/
 
+import Builder.FarmerMultipleton;
 import Farm.Farm;
 import Livings.Animals.Animal;
 import MVC.FarmerController;
@@ -29,5 +30,26 @@ public class MvcTest {
 //            FarmerController controller = new FarmerController(farmer, view);
 //            controller.updateView();
      //   }
+
+        //使用 MVC 模式
+        System.out.println("======== 测试 MVC 模式 ========");
+        Menu<FarmerMultipleton> farmerMenu = farm.getFarmerMenu();
+        Iterator<FarmerMultipleton> farmerIter = farmerMenu.iterator();
+        int baseAge = 30;
+        String baseName = "Farmer";
+        int i = 0;
+
+        while(farmerIter.hasNext()){
+            FarmerMultipleton farmer = farmerIter.next();
+            FarmerView view = new FarmerView();
+            FarmerController controller = new FarmerController(farmer, view);
+            System.out.println("classname: (controller) :setFarmerAge: set a new age for a farmer");
+            controller.setFarmerAge(30 + i);
+            System.out.println("classname: (controller) :setFarmerAge: set a new name for a farmer");
+            controller.setFarmerName(baseName + i);
+            System.out.println("classname: (controller) : updateView: update and show the farmer's information");
+            controller.updateView();
+            i++;
+        }
     }
 }
