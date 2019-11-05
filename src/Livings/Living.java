@@ -16,6 +16,8 @@ public abstract class Living implements Context, Serializable {
 //    // 生物名字
     private String _name;
 
+    public boolean isSold = false;
+
 
     /**
      * @return 返回生物成熟后的价值

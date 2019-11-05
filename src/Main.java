@@ -123,6 +123,7 @@ public class Main {
         // 外观模式
         for(int i = 1; i <= 100; i++)
         {
+            System.out.println("Farm's current time is : " + i);
             timeCounter.updateTime();
         }
 
