@@ -29,6 +29,6 @@ public class AnimalsObserver implements BaseObserver {
         }
         Mediator mediator=farm.getAnimalMediator();
         mediator.colleagueChanged();
-        System.out.println("Animals updated");
+        //System.out.println("Animals updated");
     }
 }

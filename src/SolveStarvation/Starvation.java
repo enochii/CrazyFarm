@@ -21,7 +21,7 @@ public class Starvation {
         }
         else{
             return "Lack of food amount: " + df.format(_required_food_amount) + ". Need $"
-                    + df.format(_required_money_amount) + "to buy additional food.";
+                    + df.format(_required_money_amount) + " to buy additional food.";
         }
     }
 }

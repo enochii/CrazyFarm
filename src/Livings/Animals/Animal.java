@@ -69,6 +69,7 @@ public abstract class Animal extends Living implements Colleague {
     //动物进行进食动作
     public abstract void makeEat();
 
+    //动物被喂食
     public final void getFed(int currentTime) {
         this._state = AnimalFullState.getInstance();
         _lastFedTime = currentTime;
@@ -82,15 +83,18 @@ public abstract class Animal extends Living implements Colleague {
 
     }
 
+    //动物向中介者报告
     @Override
     public void setColleagueUpdated(){
         _animalMediator.colleagueChanged();
     }
 
+    //动物执行售卖
     public void doSell(){
 
     }
 
+    //动物接收观察者
     public void accept(LivingVisitor livingVisitor){
         livingVisitor.visit(this);
     }

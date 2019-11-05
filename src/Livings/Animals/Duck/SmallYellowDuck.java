@@ -10,34 +10,41 @@ public class SmallYellowDuck extends Duck{
     private static double _value = Const.VALUE_YELLOW_DUCK;
     private static String _name = Const.NAME_YELLOW_DUCK;
 
-    /*
+    /**
      * @return 返回生物成熟后的价值
      */
     public double getValue(){
         return _value;
     }
 
-    /*
+    /**
      * @return 生物的名字
      */
     @Override
     public String getName(){
         return _name;
     }
+
+    /**
+     * 鸭叫
+     */
     @Override
     public void quack(){
         makeSound();
     }
 
+    /**
+     * 构造函数，初始化中介者
+     */
     public SmallYellowDuck(Mediator mediator){
         this.setMediator(mediator);
         this._appetite = 4;
     }
 
+    /**
+     * 随着时间改变动物的饥饿与否状态和成熟度
+     */
     public void setClock(int currentTime){
-
-
-
 
         if(currentTime - _lastFedTime > 7){
             if(Farm.getInstance().foodCourt >= this._appetite)
@@ -64,11 +71,17 @@ public class SmallYellowDuck extends Duck{
 
     }
 
+    /**
+     * 动物进食的动作
+     */
     @Override
     public void makeEat() {
         new DuckEat().doAction();
     }
 
+    /**
+     * 动物发出声音
+     */
     @Override
     public void makeSound() {
         new DuckSound().doAction();
@@ -81,17 +94,26 @@ public class SmallYellowDuck extends Duck{
         return _mature;
     }
 
+    /**
+     * 动物接收中介者的命令
+     */
     public void setColleagueEnable(boolean enable)
     {
 
     }
 
+    /**
+     * 动物向中介者报告
+     */
     @Override
     public void setColleagueUpdated(){
         _animalMediator.colleagueChanged();
 
     }
 
+    /**
+     * 初始化鸭的食量
+     */
     public SmallYellowDuck(){
         this._appetite = 4;
     }

@@ -26,6 +26,9 @@ public class AnimalMediator implements Mediator{
     private HashSet<Animal> _starvedAnimals = new HashSet<>();
     private int _num_starved_animals = 0;
 
+    /**
+     * 动物中介者创建组员
+     */
     @Override
     public void createColleagues(){
        // this._farm = Farm.getInstance();
@@ -40,6 +43,8 @@ public class AnimalMediator implements Mediator{
     @Override
     public void colleagueChanged(){
 
+        System.out.println("======== 使用 Mediator 模式 ========");
+        System.out.println("Mediator : " + this.hashCode() +  " :colleagueChanged: check the hungry animals");
         //每检查一次需要清空上一次的饥饿动物列表
         _starvedAnimals.clear();
         if(_animalMenu == null){
@@ -77,6 +82,10 @@ public class AnimalMediator implements Mediator{
 
     }
 
+
+    /**
+     * 初始化一个新的AnimalMediator
+     */
     public AnimalMediator(){
         _starvedAnimals = new HashSet<>();
         _num_starved_animals = 5;
@@ -85,10 +94,16 @@ public class AnimalMediator implements Mediator{
         System.out.println("AnimalMediator has been initialized");
     }
 
+    /**
+     * 获取饥饿的动物
+     */
     public Set<Animal> getStarvedAnimals(){
         return _starvedAnimals;
     }
 
+    /**
+     * 动物中介者管整个农场的动物
+     */
     public void setFarm(Farm farm){
         this._farm = farm;
         createColleagues();
