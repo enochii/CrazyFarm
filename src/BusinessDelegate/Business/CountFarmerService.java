@@ -28,5 +28,11 @@ public class CountFarmerService implements BusinessService {
         int cnt_farmer = m_farmer.getSize();
 
         System.out.println("Now the number of farmers on the farm is： " + cnt_farmer);
+        System.out.println("The names of the farmers are: ");
+
+        for(Iterator<FarmerMultipleton>it=m_farmer.iterator();it.hasNext(); ){
+            FarmerMultipleton farmer=it.next();
+            System.out.println(farmer.getName());
+        }
     }
 }

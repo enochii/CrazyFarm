@@ -2,7 +2,10 @@ package BusinessDelegate.Business;
 
 import Farm.Farm;
 import Farm.Menu;
+import Livings.Animals.Animal;
 import Livings.Plants.Plant;
+import Visitor.ExpLivingVisitor;
+
 import java.util.Iterator;
 
 /**
@@ -28,9 +31,12 @@ public class DisplayPlantService implements BusinessService {
 
         System.out.println("Now the number of plants on the farm is： " + cnt_plant);
 
-        // 考虑输出每个元素的详细信息
-//        Iterator<Plant> i_plant = m_plant.iterator();
-
+        // 利用Visitor模式输出每个作物的类型和经验值
+        ExpLivingVisitor expLivingVisitor=new ExpLivingVisitor();
+        for(Iterator<Plant>it=m_plant.iterator();it.hasNext(); ){
+            Plant plant=it.next();
+            plant.accept(expLivingVisitor);
+        }
 
     }
 }
