@@ -36,6 +36,7 @@ public class TableChicken extends Chicken{
     }
 
     public TableChicken(){
+        this._appetite = 3;
     }
 
     public TableChicken(Mediator mediator){

@@ -35,7 +35,7 @@ public class Farm implements Serializable {
      * 初始库房和食槽的粮食数量
      */
     public int wareHouse = 200;
-    public int foodCourt = 100;
+    public int foodCourt = 20;
 
     //农民的菜单
     private Menu<FarmerMultipleton> _farmerMultipletonMenu;

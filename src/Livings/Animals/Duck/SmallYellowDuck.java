@@ -86,6 +86,6 @@ public class SmallYellowDuck extends Duck{
     }
 
     public SmallYellowDuck(){
-
+        this._appetite = 4;
     }
 }

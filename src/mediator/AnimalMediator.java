@@ -44,7 +44,6 @@ public class AnimalMediator implements Mediator{
         _starvedAnimals.clear();
         if(_animalMenu == null){
             System.out.println("_animalmenu is null");
-
         }
         Iterator<Animal> animal_iter = _animalMenu.iterator();
         while (animal_iter.hasNext()){

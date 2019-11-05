@@ -39,6 +39,8 @@ public class Crop extends Plant implements LivingCloneable {
 	 * @return Crop的克隆
 	 */
 	public Crop clone() {
+		System.out.println("======== 使用原型 Prototype 模式 ========");
+		System.out.println("成功通过原型创建Crop");
 		return new Crop();
 	}
 

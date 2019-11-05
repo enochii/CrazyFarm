@@ -17,6 +17,7 @@ import Memento.CropStateMemento;
 import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
 import Observer.PlantsObserver;
+import Tools.Extension.AugmentedHoe;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 
@@ -28,7 +29,6 @@ public class Main {
 	// write your code here
 
         Farm farm = Farm.getInstance();
-
 
         AnimalMediator animalMediator = new AnimalMediator();
         PlantMediator plantMediator = new PlantMediator();
@@ -46,6 +46,7 @@ public class Main {
 //        System.out.println(farm.getOwner().getMoney());
 
         owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
+        farm.addMediatorForAll();
         System.out.println(owner.getMoney());
 
         TimeCounter timeCounter = new TimeCounter();
@@ -72,14 +73,14 @@ public class Main {
             FarmerMultipleton farmer = farmerIter.next();
             FarmerView view = new FarmerView();
             FarmerController controller = new FarmerController(farmer, view);
-            System.out.println("classname: (controller) :setFarmerAge: set a new age for a farmer");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :setFarmerAge: set a new age for a farmer");
             controller.setFarmerAge(30 + i);
-            System.out.println("classname: (controller) :setFarmerAge: set a new name for a farmer");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :setFarmerName: set a new age for a farmer");
             controller.setFarmerName(baseName + i);
-            System.out.println("classname: (controller) : updateView: update and show the farmer's information");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :updateView: update and show the farmer's information");
             controller.updateView();
             i++;
-           }
+        }
 
 
         //适配器
@@ -95,6 +96,8 @@ public class Main {
         //转换器
         CropConverter.main();
 
+        // 扩展对象 Extension objects 模式
+        AugmentedHoe augmentedHoe = new AugmentedHoe();
 
         //系统结束时保存Farm
         FarmDao farmDao=new FarmDaoImpl();
