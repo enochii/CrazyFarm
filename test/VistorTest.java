@@ -7,6 +7,12 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
+/**
+ * @program: crazyfarm->VistorTest
+ * @description: 访问者模式的测试类
+ * @author: oy
+ * @create: 2019-11-04 16:42
+ **/
 public class VistorTest {
     @Test
     public void test(){

@@ -24,6 +24,7 @@ public class PlantsObserver implements BaseObserver {
             Plant plant=it.next();
             //do something
             plant.setClock(timeCounter.getCurrentTime());
+            //System.out.println("Plant updated");
         }
     }
 }
