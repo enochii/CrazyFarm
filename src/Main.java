@@ -50,12 +50,14 @@ public class Main {
 
         // 工厂模式
         Factory fieldFactory = new FieldFactory();
+        System.out.println("FieldFactory : " + fieldFactory.hashCode() +  " :create: create a field with usage");
         Field field1 = (Field) fieldFactory.create("种植玉米");
         System.out.println("创建了一小块土地用于" + field1.getUsage() + ".");
         Field field2 = (Field) fieldFactory.create("种植土豆");
         System.out.println("创建了一小块土地用于" + field2.getUsage() + ".");
 
         Factory largeFieldFactory = new LargeFieldFactory();
+        System.out.println("LargeFieldFactory : " + largeFieldFactory.hashCode() +  " :create: create a large field with usage");
         LargeField largeField1 = (LargeField) largeFieldFactory.create("放养鸭子");
         System.out.println("创建了一大片土地用于" + largeField1.getUsage() + ".");
         LargeField largeField2 = (LargeField) largeFieldFactory.create("放养鸡");
@@ -126,7 +128,9 @@ public class Main {
         // 内部还会用到迭代器模式
         BusinessDelegate businessDelegate = new BusinessDelegate();
         Client client = new Client(businessDelegate);
+        System.out.println("BusinessDelegate : " + businessDelegate.hashCode() +  " :setBusinessService: set a new business service type");
         businessDelegate.setBusinessService(Const.SERVICE_CNT_FARMER);
+        System.out.println("Client : " + client.hashCode() +  " :do task of selected business service");
         client.doTask();
         businessDelegate.setBusinessService(Const.SERVICE_DISPLAY_PLANT);
         client.doTask();
