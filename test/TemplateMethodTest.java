@@ -16,7 +16,7 @@ public class TemplateMethodTest {
 
     @Before
     public void setUp() {
-        System.out.println("Test for template method.");
+        System.out.println("======== 测试 Template method 模式 ========");
         // 建立test所需对象
         AnimalMediator mediator = new AnimalMediator();
         duck = new SmallYellowDuck(mediator);

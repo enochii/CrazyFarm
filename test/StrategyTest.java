@@ -13,7 +13,7 @@ public class StrategyTest {
 
     @Before
     public void setUp() {
-        System.out.println("Test for strategy.");
+        System.out.println("======== 测试 Strategy 模式 ========");
         // 建立test所需对象
         AnimalMediator mediator = new AnimalMediator();
         duck = new SmallYellowDuck(mediator);
