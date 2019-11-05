@@ -1,30 +1,27 @@
 import Adapter.ChickenAdapter;
+import Adapter.MakeDuckQuack;
 import Builder.FarmerMultipleton;
 import Constant.Const;
+import Converter.CropConverter;
 import Dao.FarmDao;
 import Dao.FarmDaoImpl;
 import Farm.Farm;
 import Farm.Menu;
-import Interpreter.Parser;
 import Farm.Owner;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
+import Interpreter.ParseException;
+import Interpreter.Parser;
 import Livings.Animals.Chicken.TableChicken;
 import MVC.FarmerController;
 import MVC.FarmerView;
+import Memento.CropStateMemento;
+import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
-import junit.framework.JUnit4TestAdapter;
+import Observer.PlantsObserver;
+import Tools.Extension.AugmentedHoe;
 import mediator.AnimalMediator;
+import mediator.PlantMediator;
 
 import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
-import Observer.AnimalsObserver;
-import Observer.PlantsObserver;
-import mediator.PlantMediator;
-import Farm.Farmer;
 
 public class Main {
 
@@ -32,7 +29,6 @@ public class Main {
 	// write your code here
 
         Farm farm = Farm.getInstance();
-
 
         AnimalMediator animalMediator = new AnimalMediator();
         PlantMediator plantMediator = new PlantMediator();
@@ -50,6 +46,7 @@ public class Main {
 //        System.out.println(farm.getOwner().getMoney());
 
         owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
+        farm.addMediatorForAll();
         System.out.println(owner.getMoney());
 
         TimeCounter timeCounter = new TimeCounter();
@@ -83,11 +80,24 @@ public class Main {
             System.out.println("FarmerController : " + controller.hashCode() +  " :updateView: update and show the farmer's information");
             controller.updateView();
             i++;
-           }
+        }
 
 
+        //适配器
+        MakeDuckQuack.makeDuckQuack(new ChickenAdapter(new TableChicken()));
+        //解释器
+        try {
+            Parser.main();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //备忘录
+        CropStateMemento.main();
+        //转换器
+        CropConverter.main();
 
-
+        // 扩展对象 Extension objects 模式
+        AugmentedHoe augmentedHoe = new AugmentedHoe();
 
         //系统结束时保存Farm
         FarmDao farmDao=new FarmDaoImpl();
