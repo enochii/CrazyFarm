@@ -64,12 +64,11 @@ public abstract class SolveStarvation {
      * @param starvation 具体需要解决的问题
      */
     public final void solve(Starvation starvation){
-        System.out.println("========责任链模式=========");
+        System.out.println("======== 使用责任链模式 =========");
         if(resolve(starvation)){
             finish(starvation);
         }else if (_next !=null){
-            System.out.println("========责任链模式=========");
-            _next.resolve(starvation);
+            _next.solve(starvation);
         }else{
             fail(starvation);
         }
