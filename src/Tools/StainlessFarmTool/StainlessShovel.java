@@ -17,6 +17,7 @@ public class StainlessShovel extends FarmTool {
 
         super(s);
         this._material = Const.Material.STAINLESS_STEEL;
+        System.out.println("铲子");
     }
 
     @Override

@@ -16,6 +16,7 @@ public class StainlessHoe extends FarmTool {
     public StainlessHoe(Size s) {
         super(s);
         this._material = Const.Material.STAINLESS_STEEL;
+        System.out.println("锄头");
     }
 
     @Override

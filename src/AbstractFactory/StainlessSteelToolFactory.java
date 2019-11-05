@@ -28,16 +28,19 @@ public class StainlessSteelToolFactory extends AbstractToolFactory {
      * Instantiates a new Stainless steel tool factory.
      */
     public StainlessSteelToolFactory() {
+        System.out.println("======== 使用抽象工厂 Abstract Factory 模式 ========");
         this._smallHoe = null;
         this._bigHoe = null;
         this._smallShovel = null;
         this._bigHoe = null;
+        System.out.println("成功创建不锈钢制农具抽象工厂");
     }
 
     /**
      * 按照享元模式创建不锈钢制小锄头
      */
     public FarmTool createSmallHoe() {
+        System.out.println("======== 使用享元 Flyweight 模式 ========");
         if (this._smallHoe == null) {
             this._smallHoe = new StainlessHoe(new SmallSize());
         }
@@ -47,6 +50,7 @@ public class StainlessSteelToolFactory extends AbstractToolFactory {
      * 按照享元模式创建不锈钢制大锄头
      */
     public FarmTool createBigHoe() {
+        System.out.println("======== 使用享元 Flyweight 模式 ========");
         if (this._bigHoe == null) {
             this._bigHoe = new StainlessHoe(new BigSize());
         }
@@ -56,6 +60,7 @@ public class StainlessSteelToolFactory extends AbstractToolFactory {
      * 按照享元模式创建不锈钢制小铲子
      */
     public FarmTool createSmallShovel() {
+        System.out.println("======== 使用享元 Flyweight 模式 ========");
         if (this._smallShovel == null) {
             this._smallShovel = new StainlessShovel(new SmallSize());
         }
@@ -65,6 +70,7 @@ public class StainlessSteelToolFactory extends AbstractToolFactory {
      * 按照享元模式创建不锈钢制大铲子
      */
     public FarmTool createBigShovel() {
+        System.out.println("======== 使用享元 Flyweight 模式 ========");
         if ( this._bigShovel == null ) {
             this._bigShovel = new StainlessShovel(new BigSize());
         }

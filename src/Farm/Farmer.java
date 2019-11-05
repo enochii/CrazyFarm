@@ -64,6 +64,15 @@ public class Farmer implements Serializable {
         return _farmerData.getWorkTypeString();
     }
 
+    /**
+     * For TEST. Gets work type string in Chinese.
+     *
+     * @return the work type string
+     */
+    public String getWorkTypeStringZh() {
+        return _farmerData.getWorkTypeStringZh();
+    }
+
     //TODO: 加上具体的Task
     public void doWork(){
         System.out.println("Implement  me!");

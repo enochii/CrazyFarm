@@ -37,6 +37,7 @@ public class FarmerMultipleton implements Serializable {
         for (int i = 0;i<TYPE_NUM;i++){
             director.setBuilder(farmerBuilders.get(i));
             director.constructFarmer();
+            director.toStringZh();
             for (int j = 0;j<Const.EACH_TYPE_NUM;j++){
                 list.add(new FarmerMultipleton(Const.FARMER_NAMES.get(i * Const.EACH_TYPE_NUM + j), director));
             }
