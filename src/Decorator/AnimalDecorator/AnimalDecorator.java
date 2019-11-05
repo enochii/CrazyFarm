@@ -7,6 +7,7 @@ public abstract class AnimalDecorator extends Animal {
 
 	public AnimalDecorator(Animal obj){
 		this.obj = obj;
+		System.out.println("Create: "+this.getClass()+" @"+this.hashCode());
 	}
 
 	/**
