@@ -56,37 +56,3 @@ public class Director {
         return "建造了一个从事" + result + "工作的农民.";
     }
 }
-
-/**
- * The type Test builder.
- */
-class TestBuilder {
-    /**
-     * The entry point of application.
-     *
-     * @param args the input arguments
-     */
-    public static void main(String[] args) {
-        Director director = new Director();
-        FarmerBuilder freeFarmerBuilder = new FreeFarmerBuilder();
-        FarmerBuilder cultivateFarmerBuilder = new CultivateFarmerBuilder();
-        FarmerBuilder feedFarmerBuilder = new FeedFarmerBuilder();
-
-        // 使用Builder先后创建三种工种的农民
-        director.setBuilder( freeFarmerBuilder );
-        director.constructFarmer();
-        Farmer farmer1 = director.getFarmer();
-        System.out.println( director.toStringZh() );
-
-        director.setBuilder( cultivateFarmerBuilder );
-        director.constructFarmer();
-        Farmer farmer2 = director.getFarmer();
-        System.out.println( director.toStringZh() );
-
-        director.setBuilder( feedFarmerBuilder );
-        director.constructFarmer();
-        Farmer farmer3 = director.getFarmer();
-        System.out.println( director.toStringZh() );
-
-    }
-}

@@ -21,6 +21,7 @@ public class AbstractFactoryTest {
         FarmTool ironSmallShovel = ironToolFactory.createSmallShovel();
         ironSmallShovel.testAbstractFactory();
 
+        System.out.println("");
         System.out.println("测试不锈钢制农具抽象工厂");
         AbstractToolFactory stainlessToolFactory = new StainlessSteelToolFactory();
         FarmTool stainlessBigHoe = stainlessToolFactory.createBigHoe();
