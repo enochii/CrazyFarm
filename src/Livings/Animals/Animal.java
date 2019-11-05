@@ -25,9 +25,6 @@ public abstract class Animal extends Living implements Colleague {
     //动物每次喂食需要的食物
     public int _appetite = 0;
 
-    //是否成熟
-    public String _mature = Const.NOT_MATURE;
-
     //成熟率
     public int _maturityRate = 0;
 
@@ -45,7 +42,10 @@ public abstract class Animal extends Living implements Colleague {
 
     }
 
-    public abstract String isMature();
+    //判断是否成熟
+    public boolean getMature(){
+        return _isMature;
+    }
 
     //判断是否饥饿
     public boolean isHungry(){
