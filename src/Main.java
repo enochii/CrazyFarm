@@ -163,14 +163,12 @@ public class Main {
             plant.accept(expLivingVisitor);
         }
 
-        //使用 数据访问对象（DAO） 模式
-        System.out.println("======== 使用 DAO 模式 ========");
-
         // 扩展对象 Extension objects 模式
         AugmentedHoe augmentedHoe = new AugmentedHoe();
 
         //系统结束时保存Farm
-
+        //使用 数据访问对象（DAO） 模式
+        System.out.println("======== 使用 DAO 模式 ========");
         FarmDao farmDao=new FarmDaoImpl();
         farmDao.updateFarm(farm);
         System.out.println("农场数据保存成功");
