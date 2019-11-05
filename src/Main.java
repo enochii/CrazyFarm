@@ -73,11 +73,11 @@ public class Main {
             FarmerMultipleton farmer = farmerIter.next();
             FarmerView view = new FarmerView();
             FarmerController controller = new FarmerController(farmer, view);
-            System.out.println("classname: (controller) :setFarmerAge: set a new age for a farmer");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :setFarmerAge: set a new age for a farmer");
             controller.setFarmerAge(30 + i);
-            System.out.println("classname: (controller) :setFarmerAge: set a new name for a farmer");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :setFarmerName: set a new age for a farmer");
             controller.setFarmerName(baseName + i);
-            System.out.println("classname: (controller) : updateView: update and show the farmer's information");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :updateView: update and show the farmer's information");
             controller.updateView();
             i++;
         }
