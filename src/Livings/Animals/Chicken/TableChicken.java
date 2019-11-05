@@ -58,22 +58,16 @@ public class TableChicken extends Chicken{
     }
 
     public void setClock(int currentTime){
-        System.out.println(currentTime);
 
             if(currentTime - _lastFedTime > 6){
                 if(Farm.getInstance().foodCourt >= this._appetite)
                 {
-                    System.out.println(Const.NAME_TABLE_CHICKEN + "is eating");
                     this.getFed(currentTime);
-
                 }
-
                else {
                     _state.getHungryState(this);
                 }
-
             }
-
             else{
                 _state.gainExperience(this);
             }
