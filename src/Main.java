@@ -101,6 +101,7 @@ public class Main {
 //        System.out.println(farm.getOwner().getMoney());
 
         // 回调模式
+        // 命令模式
         owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
         farm.addMediatorForAll();
         System.out.println(owner.getMoney());
@@ -120,6 +121,7 @@ public class Main {
         // 多例(multipleton)模式
         farm.getFarmerMenu().add(FarmerMultipleton.getRandomInstance());
 
+        // 状态模式
         // 责任链模式
         // 外观模式
         for(int i = 1; i <= 100; i++)
