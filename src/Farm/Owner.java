@@ -29,11 +29,21 @@ public class Owner implements MoneyManager, Serializable {
         return temp;
     }
 
+    /**
+     *农场主获取当前的金钱
+     * @return 农场主的金钱
+     */
     @Override
     public double getMoney(){
         return money;
     }
 
+    /**
+     *
+     * @param ownerSolveStarvation 农场主负责类
+     * @param starvation 需要解决的问题
+     * @return 是否成功解决问题
+     */
     public boolean solveStarvation(OwnerSolveStarvation ownerSolveStarvation, Starvation starvation ){
         int food_required = starvation._required_food_amount;
         if(this.getMoney() > starvation._required_money_amount){
@@ -50,6 +60,7 @@ public class Owner implements MoneyManager, Serializable {
     }
 
     /**
+     * 农场主购买东西后减少钱
      * @param m the money to reduce
      * @return whether the reduction is successful
      */
@@ -62,7 +73,12 @@ public class Owner implements MoneyManager, Serializable {
         return true;
     }
 
-    //农场主要派农民去买东西
+
+    /**
+     * 农场主派农民去购买
+     * @param purchaseType 要购买的种类， number 要购买的数量
+     * @return
+     */
     public void purchase(String purchaseType, int number){
         if(this.getMoney() <= 0)
         {
@@ -75,6 +91,11 @@ public class Owner implements MoneyManager, Serializable {
         }
     }
 
+    /**
+     * 农场主派农民去售卖动物
+     * @param animal 要售卖的动物
+     * @return
+     */
     public void sell(Animal animal){
         Farmer spareFarmer = _farm.getFreeFarmer();
         if(spareFarmer != null){
@@ -82,6 +103,11 @@ public class Owner implements MoneyManager, Serializable {
         }
     }
 
+    /**
+     * 为农场主设置一个管理的农场
+     * @param farm 农场
+     * @return
+     */
     public void setFarmForOwner(Farm farm)
     {
         this._farm = farm;

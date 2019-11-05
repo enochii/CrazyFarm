@@ -6,6 +6,10 @@ import Tools.ToolPackage;
 
 import java.io.Serializable;
 
+/**
+ * 私有类数据(Private Class Data)模式
+ * 将农民的数据保存在一个农民数据类中
+ */
 public class FarmerData implements Serializable {
     // 指定工作类型和背包，用于实现 Builder 模式
     private Const.WorkType _type;
@@ -17,14 +21,20 @@ public class FarmerData implements Serializable {
     //农民的名字
     private String _name;
 
-    //无参构造函数
+    /**
+     * 无参构造函数
+     */
     public FarmerData() {
+        System.out.println("======== 使用私有类数据 Private Class Data 模式 ========");
         this._type = Const.WorkType.SPARE;
         this._bag = new ToolPackage(2);
         this._isWorking = false;
+        System.out.println("成功创建农民数据");
     }
 
-    //通过年龄和名字来初始化农民
+    /**
+     * 通过年龄和名字来初始化农民
+     */
     public FarmerData(int age, String name){
         this();
         this._age = age;
@@ -54,6 +64,10 @@ public class FarmerData implements Serializable {
         }
     }
 
+    /**
+     * get work type of the farmer
+     * @return farmer work type
+     */
     public Const.WorkType getWorkType() {
         return this._type;
     }

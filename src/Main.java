@@ -20,6 +20,7 @@ import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
 import Observer.PlantsObserver;
 import Visitor.ExpLivingVisitor;
+import Tools.Extension.AugmentedHoe;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 
@@ -31,7 +32,6 @@ public class Main {
 	// write your code here
 
         Farm farm = Farm.getInstance();
-
 
         AnimalMediator animalMediator = new AnimalMediator();
         PlantMediator plantMediator = new PlantMediator();
@@ -49,6 +49,7 @@ public class Main {
 //        System.out.println(farm.getOwner().getMoney());
 
         owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
+        farm.addMediatorForAll();
         System.out.println(owner.getMoney());
 
         //使用观察者模式
@@ -62,6 +63,10 @@ public class Main {
         timeCounter.addObserver(animalsObserver);
         timeCounter.addObserver(plantsObserver);
         System.out.println("开始更新时间");
+
+        //使用多例(multipleton)模式
+        farm.getFarmerMenu().add(FarmerMultipleton.getRandomInstance());
+
         for(int i = 1; i <= 100; i++)
         {
             timeCounter.updateTime();
@@ -79,14 +84,14 @@ public class Main {
             FarmerMultipleton farmer = farmerIter.next();
             FarmerView view = new FarmerView();
             FarmerController controller = new FarmerController(farmer, view);
-            System.out.println("classname: (controller) :setFarmerAge: set a new age for a farmer");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :setFarmerAge: set a new age for a farmer");
             controller.setFarmerAge(30 + i);
-            System.out.println("classname: (controller) :setFarmerAge: set a new name for a farmer");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :setFarmerName: set a new age for a farmer");
             controller.setFarmerName(baseName + i);
-            System.out.println("classname: (controller) : updateView: update and show the farmer's information");
+            System.out.println("FarmerController : " + controller.hashCode() +  " :updateView: update and show the farmer's information");
             controller.updateView();
             i++;
-           }
+        }
 
 
         //适配器
@@ -119,6 +124,12 @@ public class Main {
 
         //使用 数据访问对象（DAO） 模式
         System.out.println("======== 使用 DAO 模式 ========");
+
+        // 扩展对象 Extension objects 模式
+        AugmentedHoe augmentedHoe = new AugmentedHoe();
+
+        //系统结束时保存Farm
+
         FarmDao farmDao=new FarmDaoImpl();
         farmDao.updateFarm(farm);
         System.out.println("农场数据保存成功");

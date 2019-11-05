@@ -3,6 +3,8 @@ package Builder;
 import Constant.Const;
 
 /**
+ * 空闲型农民的 Builder
+ *
  * @className: FreeFarmerBuilder
  * @author: Leon
  * @description:

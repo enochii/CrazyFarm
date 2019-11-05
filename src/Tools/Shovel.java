@@ -3,14 +3,16 @@ package Tools;
 import Constant.Const;
 
 /**
+ * 桥接(Bridge)模式
+ * 实现不同规模的不同农具
  * 农具铲子
  */
 public class Shovel extends FarmTool {
 
 	public Shovel(Size s) {
-
 		super(s);
 		this._material = Const.Material.IRON;
+		System.out.println("铲子");
 	}
 
 	@Override
