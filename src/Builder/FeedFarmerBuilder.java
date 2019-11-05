@@ -18,6 +18,9 @@ import Tools.SmallSize;
  * @date: 6:08 下午 2019/10/27
  */
 public class FeedFarmerBuilder extends FarmerBuilder {
+    public FeedFarmerBuilder() {
+        System.out.println("成功创建喂养型农民Builder");
+    }
     public void setWorkType() {
         this._farmer.setType(Const.WorkType.FEED);
     }

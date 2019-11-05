@@ -85,6 +85,18 @@ public class FarmerData implements Serializable {
     }
 
     /**
+     * For TEST. Gets work type string in Chinese.
+     *
+     * @return the work type string
+     */
+    public String getWorkTypeStringZh() {
+        if ( _type== Const.WorkType.SPARE ) return "空闲";
+        else if ( _type== Const.WorkType.CULTIVATE ) return "耕种";
+        else if ( _type== Const.WorkType.FEED ) return "喂食";
+        else return "无效";
+    }
+
+    /**
      * Gets age.
      *
      * @return the age

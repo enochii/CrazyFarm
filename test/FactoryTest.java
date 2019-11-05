@@ -15,6 +15,7 @@ public class FactoryTest {
         System.out.println("Create a field for " + field2.getUsage() + ".");
         field2.use();
 
+        System.out.println("");
         System.out.println("测试大片土地工厂：");
         Factory largeFieldFactory = new LargeFieldFactory();
         LargeField largeField1 = (LargeField) largeFieldFactory.create("raising ducks");

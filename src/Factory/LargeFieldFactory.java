@@ -19,6 +19,11 @@ import java.util.List;
 public class LargeFieldFactory extends Factory{
     private List _usages = new ArrayList();     // 土地用途记录表，统计注册土地的用途
 
+    public LargeFieldFactory() {
+        System.out.println("======== 使用工厂 Factory 模式 ========");
+        System.out.println("成功创建大片土地工厂");
+    }
+
     @Override
     protected Land createLand(String usage) {
         return new LargeField(usage);

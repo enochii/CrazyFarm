@@ -1,5 +1,6 @@
 package Builder;
 
+import Constant.Const;
 import Farm.Farmer;
 
 /**
@@ -49,6 +50,11 @@ public class Director {
         String result = _builder.getFarmer().getWorkTypeString();
         return "Build a farmer engaged in " + result + " work.";
     }
+
+    public String toStringZh() {
+        String result = _builder.getFarmer().getWorkTypeStringZh();
+        return "建造了一个从事" + result + "工作的农民.";
+    }
 }
 
 /**
@@ -70,17 +76,17 @@ class TestBuilder {
         director.setBuilder( freeFarmerBuilder );
         director.constructFarmer();
         Farmer farmer1 = director.getFarmer();
-        System.out.println( director.toString() );
+        System.out.println( director.toStringZh() );
 
         director.setBuilder( cultivateFarmerBuilder );
         director.constructFarmer();
         Farmer farmer2 = director.getFarmer();
-        System.out.println( director.toString() );
+        System.out.println( director.toStringZh() );
 
         director.setBuilder( feedFarmerBuilder );
         director.constructFarmer();
         Farmer farmer3 = director.getFarmer();
-        System.out.println( director.toString() );
+        System.out.println( director.toStringZh() );
 
     }
 }
