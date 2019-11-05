@@ -16,6 +16,7 @@ public class Owner implements MoneyManager, Serializable {
     }
 
     public static Owner getInstance() {
+        System.out.println("======== 使用单例 Singleton 模式 ========");
         Owner temp = instance;
         if(temp == null){
             synchronized(Owner.class){
