@@ -61,11 +61,6 @@ public class ChickenAdapter extends Duck {
     @Override
     public void makeEat() {}
 
-    @Override
-    public String isMature() {
-        return Const.MATURE;
-    }
-
     /*
      * 鸡模仿鸭叫
      */

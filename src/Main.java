@@ -15,6 +15,10 @@ import Farm.Menu;
 import Farm.Owner;
 import Interpreter.ParseException;
 import Interpreter.Parser;
+import Livings.Animals.Animal;
+import Livings.Animals.Chicken.Chicken;
+import Livings.Animals.Chicken.TableChicken;
+import Livings.Animals.Duck.SmallYellowDuck;
 import Land.*;
 import Factory.*;
 import Livings.Animals.Animal;
@@ -28,12 +32,18 @@ import Observer.Observable.TimeCounter;
 import Observer.PlantsObserver;
 import Visitor.ExpLivingVisitor;
 import Tools.Extension.AugmentedHoe;
+import criteria.Criteria;
+import criteria.CriteriaChicken;
+import criteria.CriteriaDuck;
+import criteria.CriteriaMature;
 import Tools.FarmTool;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 import BusinessDelegate.Client;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Main {
 
@@ -79,7 +89,7 @@ public class Main {
 
 //        System.out.println(farm.getOwner().getMoney());
 
-        owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
+        owner.purchase(Const.NAME_TABLE_CHICKEN, 6);
         farm.addMediatorForAll();
         System.out.println(owner.getMoney());
 
@@ -168,6 +178,38 @@ public class Main {
 
         // 扩展对象 Extension objects 模式
         AugmentedHoe augmentedHoe = new AugmentedHoe();
+
+        //使用 Filter 模式
+        System.out.println("======== 使用 Filter 模式 ========");
+        List<Animal> animals = new ArrayList<>();
+        Menu<Animal> animalMenu = farm.getAnimalMenu();
+        Iterator<Animal> animalIterator = animalMenu.iterator();
+        while(animalIterator.hasNext()) {
+            Animal animal = animalIterator.next();
+            animals.add(animal);
+        }
+        Criteria criteriaMature = new CriteriaMature();
+        System.out.println("CriteriaMature : " + criteriaMature.hashCode() +  " :meetCriteria: filter the mature animals");
+        List<Animal> result = criteriaMature.meetCriteria(animals);
+        System.out.println(result.get(0).getName());
+
+        //使用 Null Object 模式
+        System.out.println("======== 使用 Null Object 模式 ========");
+        Criteria criteriaDuck = new CriteriaDuck();
+        List<Animal> nullResult = criteriaDuck.meetCriteria(animals);
+        nullResult.get(0).getValue();
+
+        //使用 Strategy 模式
+        System.out.println("======== 使用 Strategy 模式 ========");
+        Animal chicken = result.get(0);
+        chicken.makeEat();
+        chicken.makeSound();
+
+        //使用 Template method 模式
+        System.out.println("======== 使用 Template method 模式 ========");
+        Animal duck = new SmallYellowDuck();
+        chicken.getFed(101);
+        duck.getFed(101);
 
         //系统结束时保存Farm
 

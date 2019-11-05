@@ -3,6 +3,9 @@ package criteria;
 import Livings.Animals.Animal;
 import java.util.List;
 
+/**
+ * 筛选同时满足两个标准的动物集合
+ */
 public class AndCriteria implements Criteria {
     private Criteria criteria;
     private Criteria otherCriteria;

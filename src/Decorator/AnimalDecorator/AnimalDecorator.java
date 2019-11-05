@@ -28,9 +28,6 @@ public abstract class AnimalDecorator extends Animal {
 	public void makeSound() { }
 
 	@Override
-	public String isMature() { return null; }
-
-	@Override
 	public void setColleagueEnable(boolean enable) {}
 
 	@Override

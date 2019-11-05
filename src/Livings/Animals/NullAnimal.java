@@ -10,13 +10,8 @@ public class NullAnimal extends Animal {
 
     @Override
     public double getValue() {
-        System.out.printf("No available animal can be sold currently.");
+        System.out.println("No available animal can be sold currently.");
         return 0;
-    }
-
-    @Override
-    public String isMature() {
-        throw new UnsupportedOperationException();
     }
 
     @Override
