@@ -51,10 +51,10 @@ public class Main {
 	// write your code here
 
         // 初始化农场，根据调用关系先后用到了以下设计模式：
-        // 单例模式
         // 双重检查锁模式
         // 建造者模式
-        // 抽象工厂模式 和 享元模式
+        // 抽象工厂模式
+        // 享元模式
         // 桥接模式
         // 多例模式
         // 私有类数据模式
@@ -85,6 +85,7 @@ public class Main {
         animalMediator.setFarm(farm);
         plantMediator.setFarm(farm);
 
+        //单例模式
         Owner owner = Owner.getInstance();
         farm.setOwnerForFarm(owner);
         owner.setFarmForOwner(farm);
@@ -140,7 +141,7 @@ public class Main {
         }
 
         // 业务代表模式
-        // 内部还会用到迭代器模式
+        // 迭代器模式
         BusinessDelegate businessDelegate = new BusinessDelegate();
         Client client = new Client(businessDelegate);
         System.out.println("BusinessDelegate : " + businessDelegate.hashCode() +  " :setBusinessService: set a new business service type");
