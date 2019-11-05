@@ -10,13 +10,16 @@ import Farm.Menu;
 import Farm.Owner;
 import Interpreter.ParseException;
 import Interpreter.Parser;
+import Livings.Animals.Animal;
 import Livings.Animals.Chicken.TableChicken;
+import Livings.Plants.Plant;
 import MVC.FarmerController;
 import MVC.FarmerView;
 import Memento.CropStateMemento;
 import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
 import Observer.PlantsObserver;
+import Visitor.ExpLivingVisitor;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 
@@ -48,13 +51,17 @@ public class Main {
         owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
         System.out.println(owner.getMoney());
 
+        //使用观察者模式
+        System.out.println("======== 使用 观察者Observer 模式 ========");
         TimeCounter timeCounter = new TimeCounter();
+        System.out.println("建立动物观察者");
         AnimalsObserver animalsObserver = new AnimalsObserver();
+        System.out.println("建立植物观察者");
         PlantsObserver plantsObserver = new PlantsObserver();
 
         timeCounter.addObserver(animalsObserver);
         timeCounter.addObserver(plantsObserver);
-
+        System.out.println("开始更新时间");
         for(int i = 1; i <= 100; i++)
         {
             timeCounter.updateTime();
@@ -94,11 +101,26 @@ public class Main {
         CropStateMemento.main();
         //转换器
         CropConverter.main();
-
+        //使用 访问者Visitor 模式
+        System.out.println("======== 使用 访问者Visitor 模式 ========");
+        ExpLivingVisitor expLivingVisitor=new ExpLivingVisitor();
+        Menu<Animal> animalmenu=farm.getAnimalMenu();
+        Menu<Plant> plantmenu=farm.getPlantMenu();
+        System.out.println("访问动物的经验值");
+        for(Iterator<Animal>it=animalmenu.iterator();it.hasNext(); ){
+            Animal animal=it.next();
+            animal.accept(expLivingVisitor);
+        }
+        System.out.println("访问植物的经验值");
+        for(Iterator<Plant>it=plantmenu.iterator();it.hasNext(); ){
+            Plant plant=it.next();
+            plant.accept(expLivingVisitor);
+        }
 
         //使用 数据访问对象（DAO） 模式
         System.out.println("======== 使用 DAO 模式 ========");
         FarmDao farmDao=new FarmDaoImpl();
         farmDao.updateFarm(farm);
+        System.out.println("农场数据保存成功");
     }
 }
