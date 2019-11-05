@@ -26,6 +26,9 @@ public class AnimalMediator implements Mediator{
     private HashSet<Animal> _starvedAnimals = new HashSet<>();
     private int _num_starved_animals = 0;
 
+    /**
+     * 动物中介者创建组员
+     */
     @Override
     public void createColleagues(){
        // this._farm = Farm.getInstance();
@@ -40,10 +43,13 @@ public class AnimalMediator implements Mediator{
     @Override
     public void colleagueChanged(){
 
+        System.out.println("======== 使用 Mediator 模式 ========");
+        System.out.println("Mediator : " + this.hashCode() +  " :colleagueChanged: check the hungry animals");
         //每检查一次需要清空上一次的饥饿动物列表
         _starvedAnimals.clear();
         if(_animalMenu == null){
             System.out.println("_animalmenu is null");
+            return;
         }
         Iterator<Animal> animal_iter = _animalMenu.iterator();
         while (animal_iter.hasNext()){
@@ -54,9 +60,9 @@ public class AnimalMediator implements Mediator{
         }
 
         /**
-         * 饥饿的动物数量超过既定数目后喂食
+         * 饥饿的动物数量超过农场的动物总数的三分之一后喂食
          */
-        if(_starvedAnimals.size()>_num_starved_animals){
+        if(_starvedAnimals.size()>Math.ceil(_animalMenu.getSize()/_num_starved_animals)){
             Iterator<Animal> starved_animal_iter = _starvedAnimals.iterator();
             int total_appetite_num  = 0;
             while (starved_animal_iter.hasNext()){
@@ -77,18 +83,28 @@ public class AnimalMediator implements Mediator{
 
     }
 
+
+    /**
+     * 初始化一个新的AnimalMediator
+     */
     public AnimalMediator(){
         _starvedAnimals = new HashSet<>();
-        _num_starved_animals = 5;
+        _num_starved_animals = 3;
 
         //createColleagues();
         System.out.println("AnimalMediator has been initialized");
     }
 
+    /**
+     * 获取饥饿的动物
+     */
     public Set<Animal> getStarvedAnimals(){
         return _starvedAnimals;
     }
 
+    /**
+     * 动物中介者管整个农场的动物
+     */
     public void setFarm(Farm farm){
         this._farm = farm;
         createColleagues();

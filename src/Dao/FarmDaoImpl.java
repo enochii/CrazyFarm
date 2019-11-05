@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 /**
  * FarmDaoImpl implements FarmDao{@link FarmDao}
  * It uses json format to store Farm Data
+ *
  * @className: FarmDaoImpl
  * @author: OY
  * @description: FarmDaoImpl implements FarmDao{@link FarmDao}
@@ -19,6 +20,11 @@ import com.alibaba.fastjson.JSON;
 public class FarmDaoImpl implements  FarmDao {
 
     private String filePath = new String("./Farm.dat");
+
+    /**
+     * read date from local file Farm.dat and then return the farm
+     * @return Farm
+     */
     @Override
     public Farm getFarm(){
         try {
@@ -35,11 +41,10 @@ public class FarmDaoImpl implements  FarmDao {
         }
     }
 
-    @Override
-    public void deleteFarm() {
-
-    }
-
+    /**
+     * store the farm to local file
+     * @param farm the Farm to be stored
+     */
     @Override
     public void updateFarm(Farm farm) {
 

@@ -22,9 +22,12 @@ public class DisplayPlantService implements BusinessService {
 
     @Override
     public void doProcessing() {
-        System.out.println("Processing task by invoking Display Plant Service");
 
         Farm farm = Farm.getInstance();
+
+        System.out.println("======== 使用业务代表 Business Delegate 模式 ========");
+        System.out.println("通过农场主终端执行\"查看农作物\"业务服务");
+
         Menu<Plant> m_plant =  farm.getPlantMenu();
 
         int cnt_plant = m_plant.getSize();

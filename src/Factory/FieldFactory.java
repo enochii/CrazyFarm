@@ -19,6 +19,11 @@ import java.util.List;
 public class FieldFactory extends Factory{
     private List _usages = new ArrayList();     // 土地用途记录表，统计注册土地的用途
 
+    public FieldFactory() {
+        System.out.println("======== 使用工厂 Factory 模式 ========");
+        System.out.println("成功创建小块土地工厂");
+    }
+
     @Override
     protected Land createLand(String usage) {
         return new Field(usage);

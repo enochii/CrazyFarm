@@ -20,9 +20,12 @@ public class CountFarmerService implements BusinessService {
 
     @Override
     public void doProcessing() {
-        System.out.println("Processing task by invoking Count Farmer Service");
 
         Farm farm = Farm.getInstance();
+
+        System.out.println("======== 使用业务代表 Business Delegate 模式 ========");
+        System.out.println("通过农场主终端执行\"管理农民\"业务服务");
+
         Menu<FarmerMultipleton> m_farmer =  farm.getFarmerMenu();
 
         int cnt_farmer = m_farmer.getSize();

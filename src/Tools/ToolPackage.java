@@ -21,6 +21,8 @@ public class ToolPackage extends Tool{
      * @param size the max size of package
      */
     public ToolPackage(int size){
+        //使用 组合Composite 模式
+        System.out.println("使用组合模式Composite，初始化了一个工具背包,容量为："+size);
         if(size<=0){
             size=1;
         }

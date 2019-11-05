@@ -37,6 +37,7 @@ public class FarmerMultipleton implements Serializable {
         for (int i = 0;i<TYPE_NUM;i++){
             director.setBuilder(farmerBuilders.get(i));
             director.constructFarmer();
+            director.toStringZh();
             for (int j = 0;j<Const.EACH_TYPE_NUM;j++){
                 list.add(new FarmerMultipleton(Const.FARMER_NAMES.get(i * Const.EACH_TYPE_NUM + j), director));
             }
@@ -47,7 +48,7 @@ public class FarmerMultipleton implements Serializable {
      * 随机获得实例对象
       */
     public static FarmerMultipleton getRandomInstance(){
-        System.out.println("==========多例模式===========");
+        System.out.println("========== 使用多例模式 ===========");
         for (int i = 0;i<Const.EACH_TYPE_NUM * TYPE_NUM;i++){
             if (!list.get(i).if_hired){
                 break;
@@ -62,6 +63,7 @@ public class FarmerMultipleton implements Serializable {
             num = (int) (Math.random() * (Const.EACH_TYPE_NUM * TYPE_NUM));
         }
         list.get(num).if_hired = true;
+        System.out.println("获取到" + list.get(num).farmer.getWorkType() + "类农民:"+list.get(num).getName());
         return list.get(num);
     }
 
@@ -70,7 +72,7 @@ public class FarmerMultipleton implements Serializable {
      * @return 取得负责喂食的农民实例
      */
     public static FarmerMultipleton getFeedInstance(){
-        System.out.println("==========多例模式===========");
+        System.out.println("========== 使用多例模式 ===========");
         FarmerMultipleton result = null;
         for(int i = 0;i < Const.EACH_TYPE_NUM * TYPE_NUM;i++){
             if ((!list.get(i).if_hired) && list.get(i).farmer.getWorkType().equals(Const.WorkType.FEED)) {
@@ -93,7 +95,7 @@ public class FarmerMultipleton implements Serializable {
      * @return 取得负责采办的农民实例
      */
     public static FarmerMultipleton getSpareInstance(){
-        System.out.println("==========多例模式===========");
+        System.out.println("========== 使用多例模式 ===========");
         FarmerMultipleton result = null;
         for(int i = 0;i < Const.EACH_TYPE_NUM * TYPE_NUM;i++){
             if ((!list.get(i).if_hired) && list.get(i).farmer.getWorkType().equals(Const.WorkType.SPARE)) {
@@ -117,7 +119,7 @@ public class FarmerMultipleton implements Serializable {
      * @return 取得负责耕种的农民实例
      */
     public static FarmerMultipleton getCultivateInstance(){
-        System.out.println("==========多例模式===========");
+        System.out.println("========== 使用多例模式 ===========");
         FarmerMultipleton result = null;
         for(int i = 0;i < Const.EACH_TYPE_NUM * TYPE_NUM;i++){
             if ((!list.get(i).if_hired) && list.get(i).farmer.getWorkType().equals(Const.WorkType.CULTIVATE)) {

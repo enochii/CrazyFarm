@@ -11,7 +11,7 @@ package Command;
 public interface Command {
 
     /**
-     * Execute.
+     * 命令的执行函数
      */
     public abstract void execute();
 }

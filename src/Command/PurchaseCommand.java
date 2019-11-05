@@ -10,7 +10,7 @@ import Livings.Plants.Crop;
 import Livings.Plants.Plant;
 
 /**
- * The type Purchase command.
+ * 购买的命令类
  */
 public class PurchaseCommand implements Command {
     String _purchaseType;
@@ -24,7 +24,12 @@ public class PurchaseCommand implements Command {
         _reduceMoneyCallBack = callBack;
     }
 
+    /**
+     * 购买命令类的执行函数
+     */
     public void execute() {
+        System.out.println("======== 使用 Command 模式 ========");
+        System.out.println("PurchaseCommand : " + this.hashCode() +  " :execute: execute purchase command");
         Farm farm = Farm.getInstance();
         if(_purchaseType.equals(Const.NAME_TABLE_CHICKEN)){
             for(int i = 0; i < _number; i++) {

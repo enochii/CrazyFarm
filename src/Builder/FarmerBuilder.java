@@ -15,6 +15,10 @@ public abstract class FarmerBuilder {
 
     protected Farmer _farmer;
 
+    public FarmerBuilder() {
+        System.out.println("======== 使用建造者 Builder 模式 ========");
+    }
+
     /**
      * Gets farmer.
      * 获取当前 Builder 内的农民
