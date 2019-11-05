@@ -56,6 +56,9 @@ public class Main {
         timeCounter.addObserver(animalsObserver);
         timeCounter.addObserver(plantsObserver);
 
+        //使用多例(multipleton)模式
+        farm.getFarmerMenu().add(FarmerMultipleton.getRandomInstance());
+
         for(int i = 1; i <= 100; i++)
         {
             timeCounter.updateTime();
