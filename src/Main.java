@@ -56,6 +56,8 @@ public class Main {
         // 建造者模式
         // 抽象工厂模式 和 享元模式
         // 桥接模式
+        // 多例模式
+        // 私有类数据模式
         Farm farm = Farm.getInstance();
 
         // 工厂模式
@@ -89,7 +91,8 @@ public class Main {
 
 //        System.out.println(farm.getOwner().getMoney());
 
-        owner.purchase(Const.NAME_TABLE_CHICKEN, 6);
+        // 回调模式
+        owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
         farm.addMediatorForAll();
         System.out.println(owner.getMoney());
 
@@ -105,9 +108,11 @@ public class Main {
         timeCounter.addObserver(plantsObserver);
         System.out.println("开始更新时间");
 
-        //使用多例(multipleton)模式
+        // 多例(multipleton)模式
         farm.getFarmerMenu().add(FarmerMultipleton.getRandomInstance());
 
+        // 责任链模式
+        // 外观模式
         for(int i = 1; i <= 100; i++)
         {
             timeCounter.updateTime();
@@ -154,6 +159,7 @@ public class Main {
             e.printStackTrace();
         }
         //备忘录
+        //原型模式
         CropStateMemento.main();
         //转换器
         CropConverter.main();
