@@ -108,7 +108,7 @@ public class Farmer implements Serializable {
     }
 
     /**
-     * Sell.
+     * 售卖动物
      *
      * @param animal the animal
      */
@@ -119,7 +119,13 @@ public class Farmer implements Serializable {
         _farmerData.setWorkStatus(false);
     }
 
+    /**
+     * 购买动物或者植物
+     *
+     * @param kind 动物或植物的种类， number 动物或植物的数量
+     */
     public void purchase(String kind, int number){
+
         _farmerData.setWorkStatus(true);
         ReduceMoneyCallback reduceMoneyCallback = new ReduceMoneyCallback(0);
         Command cmd = new PurchaseCommand(kind, number, reduceMoneyCallback);

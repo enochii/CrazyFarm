@@ -190,6 +190,9 @@ public class Farm implements Serializable {
 
     }
 
+    /**
+     * 为农场中所有的动物添加中介者
+     */
     public void addMediatorForAll(){
         Iterator<Animal> animal_it = getAnimalMenu().iterator();
         while(animal_it.hasNext()){
@@ -203,6 +206,9 @@ public class Farm implements Serializable {
 
     }
 
+    /**
+     * 为整个农场分配一个中介者
+     */
     public void setMediatorForFarm(AnimalMediator animalMediator, PlantMediator plantMediator){
         this._animalMediator = animalMediator;
         this._plantMediator = plantMediator;
@@ -212,6 +218,9 @@ public class Farm implements Serializable {
 //        return owner;
 //    }
 
+    /**
+     * 为整个农场分配一个农场主
+     */
     public void setOwnerForFarm(Owner owner){
         this._owner = owner;
     }

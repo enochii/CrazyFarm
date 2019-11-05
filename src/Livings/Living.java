@@ -45,6 +45,7 @@ public abstract class Living implements Context, Serializable {
 
     public int _experience = 0;
 
+    //生物执行售卖
     public abstract void doSell();
 
 
