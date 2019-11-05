@@ -76,20 +76,16 @@ public class TableChicken extends Chicken{
                 {
                     System.out.println(Const.NAME_TABLE_CHICKEN + "is eating");
                     this.getFed(currentTime);
-
                 }
-
                else {
                     _state.getHungryState(this);
                 }
-
             }
-
             else{
                 _state.gainExperience(this);
             }
 
-        if(this._maturityRate >= 20){
+        if(this._maturityRate >= 10){
             this._isMature = true;
         }
 
@@ -102,7 +98,6 @@ public class TableChicken extends Chicken{
     @Override
     public void makeEat() {
         new ChickenEat().doAction();
-
     }
 
     /**
@@ -112,14 +107,6 @@ public class TableChicken extends Chicken{
     public void makeSound() {
         new ChickenSound().doAction();
     }
-
-    @Override
-    public String isMature() {
-        if(_maturityRate > 3)
-            _mature = Const.MATURE;
-        return _mature;
-    }
-
 
     /**
      * 接收中介者发出的命令

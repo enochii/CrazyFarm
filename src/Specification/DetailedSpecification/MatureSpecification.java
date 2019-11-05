@@ -8,6 +8,6 @@ public class MatureSpecification extends CompositeSpecification {
 	@Override
 	public boolean isSatisfiedBy(Object params) {
 		Animal animal = (Animal) params;
-		return animal.isMature() == Const.MATURE;
+		return animal.getMature();
 	}
 }

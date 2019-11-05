@@ -19,6 +19,10 @@ import Farm.Menu;
 import Farm.Owner;
 import Interpreter.ParseException;
 import Interpreter.Parser;
+import Livings.Animals.Animal;
+import Livings.Animals.Chicken.Chicken;
+import Livings.Animals.Chicken.TableChicken;
+import Livings.Animals.Duck.SmallYellowDuck;
 import Land.*;
 import Factory.*;
 import Livings.Animals.Animal;
@@ -35,12 +39,18 @@ import Proxy.OwnerProxy;
 import Specification.specification_test;
 import Visitor.ExpLivingVisitor;
 import Tools.Extension.AugmentedHoe;
+import criteria.Criteria;
+import criteria.CriteriaChicken;
+import criteria.CriteriaDuck;
+import criteria.CriteriaMature;
 import Tools.FarmTool;
 import mediator.AnimalMediator;
 import mediator.PlantMediator;
 import BusinessDelegate.Client;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Main {
 
@@ -48,21 +58,25 @@ public class Main {
 	// write your code here
 
         // 初始化农场，根据调用关系先后用到了以下设计模式：
-        // 单例模式
         // 双重检查锁模式
         // 建造者模式
-        // 抽象工厂模式 和 享元模式
+        // 抽象工厂模式
+        // 享元模式
         // 桥接模式
+        // 多例模式
+        // 私有类数据模式
         Farm farm = Farm.getInstance();
 
         // 工厂模式
         Factory fieldFactory = new FieldFactory();
+        System.out.println("FieldFactory : " + fieldFactory.hashCode() +  " :create: create a field with usage");
         Field field1 = (Field) fieldFactory.create("种植玉米");
         System.out.println("创建了一小块土地用于" + field1.getUsage() + ".");
         Field field2 = (Field) fieldFactory.create("种植土豆");
         System.out.println("创建了一小块土地用于" + field2.getUsage() + ".");
 
         Factory largeFieldFactory = new LargeFieldFactory();
+        System.out.println("LargeFieldFactory : " + largeFieldFactory.hashCode() +  " :create: create a large field with usage");
         LargeField largeField1 = (LargeField) largeFieldFactory.create("放养鸭子");
         System.out.println("创建了一大片土地用于" + largeField1.getUsage() + ".");
         LargeField largeField2 = (LargeField) largeFieldFactory.create("放养鸡");
@@ -78,12 +92,14 @@ public class Main {
         animalMediator.setFarm(farm);
         plantMediator.setFarm(farm);
 
+        //单例模式
         Owner owner = Owner.getInstance();
         farm.setOwnerForFarm(owner);
         owner.setFarmForOwner(farm);
 
 //        System.out.println(farm.getOwner().getMoney());
 
+        // 回调模式
         owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
         farm.addMediatorForAll();
         System.out.println(owner.getMoney());
@@ -100,9 +116,11 @@ public class Main {
         timeCounter.addObserver(plantsObserver);
         System.out.println("开始更新时间");
 
-        //使用多例(multipleton)模式
+        // 多例(multipleton)模式
         farm.getFarmerMenu().add(FarmerMultipleton.getRandomInstance());
 
+        // 责任链模式
+        // 外观模式
         for(int i = 1; i <= 100; i++)
         {
             timeCounter.updateTime();
@@ -130,10 +148,12 @@ public class Main {
         }
 
         // 业务代表模式
-        // 内部还会用到迭代器模式
+        // 迭代器模式
         BusinessDelegate businessDelegate = new BusinessDelegate();
         Client client = new Client(businessDelegate);
+        System.out.println("BusinessDelegate : " + businessDelegate.hashCode() +  " :setBusinessService: set a new business service type");
         businessDelegate.setBusinessService(Const.SERVICE_CNT_FARMER);
+        System.out.println("Client : " + client.hashCode() +  " :do task of selected business service");
         client.doTask();
         businessDelegate.setBusinessService(Const.SERVICE_DISPLAY_PLANT);
         client.doTask();
@@ -147,6 +167,7 @@ public class Main {
             e.printStackTrace();
         }
         //备忘录
+        //原型模式
         CropStateMemento.main();
         //转换器
         CropConverter.main();
@@ -165,9 +186,6 @@ public class Main {
             Plant plant=it.next();
             plant.accept(expLivingVisitor);
         }
-
-        //使用 数据访问对象（DAO） 模式
-        System.out.println("======== 使用 DAO 模式 ========");
 
         // 扩展对象 Extension objects 模式
         AugmentedHoe augmentedHoe = new AugmentedHoe();
@@ -206,12 +224,46 @@ public class Main {
         System.out.println("对crop@"+c.hashCode()+"进行有机蔬菜装饰器@"+d_tgc.hashCode()+"处理后，价值"+d_tgc.getValue()+"元。");
 
 
-        //使用 装饰器（Decorator）模式
-        System.out.println("======== 使用 装饰器Decorator 模式 ========");
+        //使用 规约（Specification） 模式
+        System.out.println("======== 使用 规约Specification 模式 ========");
         specification_test t = new specification_test();
 
         //系统结束时保存Farm
+        //使用 Filter 模式
+        System.out.println("======== 使用 Filter 模式 ========");
+        List<Animal> animals = new ArrayList<>();
+        Menu<Animal> animalMenu = farm.getAnimalMenu();
+        Iterator<Animal> animalIterator = animalMenu.iterator();
+        while(animalIterator.hasNext()) {
+            Animal animal = animalIterator.next();
+            animals.add(animal);
+        }
+        Criteria criteriaMature = new CriteriaMature();
+        System.out.println("CriteriaMature : " + criteriaMature.hashCode() +  " :meetCriteria: filter the mature animals");
+        List<Animal> result = criteriaMature.meetCriteria(animals);
+        System.out.println(result.get(0).getName());
 
+        //使用 Null Object 模式
+        System.out.println("======== 使用 Null Object 模式 ========");
+        Criteria criteriaDuck = new CriteriaDuck();
+        List<Animal> nullResult = criteriaDuck.meetCriteria(animals);
+        nullResult.get(0).getValue();
+
+        //使用 Strategy 模式
+        System.out.println("======== 使用 Strategy 模式 ========");
+        Animal chicken = result.get(0);
+        chicken.makeEat();
+        chicken.makeSound();
+
+        //使用 Template method 模式
+        System.out.println("======== 使用 Template method 模式 ========");
+        Animal duck = new SmallYellowDuck();
+        chicken.getFed(101);
+        duck.getFed(101);
+
+        //系统结束时保存Farm
+        //使用 数据访问对象（DAO） 模式
+        System.out.println("======== 使用 DAO 模式 ========");
         FarmDao farmDao=new FarmDaoImpl();
         farmDao.updateFarm(farm);
         System.out.println("农场数据保存成功");

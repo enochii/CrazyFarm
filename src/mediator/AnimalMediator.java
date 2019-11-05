@@ -49,6 +49,7 @@ public class AnimalMediator implements Mediator{
         _starvedAnimals.clear();
         if(_animalMenu == null){
             System.out.println("_animalmenu is null");
+            return;
         }
         Iterator<Animal> animal_iter = _animalMenu.iterator();
         while (animal_iter.hasNext()){
@@ -59,9 +60,9 @@ public class AnimalMediator implements Mediator{
         }
 
         /**
-         * 饥饿的动物数量超过既定数目后喂食
+         * 饥饿的动物数量超过农场的动物总数的三分之一后喂食
          */
-        if(_starvedAnimals.size()>_num_starved_animals){
+        if(_starvedAnimals.size()>Math.ceil(_animalMenu.getSize()/_num_starved_animals)){
             Iterator<Animal> starved_animal_iter = _starvedAnimals.iterator();
             int total_appetite_num  = 0;
             while (starved_animal_iter.hasNext()){
@@ -88,7 +89,7 @@ public class AnimalMediator implements Mediator{
      */
     public AnimalMediator(){
         _starvedAnimals = new HashSet<>();
-        _num_starved_animals = 5;
+        _num_starved_animals = 3;
 
         //createColleagues();
         System.out.println("AnimalMediator has been initialized");
