@@ -113,4 +113,13 @@ public class Owner implements MoneyManager, Serializable {
         this._farm = farm;
     }
 
+    /**
+     * 为农场主增加金钱
+     * @param money 赚到的钱
+     */
+    public void makeMoney(int money)
+    {
+        this.money += money;
+    }
+
 }

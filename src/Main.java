@@ -58,6 +58,7 @@ public class Main {
 
         for(int i = 1; i <= 100; i++)
         {
+            System.out.println("Farm's current time is : " + i);
             timeCounter.updateTime();
         }
 
