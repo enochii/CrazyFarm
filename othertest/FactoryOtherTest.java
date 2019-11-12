@@ -7,7 +7,6 @@ import Factory.*;
 
 /**
  * @className: FactoryOtherTest
- * @author: Leon
  * @description:
  * @designPattern:
  * @date: 11:58 上午 2019/11/12
@@ -20,7 +19,6 @@ public class FactoryOtherTest {
     @Before
     public void setUp() {
         System.out.println("======== 测试 Factory 模式 ========");
-        // 建立test所需对象
         fieldFactory = new FieldFactory();
         largeFieldFactory = new LargeFieldFactory();
     }
@@ -28,10 +26,10 @@ public class FactoryOtherTest {
     @Test
     public void testForFactory() {
         System.out.println("\n测试小块土地工厂：");
-        Field field1 = (Field) fieldFactory.create("growing corn");
+        Field field1 = (Field) fieldFactory.create("planting apple trees");
         System.out.println("Create a field for " + field1.getUsage() + ".");
         field1.use();
-        Field field2 = (Field) fieldFactory.create("growing potato");
+        Field field2 = (Field) fieldFactory.create("Planting onions");
         System.out.println("Create a field for " + field2.getUsage() + ".");
         field2.use();
 
@@ -42,6 +40,5 @@ public class FactoryOtherTest {
         LargeField largeField2 = (LargeField) largeFieldFactory.create("raising chickens");
         System.out.println("Create a large field for " + largeField2.getUsage() + ".");
         largeField2.use();
-
     }
 }
