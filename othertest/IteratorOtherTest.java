@@ -25,16 +25,16 @@ public class IteratorOtherTest {
         System.out.println("======== 测试 Iterator 模式 ========");
         animalMenu = new Menu<Animal>();
         animals = new ArrayList<>();
-    }
-
-    @Test
-    public void test(){
         for(int i=0;i<5;i++){
             Chicken chicken = new TableChicken();
             animalMenu.add(chicken);
             animals.add(chicken);
         }
         System.out.println("所有的动物已经成功载入");
+    }
+
+    @Test
+    public void test(){
         Iterator<Animal> iterator = animalMenu.iterator();
         for (Animal animal : animals) {
             assertTrue(iterator.hasNext());
