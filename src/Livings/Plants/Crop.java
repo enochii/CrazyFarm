@@ -1,6 +1,8 @@
 package Livings.Plants;
 
 import Constant.Const;
+import Farm.Farm;
+import Farm.Owner;
 import Livings.LivingCloneable;
 import State.AnimalFullState;
 import State.AnimalHungryState;
@@ -90,5 +92,25 @@ public class Crop extends Plant implements LivingCloneable {
 		_isMature = !_isMature;
 		_maturityRate ++;
 		_state = _state == AnimalHungryState.getInstance()?AnimalFullState.getInstance() : AnimalHungryState.getInstance();
+	}
+
+	/**
+	 * 植物执行售卖
+	 */
+	public void doSell() {
+		if (this._isMature) {
+			if (this.isSold) {
+				System.out.println("This crop has been sold");
+			} else {
+				this.isSold = true;
+				Owner.getInstance().makeMoney((int) (this.getValue()));
+				Farm.getInstance().getPlantMenu().erase(this);
+				System.out.println("This crop has been sold successfully");
+			}
+		}
+		else
+		{
+			System.out.println("This crop is not mature");
+		}
 	}
 }

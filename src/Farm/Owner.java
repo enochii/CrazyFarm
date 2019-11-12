@@ -16,6 +16,7 @@ public class Owner implements MoneyManager, Serializable {
     }
 
     public static Owner getInstance() {
+        System.out.println("======== 使用单例 Singleton 模式 ========");
         Owner temp = instance;
         if(temp == null){
             synchronized(Owner.class){
@@ -111,6 +112,15 @@ public class Owner implements MoneyManager, Serializable {
     public void setFarmForOwner(Farm farm)
     {
         this._farm = farm;
+    }
+
+    /**
+     * 为农场主增加金钱
+     * @param money 赚到的钱
+     */
+    public void makeMoney(int money)
+    {
+        this.money += money;
     }
 
 }

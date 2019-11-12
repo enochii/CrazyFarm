@@ -7,7 +7,9 @@ import State.AnimalHungryState;
 import action.ChickenEat;
 import action.ChickenSound;
 import mediator.Mediator;
+import Farm.Owner;
 
+import java.awt.*;
 
 /**
  * The type Table chicken.
@@ -114,5 +116,24 @@ public class TableChicken extends Chicken{
     public void setColleagueEnable(boolean enable)
     {
 
+    }
+
+    /**
+     * 动物执行售卖
+     */
+    public void doSell() {
+        if (this._isMature) {
+            if (this.isSold) {
+                System.out.println("This table chicken has been sold");
+            } else {
+                this.isSold = true;
+                Owner.getInstance().makeMoney((int) (this.getValue()));
+                Farm.getInstance().getAnimalMenu().erase(this);
+                System.out.println("The table chicken has been sold successfully");
+            }
+        }
+        else{
+            System.out.println("The table chicken is not mature");
+        }
     }
 }
