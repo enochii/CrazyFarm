@@ -14,7 +14,7 @@ public class MultipletonTest {
 
     @Test
     public void test(){
-        for (int i = 0;i < Const.EACH_TYPE_NUM * Const.WorkType.values().length;i++){
+        for (int i = 0;i < Const.EACH_TYPE_NUM * Const.WorkType.values().length / 2;i++){
             FarmerMultipleton farmerMultipleton = FarmerMultipleton.getRandomInstance();
             System.out.println(farmerMultipleton.getName());
             System.out.println(farmerMultipleton.farmer.getWorkType());
