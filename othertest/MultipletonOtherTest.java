@@ -1,9 +1,10 @@
 import Builder.FarmerMultipleton;
-import Constant.Const;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MultipletonTest {
+public class MultipletonOtherTest {
     @Before
     public void setUp(){
         System.out.println("=========== 测试多态模式 =============");
