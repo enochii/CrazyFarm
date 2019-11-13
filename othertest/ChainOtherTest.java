@@ -17,7 +17,7 @@ public class ChainOtherTest {
 
     @Test
     public void test(){
-
+        //获取农场实例并对其进行初始化
         Farm farm = Farm.getInstance();
 
         AnimalMediator animalMediator = new AnimalMediator();
@@ -40,7 +40,7 @@ public class ChainOtherTest {
         PlantsObserver plantsObserver = new PlantsObserver();
         timeCounter.addObserver(animalsObserver);
         timeCounter.addObserver(plantsObserver);
-
+        //模拟时间流逝，观察农场中的信息更新
         for(int i = 1; i <= 110; i++)
         {
             timeCounter.updateTime();
