@@ -56,8 +56,8 @@ public class TableChicken extends Chicken{
         if(hungry_state==true) _state = AnimalHungryState.getInstance();
         else _state = AnimalFullState.getInstance();
 
-        if(mature_state==true) _maturityRate = 4;
-        else _maturityRate = 0;
+        if(mature_state==true) _isMature = true;
+        else _isMature = false;
     }
 
     /**
