@@ -5,7 +5,6 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertTrue;
 
 /**
- * @author : SCH001
  * @description :
  */
 public class DoubleCheckedLockingOtherTest {

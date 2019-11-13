@@ -7,7 +7,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author : SCH001
  * @description :
  */
 public class ConverterOtherTest {
