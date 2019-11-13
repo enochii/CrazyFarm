@@ -5,6 +5,10 @@ out/
 
 # Intelligent
 CrazyFarm.iml
+soapui.log
+soapui-errors.log
+soapui-groovy.log
+
 # Eclipse
 .classpath
 .project

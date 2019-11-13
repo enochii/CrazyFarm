@@ -9,6 +9,10 @@ import Constant.Const;
 import Converter.CropConverter;
 import Dao.FarmDao;
 import Dao.FarmDaoImpl;
+import Decorator.AnimalDecorator.FreshDecorator;
+import Decorator.AnimalDecorator.StaleDecorator;
+import Decorator.PlantDecorator.OrganicDecorator;
+import Decorator.PlantDecorator.TransgenosisDecorator;
 import Factory.Factory;
 import Farm.Farm;
 import Farm.Menu;
@@ -23,6 +27,7 @@ import Land.*;
 import Factory.*;
 import Livings.Animals.Animal;
 import Livings.Animals.Chicken.TableChicken;
+import Livings.Plants.Crop;
 import Livings.Plants.Plant;
 import MVC.FarmerController;
 import MVC.FarmerView;
@@ -30,6 +35,8 @@ import Memento.CropStateMemento;
 import Observer.AnimalsObserver;
 import Observer.Observable.TimeCounter;
 import Observer.PlantsObserver;
+import Proxy.OwnerProxy;
+import Specification.specification_test;
 import Visitor.ExpLivingVisitor;
 import Tools.Extension.AugmentedHoe;
 import criteria.Criteria;
@@ -51,11 +58,14 @@ public class Main {
 	// write your code here
 
         // 初始化农场，根据调用关系先后用到了以下设计模式：
-        // 单例模式
         // 双重检查锁模式
         // 建造者模式
-        // 抽象工厂模式 和 享元模式
+        // 抽象工厂模式
+        // 享元模式
         // 桥接模式
+        // 多例模式
+        // 私有类数据模式
+        // 组合模式
         Farm farm = Farm.getInstance();
 
         // 工厂模式
@@ -83,13 +93,16 @@ public class Main {
         animalMediator.setFarm(farm);
         plantMediator.setFarm(farm);
 
+        //单例模式
         Owner owner = Owner.getInstance();
         farm.setOwnerForFarm(owner);
         owner.setFarmForOwner(farm);
 
 //        System.out.println(farm.getOwner().getMoney());
 
-        owner.purchase(Const.NAME_TABLE_CHICKEN, 6);
+        // 回调模式
+        // 命令模式
+        owner.purchase(Const.NAME_TABLE_CHICKEN, 3);
         farm.addMediatorForAll();
         System.out.println(owner.getMoney());
 
@@ -105,11 +118,15 @@ public class Main {
         timeCounter.addObserver(plantsObserver);
         System.out.println("开始更新时间");
 
-        //使用多例(multipleton)模式
+        // 多例(multipleton)模式
         farm.getFarmerMenu().add(FarmerMultipleton.getRandomInstance());
 
+        // 状态模式
+        // 责任链模式
+        // 外观模式
         for(int i = 1; i <= 100; i++)
         {
+            System.out.println("Farm's current time is : " + i);
             timeCounter.updateTime();
         }
 
@@ -135,7 +152,7 @@ public class Main {
         }
 
         // 业务代表模式
-        // 内部还会用到迭代器模式
+        // 迭代器模式
         BusinessDelegate businessDelegate = new BusinessDelegate();
         Client client = new Client(businessDelegate);
         System.out.println("BusinessDelegate : " + businessDelegate.hashCode() +  " :setBusinessService: set a new business service type");
@@ -154,6 +171,7 @@ public class Main {
             e.printStackTrace();
         }
         //备忘录
+        //原型模式
         CropStateMemento.main();
         //转换器
         CropConverter.main();
@@ -173,12 +191,48 @@ public class Main {
             plant.accept(expLivingVisitor);
         }
 
-        //使用 数据访问对象（DAO） 模式
-        System.out.println("======== 使用 DAO 模式 ========");
-
         // 扩展对象 Extension objects 模式
         AugmentedHoe augmentedHoe = new AugmentedHoe();
 
+
+        //使用 代理（Proxy）模式
+        System.out.println("======== 使用 代理Proxy 模式 ========");
+        OwnerProxy ownerProxy = new OwnerProxy();
+        System.out.println("成功创建农产主代理@"+ownerProxy.hashCode());
+        System.out.println("通过代理@"+ownerProxy.hashCode()+"读取owner的财产总额。");
+        ownerProxy.getMoney();
+        System.out.println("尝试通过代理@"+ownerProxy.hashCode()+"帮助owner消费1300元。");
+        ownerProxy.reduceMoney(1300);
+        System.out.println("尝试通过代理@"+ownerProxy.hashCode()+"帮助owner消费300元。");
+        ownerProxy.reduceMoney(300);
+
+        //使用 装饰器（Decorator）模式
+        System.out.println("======== 使用 装饰器Decorator 模式 ========");
+
+        //animal decorator test
+        System.out.println("动物装饰器：");
+        TableChicken tc = new TableChicken();
+        System.out.println("生成一只普通的tableChicken@"+tc.hashCode()+"，价值"+tc.getValue()+"元。");
+        FreshDecorator d_tc = new FreshDecorator(tc);
+        System.out.println("对tableChicken@"+tc.hashCode()+"进行新鲜装饰器@"+d_tc.hashCode()+"处理后，价值"+d_tc.getValue()+"元。");
+        StaleDecorator d_sc = new StaleDecorator(tc);
+        System.out.println("对tableChicken@"+tc.hashCode()+"进行陈腐装饰器@"+d_sc.hashCode()+"处理后，价值"+d_sc.getValue()+"元。");
+
+        //plant decorator test
+        System.out.println("植物装饰器：");
+        Crop c = new Crop();
+        System.out.println("生成一棵普通的crop@"+c.hashCode()+"，价值"+c.getValue()+"元。");
+        OrganicDecorator d_oc = new OrganicDecorator(c);
+        System.out.println("对crop@"+c.hashCode()+"进行有机蔬菜装饰器@"+d_oc.hashCode()+"处理后，价值"+d_oc.getValue()+"元。");
+        TransgenosisDecorator d_tgc = new TransgenosisDecorator(c);
+        System.out.println("对crop@"+c.hashCode()+"进行有机蔬菜装饰器@"+d_tgc.hashCode()+"处理后，价值"+d_tgc.getValue()+"元。");
+
+
+        //使用 规约（Specification） 模式
+        System.out.println("======== 使用 规约Specification 模式 ========");
+        specification_test t = new specification_test();
+
+        //系统结束时保存Farm
         //使用 Filter 模式
         System.out.println("======== 使用 Filter 模式 ========");
         List<Animal> animals = new ArrayList<>();
@@ -212,7 +266,8 @@ public class Main {
         duck.getFed(101);
 
         //系统结束时保存Farm
-
+        //使用 数据访问对象（DAO） 模式
+        System.out.println("======== 使用 DAO 模式 ========");
         FarmDao farmDao=new FarmDaoImpl();
         farmDao.updateFarm(farm);
         System.out.println("农场数据保存成功");

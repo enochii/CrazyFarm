@@ -5,7 +5,7 @@ import Farm.Farm;
 import action.DuckEat;
 import action.DuckSound;
 import mediator.Mediator;
-
+import Farm.Owner;
 public class SmallYellowDuck extends Duck{
     private static double _value = Const.VALUE_YELLOW_DUCK;
     private static String _name = Const.NAME_YELLOW_DUCK;
@@ -110,5 +110,25 @@ public class SmallYellowDuck extends Duck{
      */
     public SmallYellowDuck(){
         this._appetite = 4;
+    }
+
+    /**
+     * 动物执行售卖
+     */
+    public void doSell() {
+        if (this._isMature) {
+            if (this.isSold) {
+                System.out.println("This small yellow duck has been sold");
+            } else {
+                this.isSold = true;
+                Owner.getInstance().makeMoney((int) (this.getValue()));
+                Farm.getInstance().getAnimalMenu().erase(this);
+                System.out.println("This small yellow duck has been sold successfully");
+            }
+
+        }
+        else{
+            System.out.println("This small yellow duck is not mature");
+        }
     }
 }
